@@ -135,6 +135,11 @@ public class PersistenciaParranderos
 	private SQLPrestamo sqlPrestamo;
 	
 	private SQLOficina sqlOficina;
+
+	private SQLCuenta sqlCuenta;
+
+		private SQLAbrirCuenta sqlAbrirCuenta;
+
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -164,6 +169,8 @@ public class PersistenciaParranderos
 		tablas.add ("USUARIO");
 		tablas.add ("PRESTAMO");
 		tablas.add ("OFICINA");
+		tablas.add ("A_CUENTA");
+		tablas.add ("A_ABRIRCUENTA");
 }
 
 	/**
@@ -252,6 +259,9 @@ public class PersistenciaParranderos
 		sqlUsuario = new SQLUsuario(this);
 		sqlPrestamo = new SQLPrestamo(this);
 		sqlOficina = new SQLOficina(this);
+		sqlCuenta= new SQLCuenta(this);
+		sqlAbrirCuenta = new SQLAbrirCuenta(this);
+
 	}
 
 	/**
@@ -337,6 +347,16 @@ public class PersistenciaParranderos
 	{
 		return tablas.get (11);
 	}
+
+	public String darTablaCuenta ()
+	{
+		return tablas.get (12);
+	}
+
+	public String darTablaAbrirCuenta ()
+	{
+		return tablas.get (13);
+	}
 	
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
@@ -366,9 +386,6 @@ public class PersistenciaParranderos
 		return resp;
 	}
 
-	/* ****************************************************************
-	 * 			Métodos para manejar los TIPOS DE BEBIDA
-	 *****************************************************************/
 	
 	public Oficina adicionarOficina(String nombre, String direccion, String loginGerenteOficina)
 	{
@@ -385,6 +402,40 @@ public class PersistenciaParranderos
             log.trace ("Inserción de oficina: " + nombre + " ubicada en " + direccion +": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Oficina(idOficina, nombre, direccion, loginGerenteOficina);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+
+	public Cuenta adicionarCuenta( String tipoCuenta, int saldo, Timestamp fechaCreacion, long idOficina,
+			String loginCliente, long idPA)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long numeroCuenta = nextval();
+            long tuplasInsertadas = sqlCuenta.adicionarCuenta(pm, numeroCuenta, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
+            tuplasInsertadas += sqlAbrirCuenta.adicionarAbrirCuenta(pm, idPA, loginCliente, numeroCuenta, fechaCreacion, tipoCuenta);
+            tx.commit();
+            
+            log.trace ("Inserción de Cuenta: " + numeroCuenta + " creada en la oficina " + idOficina + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Cuenta(numeroCuenta, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
         }
         catch (Exception e)
         {

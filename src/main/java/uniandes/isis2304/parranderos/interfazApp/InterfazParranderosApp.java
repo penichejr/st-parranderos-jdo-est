@@ -449,6 +449,37 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+
+
+	public void adicionarCuenta()
+	{
+		try {
+			String tipo = JOptionPane.showInputDialog (this, "Tipo de Cuenta?\n1=Ahorros\n2=Corriente\n3=AFC", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String idOF = JOptionPane.showInputDialog (this, "Id Oficina?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String idPA = JOptionPane.showInputDialog (this, "Id punto de atención", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+			String tipoCuenta = "AFC";
+			if(tipo.equals("1"))
+			{
+				tipoCuenta = "AHORROS";
+			}
+			else if(tipo.equals("2"))
+			{
+				tipoCuenta = "CORRIENTE";
+			}
+
+			Cuenta cuentanueva =bancandes.adicionarCuenta(tipoCuenta, Long.parseLong(idOF), loginCliente, Long.parseLong(idPA));
+
+
+			panelDatos.actualizarInterfaz(cuentanueva.toString());
+
+		}
+		catch(Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
     
 
     /**

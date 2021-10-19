@@ -76,9 +76,6 @@ public class Parranderos
 		pp.cerrarUnidadPersistencia ();
 	}
 	
-	/* ****************************************************************
-	 * 			Métodos para manejar los TIPOS DE BEBIDA
-	 *****************************************************************/
 	
 	public Oficina adicionarOficina (String nombre, String direccion, String loginGerenteOficina)
 	{
@@ -97,11 +94,7 @@ public class Parranderos
         return puntosDeAtencion;
 	}
 
-	/**
-	 * Encuentra todos los tipos de bebida en Parranderos y los devuelve como una lista de VOTipoBebida
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOTipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
-	 */
+	
 	public List<VOPuntoDeAtencion> darVOPuntosDeAtencion ()
 	{
 		log.info ("Generando los VO de los Puntos de Atencion");        
@@ -114,12 +107,7 @@ public class Parranderos
         return voPuntos;
 	}
 	
-	/**
-	 * Adiciona de manera persistente un tipo de bebida 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
-	 */
+	
 	public TipoBebida adicionarTipoBebida (String nombre)
 	{
         log.info ("Adicionando Tipo de bebida: " + nombre);
@@ -152,6 +140,17 @@ public class Parranderos
         Usuario usuario = pp.adicionarUsuario(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);		
         log.info ("Adicionando usuario: " + usuario);
         return usuario;
+	}
+
+	public Cuenta adicionarCuenta (String tipoCuenta, long idOficina,
+			String loginCliente, long idPA)
+	{
+		
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Adicionando Cuenta: " );
+        Cuenta cuenta = pb.adicionarCuenta(tipoCuenta, 0, fechaCreacion, idOficina, loginCliente, idPA);
+        log.info ("Adicionando Cuenta: " + cuenta.getNumeroUnico());//????????? o nada
+        return cuenta;
 	}
 	
 	/**

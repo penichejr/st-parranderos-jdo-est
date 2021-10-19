@@ -45,12 +45,12 @@
 				}
 			]
 		},
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Cuenta",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
+					"label": "adicionarCuenta",
+					"event": "adicionarCuenta"
 				},
 				{
 					"label": "Listar",
