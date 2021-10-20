@@ -83,13 +83,6 @@ public class Parranderos
         return timestamp;
 	}
 	
-	public  Timestamp fechaActual()
-	{
-		Long datetime = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(datetime);
-        return timestamp;
-	}
-	
 	
 	public long eliminarPrestamoPorId (long idPrestamo)
 	{
@@ -120,7 +113,7 @@ public class Parranderos
         log.info ("Adicionando Oficina: " + oficina);
         return oficina;
 	}
-
+          
 	
 	public List<PuntoDeAtencion> darPuntosDeAtencion ()
 	{

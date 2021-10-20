@@ -35,11 +35,13 @@
 					"event": "adicionarPrestamo"
 				},
 				{
+
 					"label": "eliminarPrestamoPorId",
 					"event": "eliminarPrestamoPorId"
+				},
+				{ 
 					"label": "pagarCuota",
 					"event": "pagarCuota"
->>>>>>> 004f40d4a3f1609e86db7f696da0bcc8b8f7e3cb
 				}
 			]
 		},

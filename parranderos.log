@@ -616,3 +616,24 @@ ORA-00942: la tabla o vista no existe
 19:45:20,504 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
 19:45:20,696 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 501000
 >>>>>>> 004f40d4a3f1609e86db7f696da0bcc8b8f7e3cb
+20:23:15,445 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - NO se encontró un archivo de configuración válido
+20:23:32,122 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración por defecto
+20:23:32,123 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:25:11,110 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:25:11,111 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:25:11,144 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:25:38,010 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando usuario: hhh
+20:25:39,265 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando usuario: Usuario [login=hhh, nombre=ggg, ciudad=ggg]
+20:26:11,423 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: VIVIENDA
+20:26:11,912 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO A_PRESTAMO values (?, ?, ?, ?, ?, ?, ?, ?, ?)".
+ORA-02291: restricción de integridad (ISIS2304A13202120.FK_APRESTAMO_CLIENTE) violada - clave principal no encontrada
+
+20:26:12,260 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: null
+20:26:42,329 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: VIVIENDA
+20:26:59,143 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: Prestamo [id=83, tipo=VIVIENDA, monto=2, saldo=2, intereses=2, numeroCuotas=2, diaPagoCuota=2, valorCuotaMinima=2, loginCliente=u4]
+20:27:28,121 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por id: 83
+20:27:28,357 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por id: 1 tuplas eliminadas
+20:28:56,725 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando punto de atencion: 23
+20:28:57,212 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando punto de atencion: PuntoDeAtencion [id=84, tipo=23, localizacion=23, idOficina=-1]
+20:29:01,164 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Puntos de Atencion
+20:29:01,399 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Puntos de Atencion: 1 existentes

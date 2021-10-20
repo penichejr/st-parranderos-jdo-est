@@ -265,7 +265,6 @@ public class PersistenciaParranderos
 		sqlPagoCuota = new SQLPagoCuota(this);
 		
 
->>>>>>> 004f40d4a3f1609e86db7f696da0bcc8b8f7e3cb
 	}
 
 	/**
@@ -376,7 +375,7 @@ public class PersistenciaParranderos
 	
 	public String darTablaCerrarPrestamo ()
 	{
-		return tablas.get (12);
+		return tablas.get (17);
 	}
 	
 	/**

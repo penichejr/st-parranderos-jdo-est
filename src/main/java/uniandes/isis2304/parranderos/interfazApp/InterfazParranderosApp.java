@@ -351,7 +351,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String idPrestamo = JOptionPane.showInputDialog (this, "Id del tipo de bedida?", "Borrar tipo de prestamo por Id", JOptionPane.QUESTION_MESSAGE);
+    		String idPrestamo = JOptionPane.showInputDialog (this, "Id del prestamo?", "Borrar prestamo", JOptionPane.QUESTION_MESSAGE);
     		if (idPrestamo != null)
     		{
     			long idTipo = Long.valueOf (idPrestamo);
