@@ -50,19 +50,26 @@
 			]
 		},
 		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Cuenta",
 		  "options":
 			[
 				{
 					"label": "Adicionar",
 					"event": "adicionarTipoBebida"
+					"label": "adicionarCuenta",
+					"event": "adicionarCuenta"
 				},
 				{
 					"label": "Listar",
 					"event": "listarTipoBebida"
+					"label": "consignarCuenta",
+					"event": "consignarCuenta"
 				},
 				{
 					"label": "Borrar por Id",
 					"event": "eliminarTipoBebidaPorId"
+					"label": "transferirCuenta",
+					"event": "transferirCuenta"
 				},
 				{
 					"label": "Buscar por Nombre",

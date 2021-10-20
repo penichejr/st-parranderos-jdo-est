@@ -85,6 +85,13 @@ class SQLPrestamo
         q.setParameters(idPrestamo);
         return (long) q.executeUnique();            
 	}
+	public long reducirSaldo(PersistenceManager pm, long idPrestamo, int monto) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "UPDATE A_PRESTAMO SET SALDO = SALDO - ? " +"WHERE ID = ?");
+        q.setParameters(monto, idPrestamo);
+        return (long) q.executeUnique();
+	}
+	
 
 	/**
 	 * Crea y ejecuta la sentencia SQL para eliminar BARES de la base de datos de Parranderos, por su nombre
@@ -167,6 +174,15 @@ class SQLPrestamo
         Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBar () + " SET cantsedes = cantsedes + 1 WHERE ciudad = ?");
         q.setParameters(ciudad);
         return (long) q.executeUnique();
+	}
+
+	public boolean verificarCuota(PersistenceManager pm, long idPrestamo, int monto) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT VALORCUOTAMINIMA FROM A_PRESTAMO" + " WHERE id = ?");
+		q.setResultClass(Integer.class);
+		q.setParameters(idPrestamo);
+		int valor = (int) q.executeUnique();
+		return monto>valor;
 	}
 	
 }
