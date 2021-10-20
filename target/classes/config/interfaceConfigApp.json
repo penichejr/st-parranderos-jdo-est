@@ -37,6 +37,9 @@
 				{
 					"label": "eliminarPrestamoPorId",
 					"event": "eliminarPrestamoPorId"
+					"label": "pagarCuota",
+					"event": "pagarCuota"
+>>>>>>> 004f40d4a3f1609e86db7f696da0bcc8b8f7e3cb
 				}
 			]
 		},
@@ -49,25 +52,18 @@
 				}
 			]
 		},
-		{ "menuTitle": "TipoBebida",
 		{ "menuTitle": "Cuenta",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
 					"label": "adicionarCuenta",
 					"event": "adicionarCuenta"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
 					"label": "consignarCuenta",
 					"event": "consignarCuenta"
 				},
 				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
 					"label": "transferirCuenta",
 					"event": "transferirCuenta"
 				},
