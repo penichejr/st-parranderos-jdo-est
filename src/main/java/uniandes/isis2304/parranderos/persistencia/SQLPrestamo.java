@@ -77,6 +77,14 @@ class SQLPrestamo
         q.setParameters(id, tipo, monto, saldo, intereses, numeroCuotas, diaPagoCuota, valorCuotaMinima, loginCliente);
         return (long) q.executeUnique();
 	}
+	
+	
+	public long eliminarPrestamoPorId (PersistenceManager pm, long idPrestamo)
+	{
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPrestamo()+ " WHERE id = ?");
+        q.setParameters(idPrestamo);
+        return (long) q.executeUnique();            
+	}
 
 	/**
 	 * Crea y ejecuta la sentencia SQL para eliminar BARES de la base de datos de Parranderos, por su nombre

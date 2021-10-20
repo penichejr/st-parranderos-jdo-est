@@ -80,6 +80,36 @@ public class Parranderos
 	 * 			Métodos para manejar los TIPOS DE BEBIDA
 	 *****************************************************************/
 	
+	public  Timestamp fechaActual()
+	{
+		Long datetime = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(datetime);
+        return timestamp;
+	}
+	
+	
+	public long eliminarPrestamoPorId (long idPrestamo)
+	{
+		log.info ("Eliminando Prestamo por id: " + idPrestamo);
+        long resp = pp.eliminarPrestamoPorId(idPrestamo);		
+        log.info ("Eliminando Prestamo por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
+	
+	/*
+	public Cuenta adicionarCuenta (String tipoCuenta, long idOficina,
+			String loginCliente, long idPA)
+	{
+		
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Adicionando Cuenta: " );
+        Cuenta cuenta = pb.adicionarCuenta(tipoCuenta, 0, fechaCreacion, idOficina, loginCliente, idPA);
+        log.info ("Adicionando Cuenta: " + cuenta.getNumeroUnico());//????????? o nada
+        return cuenta;
+	}*/
+	
+	
 	public Oficina adicionarOficina (String nombre, String direccion, String loginGerenteOficina)
 	{
         log.info ("Adicionando Oficina: " + nombre);
@@ -844,4 +874,6 @@ public class Parranderos
         log.info ("Limpiando la BD de Parranderos: Listo!");
         return borrrados;
 	}
+	
+	
 }

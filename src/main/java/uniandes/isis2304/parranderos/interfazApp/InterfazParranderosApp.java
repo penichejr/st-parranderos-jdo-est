@@ -346,6 +346,34 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
+    public void eliminarPrestamoPorId( )
+    {
+    	try 
+    	{
+    		String idPrestamo = JOptionPane.showInputDialog (this, "Id del tipo de bedida?", "Borrar tipo de prestamo por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idPrestamo != null)
+    		{
+    			long idTipo = Long.valueOf (idPrestamo);
+    			long tbEliminados = parranderos.eliminarPrestamoPorId (idTipo);
+
+    			String resultado = "En eliminar Prestamo\n\n";
+    			resultado += tbEliminados + " prestamo eliminado\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     
     public void adicionarUsuario( )
     {

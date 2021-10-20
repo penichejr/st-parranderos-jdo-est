@@ -136,6 +136,8 @@ public class PersistenciaParranderos
 	
 	private SQLOficina sqlOficina;
 	
+	private SQLCerrarPrestamo sqlCerrarPrestamo;
+	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
@@ -164,6 +166,7 @@ public class PersistenciaParranderos
 		tablas.add ("USUARIO");
 		tablas.add ("PRESTAMO");
 		tablas.add ("OFICINA");
+		tablas.add ("CERRARPRESTAMO");
 }
 
 	/**
@@ -252,6 +255,8 @@ public class PersistenciaParranderos
 		sqlUsuario = new SQLUsuario(this);
 		sqlPrestamo = new SQLPrestamo(this);
 		sqlOficina = new SQLOficina(this);
+		sqlCerrarPrestamo = new SQLCerrarPrestamo(this);
+		
 	}
 
 	/**
@@ -338,6 +343,11 @@ public class PersistenciaParranderos
 		return tablas.get (11);
 	}
 	
+	public String darTablaCerrarPrestamo ()
+	{
+		return tablas.get (12);
+	}
+	
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -369,6 +379,34 @@ public class PersistenciaParranderos
 	/* ****************************************************************
 	 * 			Métodos para manejar los TIPOS DE BEBIDA
 	 *****************************************************************/
+	
+	public long eliminarPrestamoPorId (long idPrestamo) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlPrestamo.eliminarPrestamoPorId(pm, idPrestamo); 
+            tx.commit();
+
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 	
 	public Oficina adicionarOficina(String nombre, String direccion, String loginGerenteOficina)
 	{
