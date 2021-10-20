@@ -72,6 +72,10 @@
 				{
 					"label": "Buscar por Nombre",
 					"event": "buscarTipoBebidaPorNombre"
+				},
+				{
+					"label": "eliminarCuentaPorNumeroUnico",
+					"event": "eliminarCuentaPorNumeroUnico"
 				}
 			]
 		},

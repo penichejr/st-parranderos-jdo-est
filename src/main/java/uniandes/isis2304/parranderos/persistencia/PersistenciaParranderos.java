@@ -435,6 +435,34 @@ public class PersistenciaParranderos
         }
 	}
 	
+	public long eliminarCuentaPorNumeroUnico (long numeroUnico) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlCuenta.eliminarCuentaPorNumeroUnico(pm, numeroUnico); 
+            tx.commit(); 
+
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 	public Oficina adicionarOficina(String nombre, String direccion, String loginGerenteOficina)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();

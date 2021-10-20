@@ -375,6 +375,34 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
+    public void eliminarCuentaPorNumeroUnico( )
+    {
+    	try 
+    	{
+    		String numeroUnico = JOptionPane.showInputDialog (this, "Id del prestamo?", "Borrar prestamo", JOptionPane.QUESTION_MESSAGE);
+    		if (numeroUnico != null)
+    		{
+    			long idTipo = Long.valueOf (numeroUnico);
+    			long tbEliminados = parranderos.eliminarCuentaPorNumeroUnico(idTipo);
+
+    			String resultado = "En eliminar Cuenta\n\n";
+    			resultado += tbEliminados + " prestamo eliminado\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     
     public void adicionarUsuario( )
     {

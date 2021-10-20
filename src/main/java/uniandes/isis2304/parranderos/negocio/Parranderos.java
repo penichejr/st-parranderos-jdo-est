@@ -92,6 +92,14 @@ public class Parranderos
         return resp;
 	}
 	
+	public long eliminarCuentaPorNumeroUnico (long numeroUnico)
+	{
+		log.info ("Eliminando cuenta por numeroUnico: " + numeroUnico);
+        long resp = pp.eliminarCuentaPorNumeroUnico(numeroUnico);		
+        log.info ("Eliminando Prestamo por numeroUnico: " + resp + " tuplas eliminadas");
+        return resp;
+	}
+	
 	
 	/*
 	public Cuenta adicionarCuenta (String tipoCuenta, long idOficina,

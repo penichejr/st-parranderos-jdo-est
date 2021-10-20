@@ -97,7 +97,14 @@ class SQLCuenta
         q.setParameters(numCuenta, tipoCuenta, saldo, fechaActual, idOficina, loginCliente);
         return (long) q.executeUnique();
 	}
-
+	
+	public long eliminarCuentaPorNumeroUnico (PersistenceManager pm, long numeroCuenta)
+	{
+        Query q = pm.newQuery(SQL, "DELETE FROM A_CUENTA WHERE numeroUnico = ?");
+        q.setParameters(numeroCuenta);
+        return (long) q.executeUnique();               
+	}
+     
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
 	 * base de datos de Parranderos, por su identificador
