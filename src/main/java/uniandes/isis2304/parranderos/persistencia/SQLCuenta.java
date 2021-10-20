@@ -7,7 +7,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Cuenta;
-import uniandes.isis2304.parranderos.negocio.TipoCuenta;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -24,7 +23,7 @@ class SQLCuenta
 	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
 	 * Se renombra acá para facilitar la escritura de las sentencias
 	 */
-	private final static String SQL = PersistenciaBancAndes.SQL;
+	private final static String SQL = PersistenciaParranderos.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -32,7 +31,8 @@ class SQLCuenta
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaBancAndes pp;
+	private PersistenciaParranderos pp;
+	
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -42,7 +42,7 @@ class SQLCuenta
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLCuenta (PersistenciaBancAndes pp)
+	public SQLCuenta (PersistenciaParranderos pp)
 	{
 		this.pp = pp;
 	}

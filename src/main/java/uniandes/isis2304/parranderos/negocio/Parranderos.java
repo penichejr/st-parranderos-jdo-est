@@ -76,6 +76,12 @@ public class Parranderos
 		pp.cerrarUnidadPersistencia ();
 	}
 	
+	public  Timestamp fechaActual()
+	{
+		Long datetime = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(datetime);
+        return timestamp;
+	}
 	
 	public Oficina adicionarOficina (String nombre, String direccion, String loginGerenteOficina)
 	{
@@ -148,10 +154,49 @@ public class Parranderos
 		
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Adicionando Cuenta: " );
-        Cuenta cuenta = pb.adicionarCuenta(tipoCuenta, 0, fechaCreacion, idOficina, loginCliente, idPA);
-        log.info ("Adicionando Cuenta: " + cuenta.getNumeroUnico());//????????? o nada
+        Cuenta cuenta = pp.adicionarCuenta(tipoCuenta, 0, fechaCreacion, idOficina, loginCliente, idPA);
+        log.info ("Adicionando Cuenta: " + cuenta.getNumeroUnico());
         return cuenta;
 	}
+	
+	
+	public void actualizarCuenta(long numero, String idPA, String loginCliente, int monto) {
+		// TODO Auto-generated method stub
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Operación consignacion Cuenta: " );
+        
+        pp.consignar(numero, idPA, loginCliente, monto, fechaCreacion);
+        log.info ("Consignando en Cuenta: " + numero);
+        
+	}
+	
+	public void transferir(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
+		// TODO Auto-generated method stub
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Operación transferencia Cuenta: " );
+        
+        pp.transferir(idPA, loginCliente, numeroOrigen, numeroDestino, monto, fechaCreacion);
+        log.info ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta "+ numeroDestino);
+		
+	}
+
+	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto) {
+		// TODO Auto-generated method stub
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Operación pago Cuota prestamo: " );
+        
+        pp.pagoCuota(idPA, loginCliente, idPrestamo, monto, fechaCreacion);
+        
+        log.info ("Pago cuota préstamo: " + idPrestamo + " cuota: "+ monto);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Elimina un tipo de bebida por su nombre

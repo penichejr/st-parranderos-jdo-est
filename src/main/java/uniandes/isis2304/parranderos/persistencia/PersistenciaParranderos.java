@@ -32,9 +32,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
+import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
+import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
+import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Gustan;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Prestamo;
@@ -82,50 +86,31 @@ public class PersistenciaParranderos
 	 */
 	private PersistenceManagerFactory pmf;
 	
-	/**
-	 * Arreglo de cadenas con los nombres de las tablas de la base de datos, en su orden:
-	 * Secuenciador, tipoBebida, bebida, bar, bebedor, gustan, sirven y visitan
-	 */
+	
 	private List <String> tablas;
 	
-	/**
-	 * Atributo para el acceso a las sentencias SQL propias a PersistenciaParranderos
-	 */
+	
 	private SQLUtil sqlUtil;
 	
-	/**
-	 * Atributo para el acceso a la tabla TIPOBEBIDA de la base de datos
-	 */
+	
 	private SQLTipoBebida sqlTipoBebida;
 	
-	/**
-	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
-	 */
+	
 	private SQLBebida sqlBebida;
 	
-	/**
-	 * Atributo para el acceso a la tabla BAR de la base de datos
-	 */
+	
 	private SQLBar sqlBar;
 	
-	/**
-	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
-	 */
+	
 	private SQLBebedor sqlBebedor;
 	
-	/**
-	 * Atributo para el acceso a la tabla GUSTAN de la base de datos
-	 */
+	
 	private SQLGustan sqlGustan;
 	
-	/**
-	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
-	 */
+	
 	private SQLSirven sqlSirven;
 	
-	/**
-	 * Atributo para el acceso a la tabla VISITAN de la base de datos
-	 */
+	
 	private SQLVisitan sqlVisitan;
 	
 	private SQLPuntoDeAtencion sqlPuntoDeAtencion;
@@ -138,7 +123,13 @@ public class PersistenciaParranderos
 
 	private SQLCuenta sqlCuenta;
 
-		private SQLAbrirCuenta sqlAbrirCuenta;
+	private SQLAbrirCuenta sqlAbrirCuenta;
+	
+	private SQLConsignarCuenta sqlConsignarCuenta;
+	
+	private SQLTransferenciaCuenta sqlTransferenciaCuenta;
+	
+	private SQLPagoCuota sqlPagoCuota;
 
 	
 	/* ****************************************************************
@@ -171,6 +162,9 @@ public class PersistenciaParranderos
 		tablas.add ("OFICINA");
 		tablas.add ("A_CUENTA");
 		tablas.add ("A_ABRIRCUENTA");
+		tablas.add ("A_CONSIGNARCUENTA");
+		tablas.add ("A_TRANSFERENCIACUENTA");
+		tablas.add ("A_PAGOCUOTA");
 }
 
 	/**
@@ -261,6 +255,10 @@ public class PersistenciaParranderos
 		sqlOficina = new SQLOficina(this);
 		sqlCuenta= new SQLCuenta(this);
 		sqlAbrirCuenta = new SQLAbrirCuenta(this);
+		sqlConsignarCuenta= new SQLConsignarCuenta(this);
+		sqlTransferenciaCuenta=new SQLTransferenciaCuenta(this);
+		sqlPagoCuota = new SQLPagoCuota(this);
+		
 
 	}
 
@@ -356,6 +354,18 @@ public class PersistenciaParranderos
 	public String darTablaAbrirCuenta ()
 	{
 		return tablas.get (13);
+	}
+	public String darTablaConsignarCuenta ()
+	{
+		return tablas.get (14);
+	}
+	public String darTablaTransferencia ()
+	{
+		return tablas.get (15);
+	}
+	public String darTablaPagaCuota ()
+	{
+		return tablas.get (16);
 	}
 	
 	/**
@@ -558,6 +568,113 @@ public class PersistenciaParranderos
             }
             pm.close();
         }
+	}
+	
+	
+	public void consignar(long numero, String idPA, String loginCliente, int monto, Timestamp fecha) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlConsignarCuenta.adicionarConsignacion(pm, numero, idPA, loginCliente, fecha, monto);
+
+             tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numero, monto);
+            tx.commit();
+            
+            log.trace ("Consignacion en Cuenta: " + numero + " monto " + monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+            
+//            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public void transferir(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
+
+             tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
+             tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
+            tx.commit();
+            
+            log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+            
+//            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
+	}
+	
+	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto, Timestamp fecha) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlPagoCuota.adicionarPago(pm, idPA, loginCliente, idPrestamo, monto, fecha);
+            
+            boolean acepta = sqlPrestamo.verificarCuota(pm, idPrestamo, monto);
+            
+            if(acepta) {
+            	
+            	tuplasInsertadas += sqlPrestamo.reducirSaldo(pm, idPrestamo, monto);
+                tx.commit();
+                
+                log.trace ("Pago cuota a prestamo: " + idPrestamo + " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+                
+            	
+            }
+            
+//            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
 	}
 	
 

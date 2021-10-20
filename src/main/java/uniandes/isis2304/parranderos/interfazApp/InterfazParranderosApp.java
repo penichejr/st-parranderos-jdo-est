@@ -46,6 +46,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOPrestamo;
@@ -469,7 +470,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 				tipoCuenta = "CORRIENTE";
 			}
 
-			Cuenta cuentanueva =bancandes.adicionarCuenta(tipoCuenta, Long.parseLong(idOF), loginCliente, Long.parseLong(idPA));
+			Cuenta cuentanueva =parranderos.adicionarCuenta(tipoCuenta, Long.parseLong(idOF), loginCliente, Long.parseLong(idPA));
 
 
 			panelDatos.actualizarInterfaz(cuentanueva.toString());
@@ -480,6 +481,70 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+	
+	
+	
+	public void consignarCuenta()
+	{
+		try {
+			String numero = JOptionPane.showInputDialog (this, "Numero de Cuenta?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String idPA = JOptionPane.showInputDialog (this, "Id punto de atención", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+
+			parranderos.actualizarCuenta(Long.parseLong(numero),idPA, loginCliente, Integer.parseInt(monto));
+
+
+
+		}
+		catch(Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	public void transferirCuenta()
+	{
+		try {
+			String idPA = JOptionPane.showInputDialog (this, "Id punto de atención", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+
+			parranderos.transferir(Long.parseLong(idPA), loginCliente, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+
+
+			//    		panelDatos.actualizarInterfaz(cuentanueva.toString());
+
+		}
+		catch(Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	public void pagarCuota()
+	{
+		try {
+			String idPA = JOptionPane.showInputDialog (this, "Id punto de atención", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String idPrestamo = JOptionPane.showInputDialog (this, "id Prestamo?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String monto = JOptionPane.showInputDialog (this, "Qué valor desea pagar?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+
+			parranderos.pagoCuota(Long.parseLong(idPA), loginCliente, Long.parseLong(idPrestamo), Integer.parseInt(monto));
+
+
+			//		panelDatos.actualizarInterfaz(cuentanueva.toString());
+
+		}
+		catch(Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
     
 
     /**
