@@ -49,6 +49,7 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
+import uniandes.isis2304.parranderos.negocio.VOCuenta;
 import uniandes.isis2304.parranderos.negocio.VOPrestamo;
 import uniandes.isis2304.parranderos.negocio.VOPuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
@@ -644,6 +645,26 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    
+    public void listarCuentas( )
+    {
+    	try 
+    	{
+			List <VOCuenta> lista = parranderos.darVOCuentas();
+
+			String resultado = "En listarCuenta";
+			resultado +=  "\n" + listarCuentas(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
     /**
      * Borra de la base de datos el tipo de bebida con el identificador dado po el usuario
@@ -894,6 +915,18 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	String resp = "Los puntos de atencion son:\n";
     	int i = 1;
         for (VOPuntoDeAtencion pa : lista)
+        {
+        	resp += i++ + ". " + pa.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    
+    private String listarCuentas(List<VOCuenta> lista) 
+    {
+    	String resp = "Las cuentas son:\n";
+    	int i = 1;
+        for (VOCuenta pa : lista)
         {
         	resp += i++ + ". " + pa.toString() + "\n";
         }

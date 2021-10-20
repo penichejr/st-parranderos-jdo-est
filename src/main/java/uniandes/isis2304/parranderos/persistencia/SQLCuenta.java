@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Cuenta;
+import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -141,12 +142,7 @@ class SQLCuenta
 //	 * @param pm - El manejador de persistencia
 //	 * @return Una lista de objetos BAR
 //	 */
-	public List<Cuenta> darCuentas (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_CUENTA");
-		q.setResultClass(Cuenta.class);
-		return (List<Cuenta>) q.executeList();
-	}
+
 //
 //	/**
 //	 * Crea y ejecuta la sentencia SQL para aumentar en uno el número de sedes de los bares de la 
@@ -174,6 +170,13 @@ class SQLCuenta
 		Query q = pm.newQuery(SQL, "UPDATE A_CUENTA SET SALDO = SALDO - ? " +"WHERE NUMEROUNICO = ?");
         q.setParameters(monto, numero);
         return (long) q.executeUnique();
+	}
+	
+	public List<Cuenta> darCuentas (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CUENTA");
+		q.setResultClass(PuntoDeAtencion.class);
+		return (List<Cuenta>) q.executeList();
 	}
 	
 }

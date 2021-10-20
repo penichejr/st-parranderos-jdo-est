@@ -539,6 +539,11 @@ public class PersistenciaParranderos
 		return sqlPuntoDeAtencion.darPuntosDeAtencion(pmf.getPersistenceManager());
 	}
 	
+	public List<Cuenta> darCuentas ()
+	{
+		return sqlCuenta.darCuentas(pmf.getPersistenceManager());
+	}
+	
 	
 	
 	public PuntoDeAtencion adicionarPuntoDeAtencion(String tipo, String localizacion, long idOficina)

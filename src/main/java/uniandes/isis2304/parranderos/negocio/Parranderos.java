@@ -130,6 +130,14 @@ public class Parranderos
         log.info ("Consultando los Puntos de Atencion: " + puntosDeAtencion.size() + " existentes");
         return puntosDeAtencion;
 	}
+	
+	public List<Cuenta> darCuentas ()
+	{
+		log.info ("Consultando las cuentas");
+        List<Cuenta> cuentas = pp.darCuentas();	
+        log.info ("Consultando las cuentas: " + cuentas.size() + " existentes");
+        return cuentas;
+	}
 
 	
 	public List<VOPuntoDeAtencion> darVOPuntosDeAtencion ()
@@ -142,6 +150,18 @@ public class Parranderos
         }
         log.info ("Generando los VO de los Puntos de Atencion: " + voPuntos.size() + " existentes");
         return voPuntos;
+	}
+	
+	public List<VOCuenta> darVOCuentas ()
+	{
+		log.info ("Generando los VO de las cuentas");        
+        List<VOCuenta> voCuentas = new LinkedList<VOCuenta> ();
+        for (Cuenta tb : pp.darCuentas())
+        {
+        	voCuentas.add (tb);
+        }
+        log.info ("Generando los VO de los Puntos de Atencion: " + voCuentas.size() + " existentes");
+        return voCuentas;
 	}
 	
 	
