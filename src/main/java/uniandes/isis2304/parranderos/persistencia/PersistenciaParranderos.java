@@ -749,18 +749,23 @@ public class PersistenciaParranderos
 		
 	}
 	
-	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto, Timestamp fecha) {
+	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto, Timestamp fecha, long cuenta) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long tuplasInsertadas = sqlPagoCuota.adicionarPago(pm, idPA, loginCliente, idPrestamo, monto, fecha);
+           
+            long tuplasInsertadas=sqlPagoCuota.adicionarPago(pm, idPA, loginCliente, idPrestamo, monto, fecha);
             
             boolean acepta = sqlPrestamo.verificarCuota(pm, idPrestamo, monto);
+            boolean acepta2= sqlCuenta.verificarCuenta(pm, cuenta, loginCliente);
+            boolean acepta3= sqlCuenta.verificarMontoCuenta(pm, cuenta, monto);
             
-            if(acepta) {
+            if(acepta && acepta2 && acepta3) {
+            	 tuplasInsertadas += sqlCuenta.reducirSaldo(pm, cuenta, monto);
+                 
             	
             	tuplasInsertadas += sqlPrestamo.reducirSaldo(pm, idPrestamo, monto);
                 tx.commit();

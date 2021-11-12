@@ -603,9 +603,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 			String idPrestamo = JOptionPane.showInputDialog (this, "id Prestamo?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 			String monto = JOptionPane.showInputDialog (this, "Qué valor desea pagar?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String cuenta = JOptionPane.showInputDialog (this, "De qué número de cuenta?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 
 
-			parranderos.pagoCuota(Long.parseLong(idPA), loginCliente, Long.parseLong(idPrestamo), Integer.parseInt(monto));
+			parranderos.pagoCuota(Long.parseLong(idPA), loginCliente, Long.parseLong(idPrestamo), Integer.parseInt(monto), Long.parseLong(cuenta));
 
 
 			//		panelDatos.actualizarInterfaz(cuentanueva.toString());

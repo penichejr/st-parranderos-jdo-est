@@ -242,12 +242,12 @@ public class Parranderos
 	}
 
 
-	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto) {
+	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto, long cuenta) {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Operación pago Cuota prestamo: " );
         
-        pp.pagoCuota(idPA, loginCliente, idPrestamo, monto, fechaCreacion);
+        pp.pagoCuota(idPA, loginCliente, idPrestamo, monto, fechaCreacion, cuenta);
         
         log.info ("Pago cuota préstamo: " + idPrestamo + " cuota: "+ monto);
 	}

@@ -781,3 +781,21 @@ ORA-02292: restricción de integridad (ISIS2304A13202120.FK_IDPRESTAMO_PC) viola
 11:12:18,634 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
 11:12:39,280 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación transferencia Cuenta: 
 11:12:39,882 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Transferencia de Cuenta: 102 a cuenta 400
+15:03:17,634 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+15:03:17,637 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+15:03:17,671 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:04:46,702 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
+15:04:47,716 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 700000
+15:05:40,992 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
+15:05:41,364 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 800000
+15:07:18,331 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
+15:07:18,641 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 657890
+15:23:26,831 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+15:23:26,832 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+15:23:26,866 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:24:46,941 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
+15:24:49,022 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "java.lang.Integer.intValue()" because the return value of "javax.jdo.Query.executeUnique()" is null
+
+15:24:49,119 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 800000
+15:25:58,064 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Operación pago Cuota prestamo: 
+15:25:58,585 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Pago cuota préstamo: 500 cuota: 1000000
