@@ -38,6 +38,7 @@ import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
+import uniandes.isis2304.parranderos.negocio.Cajero;
 import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Gustan;
 import uniandes.isis2304.parranderos.negocio.Oficina;
@@ -133,6 +134,7 @@ public class PersistenciaParranderos
 
 	
 	private SQLCerrarPrestamo sqlCerrarPrestamo;
+	private SQLCajero sqlCajero;
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -149,25 +151,26 @@ public class PersistenciaParranderos
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
 		tablas.add ("Parranderos_sequence");
-		tablas.add ("TIPOBEBIDA");
-		tablas.add ("BEBIDA");
-		tablas.add ("BAR");
-		tablas.add ("BEBEDOR");
-		tablas.add ("GUSTAN");
-		tablas.add ("SIRVEN");
-		tablas.add ("VISITAN");
+		tablas.add ("A_TIPOBEBIDA");
+		tablas.add ("A_BEBIDA");
+		tablas.add ("A_BAR");
+		tablas.add ("A_BEBEDOR");
+		tablas.add ("A_GUSTAN");
+		tablas.add ("A_SIRVEN");
+		tablas.add ("A_VISITAN");
 		
 		//
-		tablas.add ("PUNTODEATENCION");
-		tablas.add ("USUARIO");
-		tablas.add ("PRESTAMO");
-		tablas.add ("OFICINA");
-		tablas.add ("CERRARPRESTAMO");
+		tablas.add ("A_PUNTODEATENCION");
+		tablas.add ("A_USUARIO");
+		tablas.add ("A_PRESTAMO");
+		tablas.add ("A_OFICINA");
 		tablas.add ("A_CUENTA");
 		tablas.add ("A_ABRIRCUENTA");
 		tablas.add ("A_CONSIGNARCUENTA");
 		tablas.add ("A_TRANSFERENCIACUENTA");
 		tablas.add ("A_PAGOCUOTA");
+		tablas.add ("A_CERRAR_PRESTAMO");
+		tablas.add ("A_CAJERO");
 }
 
 	/**
@@ -263,6 +266,7 @@ public class PersistenciaParranderos
 		sqlConsignarCuenta= new SQLConsignarCuenta(this);
 		sqlTransferenciaCuenta=new SQLTransferenciaCuenta(this);
 		sqlPagoCuota = new SQLPagoCuota(this);
+		sqlCajero = new SQLCajero(this);
 		
 
 	}
@@ -377,7 +381,10 @@ public class PersistenciaParranderos
 	{
 		return tablas.get (17);
 	}
-	
+	public String darTablaCajero ()
+	{
+		return tablas.get (18);
+	}
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -674,7 +681,7 @@ public class PersistenciaParranderos
         }
 	}
 	
-	public void transferir(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) {
+	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -683,6 +690,40 @@ public class PersistenciaParranderos
             tx.begin();
             long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
 
+             tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
+             tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
+            tx.commit();
+            
+            log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+            
+//            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
+	}
+	public void transferirCajero(long idPA, String loginCliente, String loginCajero, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+//            Cajero cajero = sqlCajero.darCajero(pm, loginCajero);
+
+            long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
              tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
              tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
             tx.commit();

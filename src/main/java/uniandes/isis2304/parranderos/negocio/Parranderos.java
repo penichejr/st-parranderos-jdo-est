@@ -221,15 +221,26 @@ public class Parranderos
         
 	}
 	
-	public void transferir(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
+	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Operación transferencia Cuenta: " );
         
-        pp.transferir(idPA, loginCliente, numeroOrigen, numeroDestino, monto, fechaCreacion);
+        pp.transferirCliente(idPA, loginCliente, numeroOrigen, numeroDestino, monto, fechaCreacion);
         log.info ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta "+ numeroDestino);
 		
 	}
+	
+	public void transferirCajero(long idPA, String loginCliente, String loginCajero, long numeroOrigen, long numeroDestino, int monto) {
+		// TODO Auto-generated method stub
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Operación transferencia Cuenta: " );
+        
+        pp.transferirCajero(idPA, loginCliente, loginCajero, numeroOrigen, numeroDestino, monto, fechaCreacion);
+        log.info ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta "+ numeroDestino);
+		
+	}
+
 
 	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto) {
 		// TODO Auto-generated method stub

@@ -564,13 +564,28 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	{
 		try {
 			String idPA = JOptionPane.showInputDialog (this, "Id punto de atención", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String clienteXCajero = JOptionPane.showInputDialog(this, "1= cliente, 2=cajero", "Continuar", JOptionPane.QUESTION_MESSAGE);
 			String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-			String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-			String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-			String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 
+			if(clienteXCajero.equals("1"))
+			{
 
-			parranderos.transferir(Long.parseLong(idPA), loginCliente, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+				String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				parranderos.transferirCliente(Long.parseLong(idPA), loginCliente, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+
+			}
+			else {
+				String loginCajero = JOptionPane.showInputDialog (this, "login Cajero?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+				parranderos.transferirCajero(Long.parseLong(idPA), loginCliente, loginCajero, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+
+			}
+			
+
 
 
 			//    		panelDatos.actualizarInterfaz(cuentanueva.toString());
