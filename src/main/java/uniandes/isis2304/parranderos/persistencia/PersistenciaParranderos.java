@@ -688,14 +688,20 @@ public class PersistenciaParranderos
         try
         {
             tx.begin();
-            long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
+            boolean acepta3= sqlCuenta.verificarMontoCuenta(pm, numeroOrigen, monto);
+            if(acepta3)
+            {
+            	long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
+                tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
+                tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
+               tx.commit();
+               
+               log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
 
-             tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
-             tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
-            tx.commit();
-            
-            log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
-            
+            }
+            else {
+            	throw new Exception("No tiene saldo suficiente para transferir");
+            }
 //            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
         }
         catch (Exception e)
@@ -723,12 +729,22 @@ public class PersistenciaParranderos
             tx.begin();
 //            Cajero cajero = sqlCajero.darCajero(pm, loginCajero);
 
-            long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
-             tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
-             tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
-            tx.commit();
+            boolean acepta3= sqlCuenta.verificarMontoCuenta(pm, numeroOrigen, monto);
+            if(acepta3)
+            {
+            	long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
+                tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);
+                tuplasInsertadas += sqlCuenta.actualizarSaldo(pm, numeroDestino, monto);
+               tx.commit();
+               
+               log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+
+            }
+            else {
+            	throw new Exception("No tiene saldo suficiente para transferir");
+            }
             
-            log.trace ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta"+ numeroDestino+ " monto: "+ monto + " a nombre de "+loginCliente+": " + tuplasInsertadas + " tuplas insertadas");
+            
             
 //            return new Cuenta(numero, tipoCuenta, 0, fechaCreacion, idOficina, loginCliente);
         }
