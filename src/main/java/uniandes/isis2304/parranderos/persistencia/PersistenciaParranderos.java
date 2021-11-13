@@ -943,10 +943,10 @@ public class PersistenciaParranderos
         try
         {
             tx.begin();
-//            Cajero cajero = sqlCajero.darCajero(pm, loginCajero);
-
+//            
+            boolean acepta = sqlCajero.verificarCajero(pm, loginCajero);
             boolean acepta3= sqlCuenta.verificarMontoCuenta(pm, numeroOrigen, monto);
-            if(acepta3)
+            if(acepta3 && acepta)
             {
             	long tuplasInsertadas = sqlTransferenciaCuenta.adicionarTransferencia(pm, idPA, loginCliente, numeroOrigen, numeroDestino, monto, fecha);
                 tuplasInsertadas += sqlCuenta.reducirSaldo(pm, numeroOrigen, monto);

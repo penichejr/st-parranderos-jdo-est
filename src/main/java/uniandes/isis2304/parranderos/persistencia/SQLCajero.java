@@ -160,5 +160,13 @@ class SQLCajero
         q.setParameters(ciudad);
         return (long) q.executeUnique();
 	}
+
+	public boolean verificarCajero(PersistenceManager pm, String loginCajero) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CAJERO WHERE LOGIN = ?");
+		q.setResultClass(Cajero.class);
+		q.setParameters(loginCajero);
+		return (Cajero) q.executeUnique()!=null;
+	}
 	
 }
