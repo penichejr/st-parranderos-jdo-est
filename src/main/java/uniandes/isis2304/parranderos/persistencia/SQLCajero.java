@@ -71,11 +71,10 @@ class SQLCajero
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarCajero (PersistenceManager pm, String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
-			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal) 
+	public long adicionarCajero (PersistenceManager pm, String login, long pa) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+        Query q = pm.newQuery(SQL, "INSERT INTO A_CAJERO values (?, ?)");
+        q.setParameters(login, pa);
         return (long) q.executeUnique();
 	}
 

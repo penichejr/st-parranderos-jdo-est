@@ -49,7 +49,12 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
+import uniandes.isis2304.parranderos.negocio.VOAdministrador;
+import uniandes.isis2304.parranderos.negocio.VOCajero;
+import uniandes.isis2304.parranderos.negocio.VOCliente;
 import uniandes.isis2304.parranderos.negocio.VOCuenta;
+import uniandes.isis2304.parranderos.negocio.VOGerenteGeneral;
+import uniandes.isis2304.parranderos.negocio.VOGerenteOficina;
 import uniandes.isis2304.parranderos.negocio.VOPrestamo;
 import uniandes.isis2304.parranderos.negocio.VOPuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
@@ -438,15 +443,97 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		
     		if (login != null)
     		{
-        		VOUsuario pa = parranderos.adicionarUsuario(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
-        		if (pa == null)
-        		{
-        			throw new Exception ("No se pudo crear un punto de atencion con login: " + login);
+        		String opcion = JOptionPane.showInputDialog (this, "1= Administrador\n2= Gerente General\n3= Gerente Oficina\n4= Cajero\n5= Cliente", "Continuar", JOptionPane.QUESTION_MESSAGE);
+        		if(opcion.equals("1")) {
+            		String credenciales = JOptionPane.showInputDialog (this, "credenciales?", "Adicionar codigoPostal", JOptionPane.QUESTION_MESSAGE);
+
+        			VOAdministrador pa = parranderos.adicionarAdministrador(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, credenciales);
+            		if (pa == null)
+            		{
+            			throw new Exception ("No se pudo crear un usuario/Administrador con login: " + login);
+            		}
+            		
+            		String resultado = "En adicionarUsuario\n\n";
+            		resultado += "Usuario adicionado exitosamente: " + pa;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+
         		}
-        		String resultado = "En adicionarUsuario\n\n";
-        		resultado += "Usuario adicionado exitosamente: " + pa;
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
+        		if(opcion.equals("2")) {
+
+        			VOGerenteGeneral pa = parranderos.adicionarGerenteGeneral(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            		if (pa == null)
+            		{
+            			throw new Exception ("No se pudo crear un usuario/GerenteGeneral con login: " + login);
+            		}
+            		
+            		String resultado = "En adicionarUsuario\n\n";
+            		resultado += "Usuario adicionado exitosamente: " + pa;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+
+        		}
+        		if(opcion.equals("3")) {
+
+        			VOGerenteOficina pa = parranderos.adicionarGerenteOficina(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            		if (pa == null)
+            		{
+            			throw new Exception ("No se pudo crear un usuario/Gerente Oficina con login: " + login);
+            		}
+            		
+            		String resultado = "En adicionarUsuario\n\n";
+            		resultado += "Usuario adicionado exitosamente: " + pa;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+
+        		}
+        		if(opcion.equals("4")) {
+            		String pA = JOptionPane.showInputDialog (this, "id del punto de Atención?", "Adicionar codigoPostal", JOptionPane.QUESTION_MESSAGE);
+
+        			VOCajero pa = parranderos.adicionarCajero(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, Long.parseLong(pA));
+            		if (pa == null)
+            		{
+            			throw new Exception ("No se pudo crear un usuario/Cajero con login: " + login);
+            		}
+            		
+            		String resultado = "En adicionarUsuario\n\n";
+            		resultado += "Usuario adicionado exitosamente: " + pa;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+
+        		}
+        		if(opcion.equals("5")) {
+            		String tipoCliente = JOptionPane.showInputDialog (this, "1 = natural\n2= Juridico", "Adicionar codigoPostal", JOptionPane.QUESTION_MESSAGE);
+
+            		if(tipoCliente.equals("1")) {
+            			VOCliente pa = parranderos.adicionarCliente(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, "NATURAL");
+            			if (pa == null)
+                		{
+                			throw new Exception ("No se pudo crear un usuario/Administrador con login: " + login);
+                		}
+            			String resultado = "En adicionarUsuario\n\n";
+                		resultado += "Usuario adicionado exitosamente: " + pa;
+            			resultado += "\n Operación terminada";
+            			panelDatos.actualizarInterfaz(resultado);
+            		}
+            		else {
+            			VOCliente pa = parranderos.adicionarCliente(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, "JURIDICO");
+            			if (pa == null)
+                		{
+                			throw new Exception ("No se pudo crear un usuario/Administrador con login: " + login);
+                		}
+            			String resultado = "En adicionarUsuario\n\n";
+                		resultado += "Usuario adicionado exitosamente: " + pa;
+            			resultado += "\n Operación terminada";
+            			panelDatos.actualizarInterfaz(resultado);
+            		}
+            		
+            		
+            	
+
+        		}
+        		
+        		
     		}
     		else
     		{

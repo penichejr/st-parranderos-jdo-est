@@ -172,5 +172,13 @@ class SQLPuntoDeAtencion
         return (long) q.executeUnique();
 	}
 
+	public boolean verificarExiste(PersistenceManager pm, long pa) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PUNTODEATENCION WHERE ID = ?");
+		q.setResultClass(PuntoDeAtencion.class);
+		q.setParameters(pa);
+		return (PuntoDeAtencion) q.executeUnique()!=null;
+	}
+
 	
 }

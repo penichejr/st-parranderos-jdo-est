@@ -10,7 +10,7 @@ public class Cajero extends Usuario implements VOCajero {
 		
 		
 		public Cajero(String login, String numeroDocumento, String tipoDocumento, String palabraClave, String nombre,
-				String nacionalidad, String direccion, String email, String telefono, String ciudad,
+				 String direccion, String email, String telefono, String ciudad,
 				String departamento, String codigoPostal, long idPO) {
 			
 			super( login,  numeroDocumento,  tipoDocumento,  palabraClave,  nombre,

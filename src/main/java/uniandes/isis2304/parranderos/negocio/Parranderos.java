@@ -198,6 +198,46 @@ public class Parranderos
         log.info ("Adicionando usuario: " + usuario);
         return usuario;
 	}
+	public Administrador adicionarAdministrador (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, String credenciales)
+	{
+        log.info ("Adicionando Administrador: " + login);
+        Administrador administrador = pp.adicionarAdministrador(login, numeroDocumento, tipoDocumento, clave, nombre, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, credenciales);
+        log.info ("Adicionando Administrador: " + administrador);
+        return administrador;
+	}
+	public GerenteGeneral adicionarGerenteGeneral (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal)
+	{
+        log.info ("Adicionando Gerente General: " + login);
+        GerenteGeneral usuario = pp.adicionarGerenteGeneral(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);		
+        log.info ("Adicionando Gerente General: " + usuario);
+        return usuario;
+	}
+	public GerenteOficina adicionarGerenteOficina (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal)
+	{
+        log.info ("Adicionando Gerente Oficina: " + login);
+        GerenteOficina usuario = pp.adicionarGerenteOficina(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);		
+        log.info ("Adicionando Gerente Oficina: " + usuario);
+        return usuario;
+	}
+	public Cajero adicionarCajero (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, long pa)
+	{
+        log.info ("Adicionando Cajero: " + login);
+        Cajero usuario = pp.adicionarCajero(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, pa);		
+        log.info ("Adicionando Cajero: " + usuario);
+        return usuario;
+	}
+	public Cliente adicionarCliente (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, String tipo)
+	{
+        log.info ("Adicionando Cliente: " + login);
+        Cliente usuario = pp.adicionarCliente(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, tipo);		
+        log.info ("Adicionando Cliente: " + usuario);
+        return usuario;
+	}
 
 	public Cuenta adicionarCuenta (String tipoCuenta, long idOficina,
 			String loginCliente, long idPA)

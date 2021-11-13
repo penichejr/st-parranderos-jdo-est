@@ -35,11 +35,15 @@ import com.google.gson.JsonObject;
 import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
 import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
 import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
+import uniandes.isis2304.parranderos.negocio.Administrador;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
 import uniandes.isis2304.parranderos.negocio.Cajero;
+import uniandes.isis2304.parranderos.negocio.Cliente;
 import uniandes.isis2304.parranderos.negocio.Cuenta;
+import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
+import uniandes.isis2304.parranderos.negocio.GerenteOficina;
 import uniandes.isis2304.parranderos.negocio.Gustan;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Prestamo;
@@ -131,10 +135,20 @@ public class PersistenciaParranderos
 	private SQLTransferenciaCuenta sqlTransferenciaCuenta;
 	
 	private SQLPagoCuota sqlPagoCuota;
-
 	
 	private SQLCerrarPrestamo sqlCerrarPrestamo;
+	
 	private SQLCajero sqlCajero;
+	
+	private SQLAdministrador sqlAdministrador;
+	
+	private SQLGerenteGeneral sqlGerenteGeneral;
+	
+	private SQLGerenteOficina sqlGerenteOficina;
+	
+	private SQLCliente sqlCliente;
+	
+	
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -171,6 +185,11 @@ public class PersistenciaParranderos
 		tablas.add ("A_PAGOCUOTA");
 		tablas.add ("A_CERRAR_PRESTAMO");
 		tablas.add ("A_CAJERO");
+		tablas.add("A_ADMINISTRADOR");
+		tablas.add("GERENTEGENERAL");
+		tablas.add("GERENTEOFICINA");
+		tablas.add("CLIENTE");
+
 }
 
 	/**
@@ -267,6 +286,11 @@ public class PersistenciaParranderos
 		sqlTransferenciaCuenta=new SQLTransferenciaCuenta(this);
 		sqlPagoCuota = new SQLPagoCuota(this);
 		sqlCajero = new SQLCajero(this);
+		
+		sqlAdministrador = new SQLAdministrador(this);	
+		sqlGerenteGeneral = new SQLGerenteGeneral(this);
+		sqlGerenteOficina = new SQLGerenteOficina(this);
+		sqlCliente = new SQLCliente(this);
 		
 
 	}
@@ -384,6 +408,22 @@ public class PersistenciaParranderos
 	public String darTablaCajero ()
 	{
 		return tablas.get (18);
+	}
+	public String darTablaAdministrador ()
+	{
+		return tablas.get (19);
+	}
+	public String darTablaGerenteGeneral ()
+	{
+		return tablas.get (20);
+	}
+	public String darTablaGerenteOficina ()
+	{
+		return tablas.get (21);
+	}
+	public String darTablaCliente ()
+	{
+		return tablas.get (22);
 	}
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
@@ -614,6 +654,182 @@ public class PersistenciaParranderos
             pm.close();
         }
 	}
+	
+	public Administrador adicionarAdministrador(String login, String numeroDocumento, String tipoDocumento,
+			String clave, String nombre, String nombre2, String direccion, String email, String telefono, String ciudad,
+			String departamento, String codigoPostal, String credenciales) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            tuplasInsertadas += sqlAdministrador.adicionarAdministrador(pm, login, credenciales);
+            tx.commit();
+            
+            log.trace ("Inserción de Administrador: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Administrador (login, numeroDocumento, tipoDocumento, clave, nombre, nombre2, direccion, email, telefono, ciudad, departamento, codigoPostal, credenciales);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public GerenteGeneral adicionarGerenteGeneral(String login, String numeroDocumento, String tipoDocumento,
+			String clave, String nombre, String direccion, String email, String telefono, String ciudad,
+			String departamento, String codigoPostal) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            tuplasInsertadas+= sqlGerenteGeneral.adicionarGerenteGeneral(pm, login);
+            tx.commit();
+            
+            log.trace ("Inserción de Gerente general: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new GerenteGeneral (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	public GerenteOficina adicionarGerenteOficina(String login, String numeroDocumento, String tipoDocumento,
+			String clave, String nombre, String direccion, String email, String telefono, String ciudad,
+			String departamento, String codigoPostal) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            tuplasInsertadas+= sqlGerenteOficina.adicionarGerenteOficina(pm, login);
+
+            tx.commit();
+            
+            log.trace ("Inserción de Gerente de oficina: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new GerenteOficina (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public Cajero adicionarCajero(String login, String numeroDocumento, String tipoDocumento, String clave,
+			String nombre, String direccion, String email, String telefono, String ciudad, String departamento,
+			String codigoPostal, long pa) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            boolean verifPA = sqlPuntoDeAtencion.verificarExiste(pm, pa);
+            if(verifPA) {
+            	 long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+                 tuplasInsertadas+= sqlCajero.adicionarCajero(pm, login, pa);
+
+                 tx.commit();
+                 
+                 log.trace ("Inserción de Cajero: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
+            }
+            else {
+            	throw new Exception("No existe el punto de atención");
+            }
+           
+            
+            return new Cajero (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, pa);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public Cliente adicionarCliente(String login, String numeroDocumento, String tipoDocumento, String clave,
+			String nombre, String direccion, String email, String telefono, String ciudad, String departamento,
+			String codigoPostal, String tipo) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            tuplasInsertadas+= sqlCliente.adicionarCliente(pm, login, tipo);
+
+            tx.commit();
+            
+            log.trace ("Inserción de Cliente: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Cliente (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, tipo);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
 	
 	
 	public Prestamo adicionarPrestamo(String tipo, int monto, int saldo, int intereses, int numeroCuotas, int diaPagoCuota,
@@ -2008,6 +2224,11 @@ public class PersistenciaParranderos
         }
 		
 	}
+
+	
+
+	
+	
 	
 	
 	
