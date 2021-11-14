@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 13:40:44,378 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@c725db2" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@36249370" con transaccion="org.datanucleus.TransactionImpl@5fa32ab1"
 13:40:44,388 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=1730037895-1, enlisted resources=[]]
 13:40:44,389 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@c725db2 (optimistic=false)
@@ -14,11 +15,46 @@ org.datanucleus.exceptions.NucleusUserException: SQL query "DELETE FROM A_PRESTA
 	at uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos.eliminarPrestamoPorId(PersistenciaParranderos.java:419)
 	at uniandes.isis2304.parranderos.negocio.Parranderos.eliminarPrestamoPorId(Parranderos.java:90)
 	at uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp.eliminarPrestamoPorId(InterfazParranderosApp.java:359)
+=======
+12:02:41,176 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@4091e597" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@266dd9cc" con transaccion="org.datanucleus.TransactionImpl@44cd5ff6"
+12:02:41,176 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=226873648-2, enlisted resources=[]]
+12:02:41,176 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@4091e597 (optimistic=false)
+12:02:41,176 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - Query de SQL : "SELECT * FROM A_CAJERO WHERE LOGIN = ?"
+12:02:41,177 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@36b3f345 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@182f288a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+12:02:41,177 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5cae5288, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=226873648-2, enlisted resources=[]]
+12:02:41,178 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "oracle.jdbc.driver.OraclePreparedStatementWrapper@4fb2eaf" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@182f288a"
+12:02:41,178 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Native] - SELECT * FROM A_CAJERO WHERE LOGIN = <'u10'>
+12:02:41,211 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 33 ms
+12:02:41,212 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@65713dc2"
+12:02:41,212 (AWT-EventQueue-0) INFO  [DataNucleus.JDO] - Exception thrown
+La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+org.datanucleus.exceptions.NucleusUserException: La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+	at org.datanucleus.store.rdbms.query.ResultClassROF.populateDeclaredFieldsForUserType(ResultClassROF.java:495)
+	at org.datanucleus.store.rdbms.query.ResultClassROF.populateDeclaredFieldsForUserType(ResultClassROF.java:501)
+	at org.datanucleus.store.rdbms.query.ResultClassROF.access$100(ResultClassROF.java:60)
+	at org.datanucleus.store.rdbms.query.ResultClassROF$1.run(ResultClassROF.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at org.datanucleus.store.rdbms.query.ResultClassROF.<init>(ResultClassROF.java:220)
+	at org.datanucleus.store.rdbms.query.RDBMSQueryUtils.getResultObjectFactoryForNoCandidateClass(RDBMSQueryUtils.java:561)
+	at org.datanucleus.store.rdbms.query.SQLQuery.performExecute(SQLQuery.java:664)
+	at org.datanucleus.store.query.Query.executeQuery(Query.java:1967)
+	at org.datanucleus.store.rdbms.query.SQLQuery.executeWithArray(SQLQuery.java:805)
+	at org.datanucleus.api.jdo.JDOQuery.executeInternal(JDOQuery.java:433)
+	at org.datanucleus.api.jdo.JDOQuery.executeUnique(JDOQuery.java:360)
+	at uniandes.isis2304.parranderos.persistencia.SQLCajero.verificarCajero(SQLCajero.java:169)
+	at uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos.transferirCajero(PersistenciaParranderos.java:947)
+	at uniandes.isis2304.parranderos.negocio.Parranderos.transferirCajero(Parranderos.java:279)
+	at uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp.transferirCuenta(InterfazParranderosApp.java:671)
+>>>>>>> 8d7e39d4f54eeebf2081dc713df0a37936dd94d6
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+<<<<<<< HEAD
 	at uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp.actionPerformed(InterfazParranderosApp.java:1019)
+=======
+	at uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp.actionPerformed(InterfazParranderosApp.java:1122)
+>>>>>>> 8d7e39d4f54eeebf2081dc713df0a37936dd94d6
 	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
 	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2313)
 	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
@@ -56,6 +92,7 @@ org.datanucleus.exceptions.NucleusUserException: SQL query "DELETE FROM A_PRESTA
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+<<<<<<< HEAD
 13:45:51,716 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
 13:45:51,774 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.7 at URL file:/C:/Users/javie/OneDrive/Escritorio/sistrans/Iteracion%202/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar.
 13:45:51,805 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/javie/OneDrive/Escritorio/sistrans/Iteracion%202/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar!/plugin.xml.
@@ -368,3 +405,49 @@ org.datanucleus.exceptions.NucleusUserException: SQL query "DELETE FROM A_PRESTA
 14:09:27,255 (main) DEBUG [DataNucleus.Persistence] - ValueGeneration : txn-isolation=read-committed connection=New
 14:09:27,255 (main) DEBUG [DataNucleus.Persistence] - Cache : Level1 (soft), Level2 (soft, mode=UNSPECIFIED), QueryResults (soft), Collections/Maps 
 14:09:27,255 (main) DEBUG [DataNucleus.Persistence] - ================================================
+=======
+12:02:41,213 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Haciendo rollback de la transacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@4091e597
+12:02:41,213 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Rolling back [DataNucleus Transaction, ID=226873648-2, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5cae5288]]
+12:02:41,213 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection VA A ROLLBACK : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@36b3f345 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@182f288a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+12:02:41,239 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@36b3f345 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@182f288a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+12:02:41,267 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transacción rolled back en 54 ms
+12:02:41,269 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@4091e597" se cerró
+12:06:54,809 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@40c6738b" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@266dd9cc" con transaccion="org.datanucleus.TransactionImpl@763ac97c"
+12:06:54,809 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=226873648-3, enlisted resources=[]]
+12:06:54,810 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@40c6738b (optimistic=false)
+12:06:54,812 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - Query de SQL : "SELECT * FROM A_PUNTODEATENCION WHERE ID = ?"
+12:06:54,813 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7e1af3cb [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+12:06:54,813 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@717800e3, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=226873648-3, enlisted resources=[]]
+12:06:54,814 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "oracle.jdbc.driver.OraclePreparedStatementWrapper@49697b02" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d"
+12:06:54,814 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Native] - SELECT * FROM A_PUNTODEATENCION WHERE ID = <200>
+12:06:54,842 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 28 ms
+12:06:54,848 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - La clase de resultado "uniandes.isis2304.parranderos.negocio.PuntoDeAtencion" no tiene un constructor con arguments de tipos [class java.math.BigDecimal, class java.lang.String, class java.lang.String, class java.math.BigDecimal]
+12:06:54,849 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - La clase de resultado "uniandes.isis2304.parranderos.negocio.PuntoDeAtencion" no tiene un campo publico "id"
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - ResultObject set field=ID using setId() method after converting value
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - La clase de resultado "uniandes.isis2304.parranderos.negocio.PuntoDeAtencion" no tiene un campo publico "tipo"
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - ResultObject set field=TIPO using public setTipo() method
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - La clase de resultado "uniandes.isis2304.parranderos.negocio.PuntoDeAtencion" no tiene un campo publico "localizacion"
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - ResultObject set field=LOCALIZACION using public setLocalizacion() method
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - La clase de resultado "uniandes.isis2304.parranderos.negocio.PuntoDeAtencion" no tiene un campo publico "idOficina"
+12:06:54,850 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - ResultObject set field=IDOFICINA using setIdOficina() method after converting value
+12:06:54,851 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - Query de SQL : "INSERT INTO A_USUARIO values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+12:06:54,851 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@155283a2" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d"
+12:06:54,851 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO A_USUARIO values (<'u13'>, <'12293'>, <'cedula'>, <'43jtdf'>, <'pablo'>, <'calle 56'>, <'dsaf@gmail.com'>, <'31244456'>, <'pereira'>, <'risaralda'>, <'34885'>)
+12:06:54,880 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Persist] - SQL Tiempo de cumplir = 29 ms (numero de lineas cambiado = 1) con el PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@155283a2"
+12:06:54,880 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@155283a2"
+12:06:54,881 (AWT-EventQueue-0) DEBUG [DataNucleus.Query] - Query de SQL : "INSERT INTO A_CAJERO values (?, ?)"
+12:06:54,881 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@6ba37c12" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d"
+12:06:54,881 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO A_CAJERO values (<'u13'>, <200>)
+12:06:54,909 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore.Persist] - SQL Tiempo de cumplir = 28 ms (numero de lineas cambiado = 1) con el PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@6ba37c12"
+12:06:54,910 (AWT-EventQueue-0) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.ParamLoggingPreparedStatement@6ba37c12"
+12:06:54,910 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@40c6738b
+12:06:54,910 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+12:06:54,916 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+12:06:54,916 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+12:06:54,916 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+12:06:54,916 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=226873648-3, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@717800e3]]
+12:06:54,916 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7e1af3cb [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+12:06:54,943 (AWT-EventQueue-0) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7e1af3cb [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ecba45d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+12:06:54,972 (AWT-EventQueue-0) DEBUG [DataNucleus.Transaction] - Transacción committed en 62 ms
+12:06:54,974 (AWT-EventQueue-0) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@40c6738b" se cerró
+>>>>>>> 8d7e39d4f54eeebf2081dc713df0a37936dd94d6

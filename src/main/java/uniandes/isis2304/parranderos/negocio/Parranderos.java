@@ -198,6 +198,46 @@ public class Parranderos
         log.info ("Adicionando usuario: " + usuario);
         return usuario;
 	}
+	public Administrador adicionarAdministrador (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, String credenciales)
+	{
+        log.info ("Adicionando Administrador: " + login);
+        Administrador administrador = pp.adicionarAdministrador(login, numeroDocumento, tipoDocumento, clave, nombre, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, credenciales);
+        log.info ("Adicionando Administrador: " + administrador);
+        return administrador;
+	}
+	public GerenteGeneral adicionarGerenteGeneral (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal)
+	{
+        log.info ("Adicionando Gerente General: " + login);
+        GerenteGeneral usuario = pp.adicionarGerenteGeneral(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);		
+        log.info ("Adicionando Gerente General: " + usuario);
+        return usuario;
+	}
+	public GerenteOficina adicionarGerenteOficina (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal)
+	{
+        log.info ("Adicionando Gerente Oficina: " + login);
+        GerenteOficina usuario = pp.adicionarGerenteOficina(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);		
+        log.info ("Adicionando Gerente Oficina: " + usuario);
+        return usuario;
+	}
+	public Cajero adicionarCajero (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, long pa)
+	{
+        log.info ("Adicionando Cajero: " + login);
+        Cajero usuario = pp.adicionarCajero(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, pa);		
+        log.info ("Adicionando Cajero: " + usuario);
+        return usuario;
+	}
+	public Cliente adicionarCliente (String login, String numeroDocumento, String tipoDocumento, String clave, String nombre,
+			String direccion, String email, String telefono, String ciudad, String departamento, String codigoPostal, String tipo)
+	{
+        log.info ("Adicionando Cliente: " + login);
+        Cliente usuario = pp.adicionarCliente(login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, tipo);		
+        log.info ("Adicionando Cliente: " + usuario);
+        return usuario;
+	}
 
 	public Cuenta adicionarCuenta (String tipoCuenta, long idOficina,
 			String loginCliente, long idPA)
@@ -221,22 +261,33 @@ public class Parranderos
         
 	}
 	
-	public void transferir(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
+	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Operación transferencia Cuenta: " );
         
-        pp.transferir(idPA, loginCliente, numeroOrigen, numeroDestino, monto, fechaCreacion);
+        pp.transferirCliente(idPA, loginCliente, numeroOrigen, numeroDestino, monto, fechaCreacion);
+        log.info ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta "+ numeroDestino);
+		
+	}
+	
+	public void transferirCajero(long idPA, String loginCliente, String loginCajero, long numeroOrigen, long numeroDestino, int monto) {
+		// TODO Auto-generated method stub
+		Timestamp fechaCreacion =fechaActual();
+        log.info ("Operación transferencia Cuenta: " );
+        
+        pp.transferirCajero(idPA, loginCliente, loginCajero, numeroOrigen, numeroDestino, monto, fechaCreacion);
         log.info ("Transferencia de Cuenta: " + numeroOrigen + " a cuenta "+ numeroDestino);
 		
 	}
 
-	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto) {
+
+	public void pagoCuota(long idPA, String loginCliente, long idPrestamo, int monto, long cuenta) {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Operación pago Cuota prestamo: " );
         
-        pp.pagoCuota(idPA, loginCliente, idPrestamo, monto, fechaCreacion);
+        pp.pagoCuota(idPA, loginCliente, idPrestamo, monto, fechaCreacion, cuenta);
         
         log.info ("Pago cuota préstamo: " + idPrestamo + " cuota: "+ monto);
 	}

@@ -21,7 +21,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Bar;
-import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
+import uniandes.isis2304.parranderos.negocio.Cajero;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -29,7 +29,7 @@ import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
  * 
  * @author Germán Bravo
  */
-class SQLPuntoDeAtencion 
+class SQLCajero
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -56,7 +56,7 @@ class SQLPuntoDeAtencion
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLPuntoDeAtencion (PersistenciaParranderos pp)
+	public SQLCajero (PersistenciaParranderos pp)
 	{
 		this.pp = pp;
 	}
@@ -71,33 +71,11 @@ class SQLPuntoDeAtencion
 	 * @param sedes - El número de sedes del bar
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarPuntoDeAtencion (PersistenceManager pm, long id, String tipo, String localizacion, long idOficina) 
+	public long adicionarCajero (PersistenceManager pm, String login, long pa) 
 	{
-		if(idOficina==-1) {
-			Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPuntoDeATencion() + " values (?, ?, ?, NULL)");
-	        q.setParameters(id, tipo, localizacion, idOficina);
-	        return (long) q.executeUnique();
-		}
-		else {
-			Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPuntoDeATencion() + " values (?, ?, ?, ?)");
-	        q.setParameters(id, tipo, localizacion, idOficina);
-	        return (long) q.executeUnique();
-		}
-		
-        
-	}
-	
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS BARES de la 
-	 * base de datos de Parranderos
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos BAR
-	 */
-	public List<PuntoDeAtencion> darPuntosDeAtencion (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPuntoDeATencion());
-		q.setResultClass(PuntoDeAtencion.class);
-		return (List<PuntoDeAtencion>) q.executeList();
+        Query q = pm.newQuery(SQL, "INSERT INTO A_CAJERO values (?, ?)");
+        q.setParameters(login, pa);
+        return (long) q.executeUnique();
 	}
 
 	/**
@@ -133,12 +111,12 @@ class SQLPuntoDeAtencion
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR que tiene el identificador dado
 	 */
-	public Bar darBarPorId (PersistenceManager pm, long idBar) 
+	public Cajero darCajero (PersistenceManager pm, String loginCajero) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBar () + " WHERE id = ?");
-		q.setResultClass(Bar.class);
-		q.setParameters(idBar);
-		return (Bar) q.executeUnique();
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CAJERO WHERE LOGIN = ?");
+		q.setResultClass(Cajero.class);
+		q.setParameters(loginCajero);
+		return (Cajero) q.executeUnique();
 	}
 
 	/**
@@ -156,7 +134,18 @@ class SQLPuntoDeAtencion
 		return (List<Bar>) q.executeList();
 	}
 
-	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS BARES de la 
+	 * base de datos de Parranderos
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos BAR
+	 */
+	public List<Bar> darBares (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBar ());
+		q.setResultClass(Bar.class);
+		return (List<Bar>) q.executeList();
+	}
 
 	/**
 	 * Crea y ejecuta la sentencia SQL para aumentar en uno el número de sedes de los bares de la 
@@ -172,13 +161,12 @@ class SQLPuntoDeAtencion
         return (long) q.executeUnique();
 	}
 
-	public boolean verificarExiste(PersistenceManager pm, long pa) {
+	public boolean verificarCajero(PersistenceManager pm, String loginCajero) {
 		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_PUNTODEATENCION WHERE ID = ?");
-		q.setResultClass(PuntoDeAtencion.class);
-		q.setParameters(pa);
-		return (PuntoDeAtencion) q.executeUnique()!=null;
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CAJERO WHERE LOGIN = ?");
+		q.setResultClass(Cajero.class);
+		q.setParameters(loginCajero);
+		return (Cajero) q.executeUnique()!=null;
 	}
-
 	
 }

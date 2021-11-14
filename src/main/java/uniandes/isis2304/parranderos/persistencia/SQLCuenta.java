@@ -175,8 +175,25 @@ class SQLCuenta
 	public List<Cuenta> darCuentas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM A_CUENTA");
-		q.setResultClass(PuntoDeAtencion.class);
+		q.setResultClass(Cuenta.class);
 		return (List<Cuenta>) q.executeList();
+	}
+
+	public boolean verificarCuenta(PersistenceManager pm, long cuenta, String loginCliente) {
+		// TODO Auto-generated method stub
+		Query q= pm.newQuery(SQL, "SELECT * FROM A_CUENTA WHERE NUMEROUNICO = ? "+ "AND LOGINCLIENTE = ?");
+		q.setResultClass(Cuenta.class);
+		q.setParameters(cuenta, loginCliente);
+		return (List<Cuenta>) q.executeList() != null;
+	}
+
+	public boolean verificarMontoCuenta(PersistenceManager pm, long cuenta, int monto) {
+		// TODO Auto-generated method stub
+		Query q= pm.newQuery(SQL, "SELECT SALDO FROM A_CUENTA WHERE NUMEROUNICO = ?");
+		q.setResultClass(Integer.class);
+		q.setParameters(cuenta);
+		int valor = (int) q.executeUnique();
+		return valor>=monto;
 	}
 	
 }
