@@ -180,5 +180,13 @@ class SQLPuntoDeAtencion
 		return (PuntoDeAtencion) q.executeUnique()!=null;
 	}
 
+	public List<Long> darPuntosPorOficina(PersistenceManager pm, long idOficina) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT ID FROM A_PUNTODEATENCION WHERE IDOFICINA = ?");
+		q.setResultClass(Long.class);
+		q.setParameters(idOficina);
+		return (List<Long>) q.executeUnique();
+	}
+
 	
 }

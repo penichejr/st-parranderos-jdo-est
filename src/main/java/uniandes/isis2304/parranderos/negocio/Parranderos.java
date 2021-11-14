@@ -163,6 +163,41 @@ public class Parranderos
         log.info ("Generando los VO de los Puntos de Atencion: " + voCuentas.size() + " existentes");
         return voCuentas;
 	}
+	public List<VOPrestamo> darVOPrestamos (String loginGerenteGeneral)
+	{
+		log.info ("Generando los VO de los prestamos");        
+        List<VOPrestamo> voPrestamos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darPrestamos(loginGerenteGeneral))
+        {
+        	voPrestamos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
+        return voPrestamos;
+	}
+	
+	public List<VOPrestamo> darVOPrestamosOficina(String loginGerenteOficina) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de los prestamos");        
+        List<VOPrestamo> voPrestamos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darPrestamosOficina(loginGerenteOficina))
+        {
+        	voPrestamos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
+        return voPrestamos;
+	}
+
+	public List<VOPrestamo> darVOPrestamosCliente(String loginCliente) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de los prestamos");        
+        List<VOPrestamo> voPrestamos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darPrestamosCliente(loginCliente))
+        {
+        	voPrestamos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
+        return voPrestamos;
+	}
 	
 	
 	public TipoBebida adicionarTipoBebida (String nombre)
@@ -995,6 +1030,8 @@ public class Parranderos
         log.info ("Limpiando la BD de Parranderos: Listo!");
         return borrrados;
 	}
+
+	
 
 	
 	

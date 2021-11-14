@@ -6,6 +6,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Cliente;
+import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -149,6 +150,15 @@ class SQLCliente
 //        q.setParameters(ciudad);
 //        return (long) q.executeUnique();
 //	}
+
+	public boolean verificarCliente(PersistenceManager pm, String loginCliente) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CLIENTE WHERE LOGIN =  ?");
+		q.setParameters(loginCliente);
+		q.setResultClass(Cliente.class);
+
+        return (Cliente) q.executeUnique()!=null;
+	}
 
 	
 	

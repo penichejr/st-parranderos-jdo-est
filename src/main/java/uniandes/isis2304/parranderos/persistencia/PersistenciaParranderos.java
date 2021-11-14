@@ -36,6 +36,7 @@ import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
 import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
 import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Administrador;
+import uniandes.isis2304.parranderos.negocio.AprobarPrestamo;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
@@ -148,6 +149,8 @@ public class PersistenciaParranderos
 	
 	private SQLCliente sqlCliente;
 	
+	private SQLAprobarPrestamo sqlAprobarPrestamo;
+	
 	
 	
 	/* ****************************************************************
@@ -189,6 +192,7 @@ public class PersistenciaParranderos
 		tablas.add("GERENTEGENERAL");
 		tablas.add("GERENTEOFICINA");
 		tablas.add("CLIENTE");
+		tablas.add("A_APROBARPRESTAMO");
 
 }
 
@@ -291,6 +295,8 @@ public class PersistenciaParranderos
 		sqlGerenteGeneral = new SQLGerenteGeneral(this);
 		sqlGerenteOficina = new SQLGerenteOficina(this);
 		sqlCliente = new SQLCliente(this);
+		
+		sqlAprobarPrestamo= new SQLAprobarPrestamo(this);
 		
 
 	}
@@ -424,6 +430,9 @@ public class PersistenciaParranderos
 	public String darTablaCliente ()
 	{
 		return tablas.get (22);
+	}
+	public String darTablaAprobarPrestamo() {
+		return tablas.get (23);
 	}
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
@@ -595,6 +604,83 @@ public class PersistenciaParranderos
 	{
 		return sqlCuenta.darCuentas(pmf.getPersistenceManager());
 	}
+	
+
+	public List<Prestamo> darPrestamos(String loginGerenteGeneral) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, loginGerenteGeneral );
+			if(acepto) {
+				return sqlPrestamo.darPrestamos(pmf.getPersistenceManager());
+
+			}
+			else {
+				throw new Exception("No es un login de Gerente General");
+			}
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+	
+	public List<Prestamo> darPrestamosOficina(String loginGerenteOficina) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+			long idOficina= sqlOficina.darIdConGerente(pm, loginGerenteOficina);
+			List<Long> puntos = sqlPuntoDeAtencion.darPuntosPorOficina(pm, idOficina);
+			List<Long> aux = new LinkedList<Long>();
+			for(int i =0; i<puntos.size(); i++) {
+				
+				List<Long> prestamos =sqlAprobarPrestamo.darIdPrestamoEnPuntos(pm, puntos.get(i));
+				
+				for (int j =0; j<prestamos.size(); j++) {
+					aux.add(prestamos.get(j));
+				}
+				
+			}
+			
+			List<Prestamo> ret = new LinkedList<Prestamo>();
+			
+			for( int k=0; k<aux.size(); k++) {
+				ret.add(sqlPrestamo.darPrestamoPorID(pm, aux.get(k)));
+			}
+			
+				return ret;
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+
+	public List<Prestamo> darPrestamosCliente(String loginCliente) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+			boolean acepto = sqlCliente.verificarCliente(pm, loginCliente );
+			if(acepto) {
+				return sqlPrestamo.darPrestamos(pmf.getPersistenceManager());
+
+			}
+			else {
+				throw new Exception("No es un login de Gerente General");
+			}
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+
 	
 	
 	
@@ -2229,6 +2315,8 @@ public class PersistenciaParranderos
         }
 		
 	}
+
+	
 
 	
 

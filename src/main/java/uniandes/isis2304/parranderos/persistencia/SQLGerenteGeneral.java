@@ -159,5 +159,14 @@ class SQLGerenteGeneral
         q.setParameters(login);
         return (long) q.executeUnique();
 	}
+
+	public boolean verificarGerente(PersistenceManager pm, String loginGerenteGeneral) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEGENERAL WHERE LOGIN =  ?");
+		q.setParameters(loginGerenteGeneral);
+		q.setResultClass(GerenteGeneral.class);
+
+        return (GerenteGeneral) q.executeUnique()!=null;
+	}
 	
 }
