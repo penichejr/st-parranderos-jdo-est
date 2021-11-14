@@ -42,6 +42,10 @@
 				{ 
 					"label": "pagarCuota",
 					"event": "pagarCuota"
+				},
+				{ 
+					"label": "consultar Préstamos",
+					"event": "consultarPrestamos"
 				}
 			]
 		},
@@ -80,6 +84,10 @@
 				{
 					"label": "adicionarAsociacionCuenta",
 					"event": "adicionarAsociacionCuenta"
+				},
+				{ 
+					"label": "Pagar Nómina",
+					"event": "pagarNomina"
 				}
 			]
 		},

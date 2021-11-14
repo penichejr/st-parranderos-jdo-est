@@ -96,6 +96,14 @@ class SQLOficina
 	        return (long) q.executeUnique();
 	}
 
+	public long darIdConGerente(PersistenceManager pm, String loginGerenteOficina) {
+		// TODO Auto-generated method stub
+			Query q = pm.newQuery(SQL, "SELECT ID FROM A_OFICINA WHERE LOGINGERENTEOFICINA = ?");
+			q.setParameters(loginGerenteOficina);
+			q.setResultClass(Long.class);
+			return (long) q.executeUnique();
+	}
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
 	 * base de datos de Parranderos, por su identificador

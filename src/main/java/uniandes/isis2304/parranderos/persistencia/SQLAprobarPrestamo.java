@@ -5,8 +5,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
-import uniandes.isis2304.parranderos.negocio.GerenteOficina;
+import uniandes.isis2304.parranderos.negocio.AprobarPrestamo;
+import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -14,7 +14,7 @@ import uniandes.isis2304.parranderos.negocio.GerenteOficina;
  * 
  * @author Germán Bravo
  */
-class SQLGerenteOficina
+class SQLAprobarPrestamo 
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -41,7 +41,7 @@ class SQLGerenteOficina
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLGerenteOficina (PersistenciaParranderos pp)
+	public SQLAprobarPrestamo(PersistenciaParranderos pp)
 	{
 		this.pp = pp;
 	}
@@ -89,6 +89,19 @@ class SQLGerenteOficina
         return (long) q.executeUnique();
 	}
 
+	public long adicionarOficina(PersistenceManager pm, long idOficina, String nombre, String direccion, long loginGerenteOficina) {
+		 Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaOficina () + "(id, nombre, direccion, logingerenteoficina) values (?, ?, ?, ?)");
+	        q.setParameters(idOficina, nombre, direccion, loginGerenteOficina);
+	        return (long) q.executeUnique();
+	}
+
+	public List<Long> darIdPrestamoEnPuntos(PersistenceManager pm, Long pa) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT IDPRESTAMO FORM A_APROBARPRESTAMO WHERE IDPUNTOATENCION =?");
+        q.setParameters(pa);
+        return (List<Long>) q.executeUnique();
+	}
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 
 	 * base de datos de Parranderos, por su identificador
@@ -125,12 +138,12 @@ class SQLGerenteOficina
 //	 * @param pm - El manejador de persistencia
 //	 * @return Una lista de objetos BAR
 //	 */
-	public List<GerenteOficina> darGerentesOficina (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA");
-		q.setResultClass(GerenteOficina.class);
-		return (List<GerenteOficina>) q.executeList();
-	}
+//	public List<Oficina> darOficinas (PersistenceManager pm)
+//	{
+//		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaOficina ());
+//		q.setResultClass(Oficina.class);
+//		return (List<Oficina>) q.executeList();
+//	}
 //
 //	/**
 //	 * Crea y ejecuta la sentencia SQL para aumentar en uno el número de sedes de los bares de la 
@@ -145,29 +158,5 @@ class SQLGerenteOficina
 //        q.setParameters(ciudad);
 //        return (long) q.executeUnique();
 //	}
-
-	public GerenteOficina darGerenteOficinaPorLoginClave(PersistenceManager pm, String loginGO, String claveGO) {
-		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA" + " WHERE login = ?");
-		q.setResultClass(GerenteOficina.class);
-		q.setParameters(loginGO);
-		return (GerenteOficina) q.executeUnique();
-	}
-
-	public long adicionarGerenteOficina(PersistenceManager pm, String login) {
-		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "INSERT INTO A_GERENTEOFICINA values (?)");
-        q.setParameters(login);
-        return (long) q.executeUnique();
-	}
-
-	public boolean verificarGerente(PersistenceManager pm, String loginGerenteOficina) {
-		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA WHERE LOGIN =  ?");
-		q.setParameters(loginGerenteOficina);
-		q.setResultClass(GerenteOficina.class);
-
-        return (GerenteOficina) q.executeUnique()!=null;
-	}
 	
 }

@@ -21,6 +21,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Bar;
+import uniandes.isis2304.parranderos.negocio.Prestamo;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -183,6 +184,21 @@ class SQLPrestamo
 		q.setParameters(idPrestamo);
 		int valor = (int) q.executeUnique();
 		return monto>valor;
+	}
+
+	public List<Prestamo> darPrestamos(PersistenceManager pm) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PRESTAMO");
+		q.setResultClass(Prestamo.class);
+		return (List<Prestamo>) q.executeList();
+	}
+
+	public Prestamo darPrestamoPorID(PersistenceManager pm, Long long1) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PRESTAMO WHERE ID =?");
+		q.setResultClass(Prestamo.class);
+		q.setParameters(long1);
+		return (Prestamo) q.executeList();
 	}
 	
 }
