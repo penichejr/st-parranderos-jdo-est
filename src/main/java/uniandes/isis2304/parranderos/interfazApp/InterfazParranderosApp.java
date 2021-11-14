@@ -683,6 +683,13 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+	
+	public void pagarNomina()
+	{
+		String loginGerenteOficina = JOptionPane.showInputDialog (this, "login Gerente Oficina?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		parranderos.pagarNomina(loginGerenteOficina, numeroOrigen);
+	}
 	public void pagarCuota()
 	{
 		try {

@@ -76,6 +76,10 @@
 				{
 					"label": "eliminarCuentaPorNumeroUnico",
 					"event": "eliminarCuentaPorNumeroUnico"
+				},
+				{
+					"label": "Pagar Nómina",
+					"event": "pagarNomina"
 				}
 			]
 		},

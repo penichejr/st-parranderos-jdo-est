@@ -261,6 +261,11 @@ public class Parranderos
         
 	}
 	
+	public void pagarNomina(String loginGerenteOficina, String numeroOrigen) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
@@ -990,6 +995,8 @@ public class Parranderos
         log.info ("Limpiando la BD de Parranderos: Listo!");
         return borrrados;
 	}
+
+	
 	
 	
 }
