@@ -36,6 +36,7 @@ import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
 import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
 import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Administrador;
+import uniandes.isis2304.parranderos.negocio.AsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
@@ -148,6 +149,8 @@ public class PersistenciaParranderos
 	
 	private SQLCliente sqlCliente;
 	
+	private SQLAsociacionCuenta sqlAsociacionCuenta;
+	
 	
 	
 	/* ****************************************************************
@@ -189,6 +192,7 @@ public class PersistenciaParranderos
 		tablas.add("GERENTEGENERAL");
 		tablas.add("GERENTEOFICINA");
 		tablas.add("CLIENTE");
+		tablas.add("A_ASOCIACIONCUENTA");
 
 }
 
@@ -291,6 +295,7 @@ public class PersistenciaParranderos
 		sqlGerenteGeneral = new SQLGerenteGeneral(this);
 		sqlGerenteOficina = new SQLGerenteOficina(this);
 		sqlCliente = new SQLCliente(this);
+		sqlAsociacionCuenta = new SQLAsociacionCuenta(this);
 		
 
 	}
@@ -425,6 +430,10 @@ public class PersistenciaParranderos
 	{
 		return tablas.get (22);
 	}
+	public String darTablaAsociacionCuenta ()
+	{
+		return tablas.get (23);
+	}
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -451,6 +460,37 @@ public class PersistenciaParranderos
 			return je.getNestedExceptions() [0].getMessage();
 		}
 		return resp;
+	}
+	
+	
+	public AsociacionCuenta adicionarAsociacionCuenta(String loginJefe, String loginEmpleado, long cuentaJefe, long cuentaEmpleado, int salario, String frecuenciaPago)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlAsociacionCuenta.adicionarAsociacionCuenta(pm, loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+            tx.commit(); 
+            
+            log.trace ("Inserción de asociacionCuenta: Login Jefe " + loginJefe + ": y " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new AsociacionCuenta(loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 
 	

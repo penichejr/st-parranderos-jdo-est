@@ -50,6 +50,7 @@ import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOAdministrador;
+import uniandes.isis2304.parranderos.negocio.VOAsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.VOCajero;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
 import uniandes.isis2304.parranderos.negocio.VOCuenta;
@@ -283,6 +284,54 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    
+    public void adicionarAsociacionCuenta( )
+    {
+    	try 
+    	{
+    		String loginJefe = JOptionPane.showInputDialog (this, "loginJefe?", "loginJefe (STRING)", JOptionPane.QUESTION_MESSAGE);
+    		String loginEmpleado= JOptionPane.showInputDialog (this, "loginEmpleado?", "Adicionar loginEmpleado (STRING)", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		String stCuentaJefe = JOptionPane.showInputDialog (this, "numeroCuentaJefe?", "Adicionar numeroCuentaJefe(LONG)", JOptionPane.QUESTION_MESSAGE);
+    		long cuentaJefe = Long.parseLong(stCuentaJefe);
+    		String stCuentaEmpleado = JOptionPane.showInputDialog (this, "numeroCuentaEmpleado?", "Adicionar numeroCuentaEmpleado(LONG)", JOptionPane.QUESTION_MESSAGE);
+    		long cuentaEmpleado = Long.parseLong(stCuentaEmpleado);
+    		
+    		String stSalario = JOptionPane.showInputDialog (this, "salario?", "Adicionar salario(INT)", JOptionPane.QUESTION_MESSAGE);
+    		int salario = Integer.parseInt(stCuentaEmpleado);
+    		
+    		String frecuenciaPago= JOptionPane.showInputDialog (this, "frecuenciaPago?", "Adicionar frecuenciaPago (STRING)", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		
+    		
+    		if (loginJefe != null)
+    		{
+        		VOAsociacionCuenta pr = parranderos.adicionarAsociacionCuenta(loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+        		if (pr == null)
+        		{
+        			throw new Exception ("No se pudo crear una asociacion con jefe :" + loginJefe);
+        		}
+        		String resultado = "En adicionarAsociacion\n\n";
+        		resultado += "Asociacion adicionado exitosamente: " + pr;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     
     public void adicionarOficina()
 	{

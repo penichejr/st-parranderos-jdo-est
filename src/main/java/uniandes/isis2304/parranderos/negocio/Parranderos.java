@@ -83,6 +83,14 @@ public class Parranderos
         return timestamp;
 	}
 	
+	public AsociacionCuenta adicionarAsociacionCuenta (String loginJefe, String loginEmpleado, long cuentaJefe, long cuentaEmpleado, int salario, String frecuenciaPago)
+	{
+        log.info ("Adicionando asociacion cuenta: con jefe " + loginJefe);
+        AsociacionCuenta asociacion = pp.adicionarAsociacionCuenta(loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+        log.info ("Adicionando asociacion cuenta: con jefe " + loginJefe);
+        return asociacion;
+	}
+	
 	
 	public long eliminarPrestamoPorId (long idPrestamo)
 	{
