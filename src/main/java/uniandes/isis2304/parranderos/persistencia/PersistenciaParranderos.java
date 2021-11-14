@@ -411,11 +411,15 @@ public class PersistenciaParranderos
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
+        System.out.println("entra");
         try
         {
             tx.begin();
+            System.out.println("inicia transaccion");
             long resp = sqlPrestamo.eliminarPrestamoPorId(pm, idPrestamo); 
+            System.out.println("inicia");
             tx.commit();
+            System.out.println("llega");
 
             return resp;
         }
@@ -423,6 +427,7 @@ public class PersistenciaParranderos
         {
 //        	e.printStackTrace();
         	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	System.out.println("error");
             return -1;
         }
         finally

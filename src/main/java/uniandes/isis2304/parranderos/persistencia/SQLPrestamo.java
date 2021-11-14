@@ -81,7 +81,7 @@ class SQLPrestamo
 	
 	public long eliminarPrestamoPorId (PersistenceManager pm, long idPrestamo)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPrestamo()+ " WHERE id = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPrestamo()+ " WHERE ID = ?");
         q.setParameters(idPrestamo);
         return (long) q.executeUnique();            
 	}
