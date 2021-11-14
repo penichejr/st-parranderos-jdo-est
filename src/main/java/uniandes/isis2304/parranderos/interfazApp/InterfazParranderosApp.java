@@ -434,7 +434,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String numeroUnico = JOptionPane.showInputDialog (this, "Id del prestamo?", "Borrar prestamo", JOptionPane.QUESTION_MESSAGE);
+    		String numeroUnico = JOptionPane.showInputDialog (this, "Numero de la cuenta?", "Borrar cuenta", JOptionPane.QUESTION_MESSAGE);
     		if (numeroUnico != null)
     		{
     			long idTipo = Long.valueOf (numeroUnico);
