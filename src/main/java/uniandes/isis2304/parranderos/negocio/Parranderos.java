@@ -160,6 +160,18 @@ public class Parranderos
         return voPuntos;
 	}
 	
+	public List<VOPrestamo> darVOPrestamo (String tipo, String saldo)
+	{
+		log.info ("Generando los VO de los Prestamo");        
+        List<VOPrestamo> voPuntos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darPrestamo(tipo, saldo))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamo: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
 	public List<VOCuenta> darVOCuentas ()
 	{
 		log.info ("Generando los VO de las cuentas");        
@@ -184,6 +196,7 @@ public class Parranderos
         return voAsociacionCuentas;
 	}
 	
+	/*
 	public List<VOPrestamo> darVOPrestamos (String loginGerenteGeneral)
 	{
 		log.info ("Generando los VO de los prestamos");        
@@ -194,7 +207,7 @@ public class Parranderos
         }
         log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
         return voPrestamos;
-	}
+	}*/
 	
 	public List<VOPrestamo> darVOPrestamosOficina(String loginGerenteOficina) {
 		// TODO Auto-generated method stub
@@ -208,6 +221,7 @@ public class Parranderos
         return voPrestamos;
 	}
 
+	/*
 	public List<VOPrestamo> darVOPrestamosCliente(String loginCliente) {
 		// TODO Auto-generated method stub
 		log.info ("Generando los VO de los prestamos");        
@@ -218,7 +232,7 @@ public class Parranderos
         }
         log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
         return voPrestamos;
-	}
+	}*/
 	
 	
 	public TipoBebida adicionarTipoBebida (String nombre)

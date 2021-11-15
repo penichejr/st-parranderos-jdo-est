@@ -186,9 +186,10 @@ class SQLPrestamo
 		return monto>valor;
 	}
 
-	public List<Prestamo> darPrestamos(PersistenceManager pm) {
+	public List<Prestamo> darPrestamo(PersistenceManager pm, String tipo, String saldo) {
 		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "SELECT * FROM A_PRESTAMO");
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PRESTAMO WHERE TIPO=? and saldo>?");
+		q.setParameters(tipo, saldo);
 		q.setResultClass(Prestamo.class);
 		return (List<Prestamo>) q.executeList();
 	}

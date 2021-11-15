@@ -640,6 +640,11 @@ public class PersistenciaParranderos
 		return sqlPuntoDeAtencion.darPuntosDeAtencion(pmf.getPersistenceManager());
 	}
 	
+	public List<Prestamo> darPrestamo(String tipo, String saldo)
+	{
+		return sqlPrestamo.darPrestamo(pmf.getPersistenceManager(), tipo, saldo);
+	}
+	
 	public List<Cuenta> darCuentas ()
 	{
 		return sqlCuenta.darCuentas(pmf.getPersistenceManager());
@@ -664,8 +669,8 @@ public class PersistenciaParranderos
 		}
 	}
 	
-
-	public List<Prestamo> darPrestamos(String loginGerenteGeneral) {
+/*
+	public List<Prestamo> darPrestamo(String loginGerenteGeneral) {
 		// TODO Auto-generated method stub
 		try {
 			PersistenceManager pm = pmf.getPersistenceManager();
@@ -684,7 +689,7 @@ public class PersistenciaParranderos
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return null;
 		}
-	}
+	}*/
 	
 	public List<Prestamo> darPrestamosOficina(String loginGerenteOficina) {
 		// TODO Auto-generated method stub
@@ -719,6 +724,7 @@ public class PersistenciaParranderos
 		}
 	}
 
+	/*
 	public List<Prestamo> darPrestamosCliente(String loginCliente) {
 		// TODO Auto-generated method stub
 		try {
@@ -738,7 +744,7 @@ public class PersistenciaParranderos
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return null;
 		}
-	}
+	}*/
 
 	
 	

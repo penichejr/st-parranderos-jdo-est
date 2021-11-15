@@ -796,6 +796,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		return resp;
 	}
 
+	/*
 	public void consultarPrestamos() {
 		try 
 		{
@@ -829,18 +830,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
-	}
-	
-	private String listarPrestamos(List<VOPrestamo> lista) 
-	{
-		String resp = "Los prestamos existentes son:\n";
-		int i = 1;
-		for (VOPrestamo tb : lista)
-		{
-			resp += i++ + ". " + tb.toString() + "\n";
-		}
-		return resp;
-	}
+	}*/
+
 	public void pagarCuota()
 	{
 		try {
@@ -896,6 +887,27 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 
 			String resultado = "En listarTipoBebida";
 			resultado +=  "\n" + listarPuntosDeAtencion(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void listarPrestamo( )
+    {
+    	try 
+    	{
+    		String tipo = JOptionPane.showInputDialog (this, "tipoPrestamo?", "Tipo Prestamo (String) ", JOptionPane.QUESTION_MESSAGE);
+    		String saldoMinimo = JOptionPane.showInputDialog (this, "saldoMinimo?", "Saldo minimi (Int) ", JOptionPane.QUESTION_MESSAGE);
+			List <VOPrestamo> lista = parranderos.darVOPrestamo(tipo, saldoMinimo);
+
+			String resultado = "En listarPrestamo";
+			resultado +=  "\n" + listarPrestamo(lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
@@ -1176,6 +1188,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	String resp = "Los puntos de atencion son:\n";
     	int i = 1;
         for (VOPuntoDeAtencion pa : lista)
+        {
+        	resp += i++ + ". " + pa.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarPrestamo(List<VOPrestamo> lista) 
+    {
+    	String resp = "Los prestamo son:\n";
+    	int i = 1;
+        for (VOPrestamo pa : lista)
         {
         	resp += i++ + ". " + pa.toString() + "\n";
         }
