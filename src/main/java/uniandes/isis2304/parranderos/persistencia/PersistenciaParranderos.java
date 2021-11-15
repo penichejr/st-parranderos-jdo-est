@@ -653,6 +653,13 @@ public class PersistenciaParranderos
 		return sqlPrestamo.darPrestamo(pmf.getPersistenceManager(), tipo, saldo);
 	}
 	
+	public List<Prestamo> darPrestamoConLogin(String loginCliente)
+	{
+		return sqlPrestamo.darPrestamosPorLogin(pmf.getPersistenceManager(), loginCliente);
+	}
+	
+	
+	
 	public List<Cuenta> darCuentas ()
 	{
 		return sqlCuenta.darCuentas(pmf.getPersistenceManager());
@@ -2426,7 +2433,6 @@ public class PersistenciaParranderos
 	
 	public boolean chequearGerenteGeneral(String Login) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		PersistenceManagerFactory mf = pm.getPersistenceManagerFactory();
         Transaction tx=pm.currentTransaction();
         try
         {
@@ -2437,8 +2443,6 @@ public class PersistenciaParranderos
             List<GerenteGeneral> lista = sqlPrestamo.chequearGerenteGeneral(pm, Login); 
             tx.commit(); 
             
-            Savepoint sa;
-
 
             return !lista.isEmpty();
         }

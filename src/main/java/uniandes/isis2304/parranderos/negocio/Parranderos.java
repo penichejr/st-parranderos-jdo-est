@@ -172,6 +172,19 @@ public class Parranderos
         return voPuntos;
 	}
 	
+	public List<VOPrestamo> darVOPrestamoConLogin (String loginCliente)
+	{
+		log.info ("Generando los VO de los Prestamo");        
+        List<VOPrestamo> voPuntos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darPrestamoConLogin(loginCliente))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamo: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
+	
 	public List<VOCuenta> darVOCuentas ()
 	{
 		log.info ("Generando los VO de las cuentas");        

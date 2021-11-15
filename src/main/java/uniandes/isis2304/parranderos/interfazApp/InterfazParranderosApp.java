@@ -918,10 +918,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     			resultado +=  "\n" + listarPrestamo(lista);
     			panelDatos.actualizarInterfaz(resultado);
     			resultado += "\n Operación terminada";
+    		}
+    		else {
+    			
+    			List <VOPrestamo> lista = parranderos.darVOPrestamoConLogin(login);
+    			
+    			String resultado = "En listarPrestamo";
+    			resultado +=  "\n" + listarPrestamo(lista);
+    			panelDatos.actualizarInterfaz(resultado);
+    			resultado += "\n Operación terminada";
     			
     		}
-    		
-
 			
 		} 
     	catch (Exception e) 

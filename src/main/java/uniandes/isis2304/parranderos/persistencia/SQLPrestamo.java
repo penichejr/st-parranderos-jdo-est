@@ -214,4 +214,12 @@ class SQLPrestamo
 		return (List<GerenteGeneral>) q.executeList();
 	}
 	
+	public List<Prestamo> darPrestamosPorLogin (PersistenceManager pm, String loginCliente)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPrestamo ()+ " WHERE LOGINCLIENTE=?");
+		q.setResultClass(Prestamo.class);
+		q.setParameters(loginCliente);
+		return (List<Prestamo>) q.executeList();
+	}
+	
 }
