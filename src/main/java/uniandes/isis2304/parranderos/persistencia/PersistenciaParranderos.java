@@ -993,7 +993,7 @@ public class PersistenciaParranderos
             }
            
             
-            return new Cajero (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, pa);
+            return new Cajero (login, pa);
         }
         catch (Exception e)
         {
@@ -1027,7 +1027,7 @@ public class PersistenciaParranderos
             
             log.trace ("Inserción de Cliente: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Cliente (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal, tipo);
+            return new Cliente (login, tipo);
         }
         catch (Exception e)
         {

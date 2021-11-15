@@ -5,6 +5,7 @@ public class GerenteOficina implements VOGerenteOficina {
 	public String login;
 	
 	
+
 	public GerenteOficina() {}
 
 	public GerenteOficina(String login) {
