@@ -95,6 +95,19 @@
 				}
 			]
 		},
+		{ "menuTitle": "Operaciones",
+		  "options":
+			[
+				{
+					"label": "consultarOperaciones",
+					"event": "consultarOperaciones"
+				},
+				{
+					"label": "listarOperaciones",
+					"event": "listarOperaciones"
+				}
+			]
+		},
 		{ "menuTitle": "Mantenimiento",
 		  "options":
 			[

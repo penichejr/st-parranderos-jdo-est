@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.ConsignarCuenta;
+import uniandes.isis2304.parranderos.negocio.TransferenciaCuenta;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -62,6 +63,15 @@ class SQLConsignarCuenta
 	        q.setParameters(idPA, loginCliente, numero, fecha, monto);
 	        return (long) q.executeUnique();
 		
+	}
+
+
+
+	public List<ConsignarCuenta> darConsignaciones(PersistenceManager pm) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CONSIGNARCUENTA");
+		q.setResultClass(ConsignarCuenta.class);
+		return (List<ConsignarCuenta>) q.executeList();
 	}
 	
 }

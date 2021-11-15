@@ -220,6 +220,30 @@ public class Parranderos
         log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
         return voPrestamos;
 	}
+	
+	public List<VOConsignarCuenta> darVOConsignarCuenta() {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las consignaciones");        
+        List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignaciones())
+        {
+        	voConsignar.add (tb);
+        }
+        log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
+        return voConsignar;
+	}
+
+	public List<VOTransferenciaCuenta> darVOTransferenciaCuenta() {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las transferencias");        
+        List<VOTransferenciaCuenta> voTransferencias = new LinkedList<VOTransferenciaCuenta> ();
+        for (TransferenciaCuenta tb : pp.darTransferencias())
+        {
+        	voTransferencias.add (tb);
+        }
+        log.info ("Generando los VO de las Transferencias: " + voTransferencias.size() + " existentes");
+        return voTransferencias;
+	}
 
 	/*
 	public List<VOPrestamo> darVOPrestamosCliente(String loginCliente) {
@@ -1071,6 +1095,8 @@ public class Parranderos
 	{
         return pp.chequearGerenteGeneral(Login);
 	}
+
+	
 
 	
 
