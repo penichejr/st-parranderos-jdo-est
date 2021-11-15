@@ -53,12 +53,14 @@ import uniandes.isis2304.parranderos.negocio.VOAdministrador;
 import uniandes.isis2304.parranderos.negocio.VOAsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.VOCajero;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
+import uniandes.isis2304.parranderos.negocio.VOConsignarCuenta;
 import uniandes.isis2304.parranderos.negocio.VOCuenta;
 import uniandes.isis2304.parranderos.negocio.VOGerenteGeneral;
 import uniandes.isis2304.parranderos.negocio.VOGerenteOficina;
 import uniandes.isis2304.parranderos.negocio.VOPrestamo;
 import uniandes.isis2304.parranderos.negocio.VOPuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
+import uniandes.isis2304.parranderos.negocio.VOTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.VOUsuario;
 
 /**
@@ -917,6 +919,53 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
+    }
+    
+    public void consultarOperaciones() {
+    	try 
+    	{
+			List <VOConsignarCuenta> lista = parranderos.darVOConsignarCuenta();
+			List <VOTransferenciaCuenta> lista2= parranderos.darVOTransferenciaCuenta();
+			
+
+			String resultado = "En consultar Operaciones";
+			resultado +=  "\n" + listarConsignarCuenta(lista);
+			resultado +=  "\n" + listarTransferenciaCuenta(lista2);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    private String listarTransferenciaCuenta(List<VOTransferenciaCuenta> lista2) {
+		// TODO Auto-generated method stub
+    	String resp = "Las Transferencias existentes son:\n";
+		int i = 1;
+		for (VOTransferenciaCuenta tb : lista2)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
+	private String listarConsignarCuenta(List<VOConsignarCuenta> lista) {
+		// TODO Auto-generated method stub
+		String resp = "Las Consignaciones existentes son:\n";
+		int i = 1;
+		for (VOConsignarCuenta tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
+	public void listarOperaciones() {
+    	
     }
     
     

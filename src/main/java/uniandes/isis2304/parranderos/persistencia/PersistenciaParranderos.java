@@ -43,6 +43,7 @@ import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
 import uniandes.isis2304.parranderos.negocio.Cajero;
 import uniandes.isis2304.parranderos.negocio.Cliente;
+import uniandes.isis2304.parranderos.negocio.ConsignarCuenta;
 import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
 import uniandes.isis2304.parranderos.negocio.GerenteOficina;
@@ -52,6 +53,7 @@ import uniandes.isis2304.parranderos.negocio.Prestamo;
 import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.Sirven;
 import uniandes.isis2304.parranderos.negocio.TipoBebida;
+import uniandes.isis2304.parranderos.negocio.TransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Usuario;
 import uniandes.isis2304.parranderos.negocio.Visitan;
 
@@ -722,6 +724,39 @@ public class PersistenciaParranderos
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return null;
 		}
+	}
+	
+	public List<ConsignarCuenta> darConsignaciones() {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+				return sqlConsignarCuenta.darConsignaciones(pm);
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+
+	public List<TransferenciaCuenta> darTransferencias() {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+				return sqlTransferenciaCuenta.darTransferencias(pm);
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	
 	}
 
 	/*
@@ -2381,6 +2416,8 @@ public class PersistenciaParranderos
         }
 		
 	}
+
+	
 
 	
 
