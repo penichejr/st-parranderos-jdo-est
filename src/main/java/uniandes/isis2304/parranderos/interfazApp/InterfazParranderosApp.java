@@ -907,16 +907,22 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	{
     		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
     		
-    		if(parranderos.chequearLoginGerenteGeneral(login))
-    			System.out.println("funciona");
-    		String tipo = JOptionPane.showInputDialog (this, "tipoPrestamo?", "Tipo Prestamo (String) ", JOptionPane.QUESTION_MESSAGE);
-    		String saldoMinimo = JOptionPane.showInputDialog (this, "saldoMinimo?", "Saldo minimi (Int) ", JOptionPane.QUESTION_MESSAGE);
-			List <VOPrestamo> lista = parranderos.darVOPrestamo(tipo, saldoMinimo);
+    		//Es GERENTEGENERAL
+    		if(parranderos.chequearLoginGerenteGeneral(login)) {
+    			
+    			String tipo = JOptionPane.showInputDialog (this, "tipoPrestamo?", "Tipo Prestamo (String) ", JOptionPane.QUESTION_MESSAGE);
+        		String saldoMinimo = JOptionPane.showInputDialog (this, "saldoMinimo?", "Saldo minimi (Int) ", JOptionPane.QUESTION_MESSAGE);
+    			List <VOPrestamo> lista = parranderos.darVOPrestamo(tipo, saldoMinimo);
+    			
+    			String resultado = "En listarPrestamo";
+    			resultado +=  "\n" + listarPrestamo(lista);
+    			panelDatos.actualizarInterfaz(resultado);
+    			resultado += "\n Operación terminada";
+    			
+    		}
+    		
 
-			String resultado = "En listarPrestamo";
-			resultado +=  "\n" + listarPrestamo(lista);
-			panelDatos.actualizarInterfaz(resultado);
-			resultado += "\n Operación terminada";
+			
 		} 
     	catch (Exception e) 
     	{

@@ -17,6 +17,7 @@ package uniandes.isis2304.parranderos.persistencia;
 
 
 import java.math.BigDecimal;
+import java.sql.Savepoint;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -2425,12 +2426,19 @@ public class PersistenciaParranderos
 	
 	public boolean chequearGerenteGeneral(String Login) {
 		PersistenceManager pm = pmf.getPersistenceManager();
+		PersistenceManagerFactory mf = pm.getPersistenceManagerFactory();
         Transaction tx=pm.currentTransaction();
         try
         {
+        	
+        	
             tx.begin();
+            System.out.println(tx.getIsolationLevel());
             List<GerenteGeneral> lista = sqlPrestamo.chequearGerenteGeneral(pm, Login); 
             tx.commit(); 
+            
+            Savepoint sa;
+
 
             return !lista.isEmpty();
         }

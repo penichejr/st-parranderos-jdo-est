@@ -44,10 +44,6 @@
 					"event": "pagarCuota"
 				},
 				{ 
-					"label": "consultar Préstamos",
-					"event": "consultarPrestamos"
-				},
-				{ 
 					"label": "listarPrestamo",
 					"event": "listarPrestamo"
 				}
