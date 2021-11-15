@@ -300,7 +300,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		long cuentaEmpleado = Long.parseLong(stCuentaEmpleado);
     		
     		String stSalario = JOptionPane.showInputDialog (this, "salario?", "Adicionar salario(INT)", JOptionPane.QUESTION_MESSAGE);
-    		int salario = Integer.parseInt(stCuentaEmpleado);
+    		int salario = Integer.parseInt(stSalario);
     		
     		String frecuenciaPago= JOptionPane.showInputDialog (this, "frecuenciaPago?", "Adicionar frecuenciaPago (STRING)", JOptionPane.QUESTION_MESSAGE);
     		
@@ -688,7 +688,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 
 			parranderos.actualizarCuenta(Long.parseLong(numero),idPA, loginCliente, Integer.parseInt(monto));
 
-
+			String resultado= "Se consignó " + monto + " a la cuenta número "+numero;
+			panelDatos.actualizarInterfaz(resultado);
 
 		}
 		catch(Exception e) {
@@ -735,12 +736,66 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	
 	public void pagarNomina()
 	{
-		String loginGerenteOficina = JOptionPane.showInputDialog (this, "login Gerente Oficina?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-		String numeroOrigen = JOptionPane.showInputDialog (this, "numero Cuenta Origen?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-		parranderos.pagarNomina(loginGerenteOficina, numeroOrigen);
+		try{
+			String loginJefe = JOptionPane.showInputDialog (this, "login jefe?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+			String pa = JOptionPane.showInputDialog (this, "Punto de Atención?", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+			List <VOAsociacionCuenta> lista = parranderos.darVOAsociacionCuenta(loginJefe);
+			List <VOAsociacionCuenta> restantes = parranderos.darVOAsociacionCuenta(loginJefe);
+			String resultado = "En listar Asociaciones";
+			resultado +=  "\n" + listarAsociaciones (lista);
+			panelDatos.sumarInterfaz(resultado);
+			
+			for(int i=0; i<lista.size(); i++) {
+				parranderos.transferirCliente(Long.parseLong(pa), loginJefe, lista.get(i).getNumeroCuentaJefe(), lista.get(i).getNumeroCuentaEmpleado(), lista.get(i).getSalario());
+				panelDatos.actualizarInterfaz("Se pagó el salario del empleado "+ lista.get(i).getLoginEmpleado() + " = "+ lista.get(i).getSalario());
+				restantes.remove(0);
+				resultado+= "Hace falta pagar a los siguientes empleados\n"+ listarAsociacionesRestantes(restantes);
+				panelDatos.sumarInterfaz(resultado);
+			}
+			
+			
+			
+			
+			
+			resultado = "\n Operación terminada";
+			panelDatos.sumarInterfaz(resultado);
+		}
+		
+		catch(Exception e) {
+			String resultado = generarMensajeError(e);
+			
+			panelDatos.sumarInterfaz(resultado);
+			
+		}
+		
+		
+		
 	}
 	
 	
+	private String listarAsociacionesRestantes(List<VOAsociacionCuenta> restantes) {
+		// TODO Auto-generated method stub
+		String resp = "";
+		int i = 1;
+		for (VOAsociacionCuenta tb : restantes)
+		{
+			resp += i++ + ". " + tb.getLoginEmpleado()+" -> salario= " + tb.getSalario()+ "\n";
+		}
+		return resp;
+	}
+
+	private String listarAsociaciones(List<VOAsociacionCuenta> lista) {
+		// TODO Auto-generated method stub
+		String resp = "Las Asociaciones existentes son:\n";
+		int i = 1;
+		for (VOAsociacionCuenta tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
 	public void consultarPrestamos() {
 		try 
 		{
