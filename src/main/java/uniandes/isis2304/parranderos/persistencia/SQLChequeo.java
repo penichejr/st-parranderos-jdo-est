@@ -20,6 +20,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.AsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
 import uniandes.isis2304.parranderos.negocio.GerenteOficina;
@@ -66,7 +67,6 @@ class SQLChequeo
 	
 	public List<GerenteGeneral> chequearGerenteGeneral (PersistenceManager pm, String loginGerenteGeneral) 
 	{
-		System.out.println("entra");
         Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA WHERE LOGIN =?");
         q.setResultClass(GerenteGeneral.class);
         q.setParameters(loginGerenteGeneral);
@@ -75,12 +75,25 @@ class SQLChequeo
 	
 	public List<GerenteOficina> chequearGerenteOficina (PersistenceManager pm, String login) 
 	{
-		System.out.println("entra");
         Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA WHERE LOGIN =?");
         q.setResultClass(GerenteOficina.class);
         q.setParameters(login);
-        System.out.println(login);
 		return (List<GerenteOficina>) q.executeList();
+	}
+	
+	public List<AsociacionCuenta> chequearAsociacionCuenta (PersistenceManager pm, String numeroJefe) 
+	{
+        Query q = pm.newQuery(SQL, "SELECT * FROM A_ASOCIACIONCUENTA WHERE NUMEROCUENTAJEFE =?");
+        q.setResultClass(AsociacionCuenta.class);
+        q.setParameters(numeroJefe);
+		return (List<AsociacionCuenta>) q.executeList();
+	}
+	
+	public long actualizacionCuentaJefe (PersistenceManager pm, String cuentaVieja, String cuentaNueva)
+	{
+        Query q = pm.newQuery(SQL, "UPDATE A_ASOCIACIONCUENTA SET cantsedes = ? WHERE NUMEROCUENTAJEFE = ?");
+        q.setParameters(cuentaNueva, cuentaVieja);
+        return (long) q.executeUnique();
 	}
 	
 	

@@ -437,6 +437,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
+    		String ccJefe = JOptionPane.showInputDialog (this, "cuentaJefe?", "cuentaJefe", JOptionPane.QUESTION_MESSAGE);
+    		if(parranderos.chequearLoginAsociacionCuenta(ccJefe))
+    			System.out.println("es de JEFE");
+    		
     		String loginGerenteOficina= JOptionPane.showInputDialog (this, "loginGerenteOficina?", "loginGerenteOficina", JOptionPane.QUESTION_MESSAGE);
     		
     		if(parranderos.chequearLoginGerenteOficina(loginGerenteOficina)) {

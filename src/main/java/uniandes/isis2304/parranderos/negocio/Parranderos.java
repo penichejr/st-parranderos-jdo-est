@@ -1113,6 +1113,11 @@ public class Parranderos
 	{
         return pp.chequearGerenteOficina(Login);
 	}
+	
+	public boolean chequearLoginAsociacionCuenta (String numeroJefe)
+	{
+        return pp.chequearAsociacionCuenta(numeroJefe);
+	}
 
 	
 

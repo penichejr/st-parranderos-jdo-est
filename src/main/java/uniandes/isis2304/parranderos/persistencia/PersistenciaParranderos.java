@@ -2507,6 +2507,39 @@ public class PersistenciaParranderos
 	}
 
 	
+	
+	
+	public boolean chequearAsociacionCuenta(String numeroJefe) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+        	
+        	
+            tx.begin();
+            System.out.println(tx.getIsolationLevel());
+            List<AsociacionCuenta> lista = sqlChequeo.chequearAsociacionCuenta(pm, numeroJefe); 
+            tx.commit(); 
+            
+
+            return !lista.isEmpty();
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 
 	
 
