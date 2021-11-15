@@ -1,39 +1,32 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class Cajero extends Usuario implements VOCajero {
+public class Cajero implements VOCajero {
 
 
 		private String login;
-		private long idPuntoDeAtencion;
+		private long puntoatencion;
 		
 		
 		
 		
-		public Cajero(String login, String numeroDocumento, String tipoDocumento, String palabraClave, String nombre,
-				 String direccion, String email, String telefono, String ciudad,
-				String departamento, String codigoPostal, long idPO) {
+		public Cajero(String login, long idPO) {
 			
-			super( login,  numeroDocumento,  tipoDocumento,  palabraClave,  nombre,
-					 direccion,  email,  telefono,  ciudad,  departamento,  codigoPostal);
-			// TODO Auto-generated constructor stub
+			this.login=login;
 			
-			this.idPuntoDeAtencion=idPO;
+			this.puntoatencion=idPO;
 		}
 
 
 		public Cajero() {
-			super();
-			// TODO Auto-generated constructor stub
-			this.idPuntoDeAtencion=0;
+			super();	}
+
+
+		public long getPuntoAtencion() {
+			return puntoatencion;
 		}
 
-
-		public long getIdPuntoDeAtencion() {
-			return idPuntoDeAtencion;
-		}
-
-		public void setIdPuntoDeAtencion(long idPuntoDeAtencion) {
-			this.idPuntoDeAtencion = idPuntoDeAtencion;
+		public void setPuntoAtencion(long idPuntoDeAtencion) {
+			this.puntoatencion = idPuntoDeAtencion;
 		}
 
 		
@@ -44,7 +37,8 @@ public class Cajero extends Usuario implements VOCajero {
 			
 		}
 		
-		public void setId(String login) {
+		
+		public void setLogin(String login) {
 			this.login=login;
 		}
 

@@ -6,16 +6,12 @@ public class GerenteOficina extends Usuario implements VOGerenteOficina {
 	
 	
 	public GerenteOficina() {
-		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 
-	public GerenteOficina(String login, String numeroDocumento, String tipoDocumento, String palabraClave,
-			String nombre, String direccion, String email, String telefono, String ciudad,
-			String departamento, String codigoPostal) {
-		super( login,  numeroDocumento,  tipoDocumento,  palabraClave,  nombre,
-				 direccion,  email,  telefono,  ciudad,  departamento,  codigoPostal);
-		// TODO Auto-generated constructor stub
+	public GerenteOficina(String login) {
+		this.login = login;
 	}
 
 	public String getLogin()

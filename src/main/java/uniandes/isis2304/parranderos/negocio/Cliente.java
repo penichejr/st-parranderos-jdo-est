@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class Cliente extends Usuario implements VOCliente{
+public class Cliente implements VOCliente{
 	
 	private String login;
 	private String tipoCliente;
@@ -8,18 +8,16 @@ public class Cliente extends Usuario implements VOCliente{
 	
 
 	public Cliente() {
-		super();
+		
 		// TODO Auto-generated constructor stub
 		tipoCliente=null;
+		this.login="";
 	}
 
-	public Cliente(String login, String numeroDocumento, String tipoDocumento, String palabraClave, String nombre,
-			 String direccion, String email, String telefono, String ciudad, String departamento,
-			String codigoPostal, String tipoCliente) {
-		super( login,  numeroDocumento,  tipoDocumento,  palabraClave,  nombre,
-				 direccion,  email,  telefono,  ciudad,  departamento,  codigoPostal);
-		// TODO Auto-generated constructor stub
+	public Cliente(String login, String tipoCliente) {
+		
 		this.tipoCliente = tipoCliente;
+		this.login = login;
 	}
 
 	public String getLogin() {
