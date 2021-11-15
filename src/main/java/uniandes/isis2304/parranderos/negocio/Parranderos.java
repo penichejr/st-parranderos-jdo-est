@@ -100,10 +100,10 @@ public class Parranderos
         return resp;
 	}
 	
-	public long eliminarCuentaPorNumeroUnico (long numeroUnico)
+	public long eliminarCuentaPorNumeroUnico (String login, long numeroUnico)
 	{
 		log.info ("Eliminando cuenta por numeroUnico: " + numeroUnico);
-        long resp = pp.eliminarCuentaPorNumeroUnico(numeroUnico);		
+        long resp = pp.eliminarCuentaPorNumeroUnico(login, numeroUnico, fechaActual());		
         log.info ("Eliminando Prestamo por numeroUnico: " + resp + " tuplas eliminadas");
         return resp;
 	}
@@ -1107,6 +1107,11 @@ public class Parranderos
 	public boolean chequearLoginGerenteGeneral (String Login)
 	{
         return pp.chequearGerenteGeneral(Login);
+	}
+	
+	public boolean chequearLoginGerenteOficina (String Login)
+	{
+        return pp.chequearGerenteOficina(Login);
 	}
 
 	

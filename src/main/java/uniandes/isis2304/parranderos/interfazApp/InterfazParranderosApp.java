@@ -437,21 +437,33 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String numeroUnico = JOptionPane.showInputDialog (this, "Numero de la cuenta?", "Borrar cuenta", JOptionPane.QUESTION_MESSAGE);
-    		if (numeroUnico != null)
-    		{
-    			long idTipo = Long.valueOf (numeroUnico);
-    			long tbEliminados = parranderos.eliminarCuentaPorNumeroUnico(idTipo);
+    		String loginGerenteOficina= JOptionPane.showInputDialog (this, "loginGerenteOficina?", "loginGerenteOficina", JOptionPane.QUESTION_MESSAGE);
+    		
+    		if(parranderos.chequearLoginGerenteOficina(loginGerenteOficina)) {
+    			
+    			String idPuntoAtencion = JOptionPane.showInputDialog (this, "idPuntoAtencion?", "Punto de atencion", JOptionPane.QUESTION_MESSAGE);
+        		String numeroUnico = JOptionPane.showInputDialog (this, "Numero de la cuenta?", "Borrar cuenta", JOptionPane.QUESTION_MESSAGE);
+        		if (numeroUnico != null)
+        		{
+        			long idTipo = Long.valueOf (numeroUnico);
+        			long tbEliminados = parranderos.eliminarCuentaPorNumeroUnico(idPuntoAtencion,idTipo);
 
-    			String resultado = "En eliminar Cuenta\n\n";
-    			resultado += tbEliminados + " prestamo eliminado\n";
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
+        			String resultado = "En eliminar Cuenta\n\n";
+        			resultado += tbEliminados + " prestamo eliminado\n";
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        		}
+        		else
+        		{
+        			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+        		}
+    			
     		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		else {
+    			JOptionPane.showMessageDialog(this, loginGerenteOficina+" No es Gerente De Oficina");
     		}
+    		
+    		
 		} 
     	catch (Exception e) 
     	{

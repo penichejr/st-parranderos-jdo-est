@@ -162,11 +162,10 @@ CREATE TABLE A_PAGOCUOTAEXTRAORDINARIA
 
     create table A_CERRARCUENTA(
         idPuntoAtencion number,
-        loginCliente VARCHAR2(255 BYTE),
         numeroCuenta number,
         fecha date, 
 
-        CONSTRAINT CERRARCUENTA_PK PRIMARY KEY(idPuntoAtencion, loginCliente, numeroCuenta, fecha)
+        CONSTRAINT CERRARCUENTA_PK PRIMARY KEY(idPuntoAtencion, numeroCuenta, fecha)
     );
 
     create table A_RENOVARCDT(
@@ -331,11 +330,6 @@ CREATE TABLE A_PAGOCUOTAEXTRAORDINARIA
     ALTER TABLE A_CERRARCUENTA
     ADD CONSTRAINT FK_IDPUNTODEATENCION
     FOREIGN KEY (idPuntoAtencion) REFERENCES A_PUNTODEATENCION(id)
-    ENABLE;
-
-    ALTER TABLE A_CERRARCUENTA
-    ADD CONSTRAINT FK_LOGINCLIENTEENCERRAR
-    FOREIGN KEY (loginCliente) REFERENCES A_CLIENTE(login)
     ENABLE;
     
     ALTER TABLE A_RENOVARCDT
