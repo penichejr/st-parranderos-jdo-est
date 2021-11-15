@@ -171,6 +171,19 @@ public class Parranderos
         log.info ("Generando los VO de los Puntos de Atencion: " + voCuentas.size() + " existentes");
         return voCuentas;
 	}
+	
+	public List<VOAsociacionCuenta> darVOAsociacionCuenta(String loginJefe) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las asociaciones");        
+        List<VOAsociacionCuenta> voAsociacionCuentas = new LinkedList<VOAsociacionCuenta> ();
+        for (AsociacionCuenta tb : pp.darAsociaciones(loginJefe))
+        {
+        	voAsociacionCuentas.add (tb);
+        }
+        log.info ("Generando los VO de los Asociacion Cuenta: " + voAsociacionCuentas.size() + " existentes");
+        return voAsociacionCuentas;
+	}
+	
 	public List<VOPrestamo> darVOPrestamos (String loginGerenteGeneral)
 	{
 		log.info ("Generando los VO de los prestamos");        
@@ -309,7 +322,7 @@ public class Parranderos
 		
 	}
 	
-	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) {
+	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto) throws Exception {
 		// TODO Auto-generated method stub
 		Timestamp fechaCreacion =fechaActual();
         log.info ("Operación transferencia Cuenta: " );
@@ -1038,6 +1051,8 @@ public class Parranderos
         log.info ("Limpiando la BD de Parranderos: Listo!");
         return borrrados;
 	}
+
+	
 
 	
 

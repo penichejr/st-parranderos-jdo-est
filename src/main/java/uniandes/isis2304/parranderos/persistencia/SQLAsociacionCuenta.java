@@ -20,6 +20,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.AsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 
 /**
@@ -182,6 +183,14 @@ class SQLAsociacionCuenta
 		q.setParameters(idAsociacionCuenta);
 		int valor = (int) q.executeUnique();
 		return monto>valor;
+	}
+
+	public List<AsociacionCuenta> darAsociacionesJefe(PersistenceManager pm, String loginJefe) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_ASOCIACIONCUENTA WHERE LOGINJEFE = ?");
+		q.setResultClass(AsociacionCuenta.class);
+		q.setParameters(loginJefe);
+		return (List<AsociacionCuenta>) q.executeList();
 	}
 	
 }

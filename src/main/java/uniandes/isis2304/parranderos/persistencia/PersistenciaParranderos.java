@@ -36,8 +36,8 @@ import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
 import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
 import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
 import uniandes.isis2304.parranderos.negocio.Administrador;
-import uniandes.isis2304.parranderos.negocio.AsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.AprobarPrestamo;
+import uniandes.isis2304.parranderos.negocio.AsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Bebida;
@@ -150,8 +150,9 @@ public class PersistenciaParranderos
 	
 	private SQLCliente sqlCliente;
 	
-	private SQLAsociacionCuenta sqlAsociacionCuenta;
 	private SQLAprobarPrestamo sqlAprobarPrestamo;
+	
+	private SQLAsociacionCuenta sqlAsociacionCuenta;
 	
 	
 	
@@ -298,9 +299,9 @@ public class PersistenciaParranderos
 		sqlGerenteGeneral = new SQLGerenteGeneral(this);
 		sqlGerenteOficina = new SQLGerenteOficina(this);
 		sqlCliente = new SQLCliente(this);
-		sqlAsociacionCuenta = new SQLAsociacionCuenta(this);
 		
 		sqlAprobarPrestamo= new SQLAprobarPrestamo(this);
+		sqlAsociacionCuenta= new SQLAsociacionCuenta(this);
 		
 
 	}
@@ -435,19 +436,12 @@ public class PersistenciaParranderos
 	{
 		return tablas.get (22);
 	}
-
 	public String darTablaAprobarPrestamo() {
 		return tablas.get (23);
 	}
-	
-	public String darTablaAsociacionCuenta ()
-	{
-		return tablas.get (24);
+	public String darTablaAsociacionCuenta() {
+		return tablas.get(24);
 	}
-
-
-
-
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -474,37 +468,6 @@ public class PersistenciaParranderos
 			return je.getNestedExceptions() [0].getMessage();
 		}
 		return resp;
-	}
-	
-	
-	public AsociacionCuenta adicionarAsociacionCuenta(String loginJefe, String loginEmpleado, long cuentaJefe, long cuentaEmpleado, int salario, String frecuenciaPago)
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            long tuplasInsertadas = sqlAsociacionCuenta.adicionarAsociacionCuenta(pm, loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
-            tx.commit(); 
-            
-            log.trace ("Inserción de asociacionCuenta: Login Jefe " + loginJefe + ": y " + tuplasInsertadas + " tuplas insertadas");
-            
-            return new AsociacionCuenta(loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
 	}
 
 	
@@ -635,6 +598,38 @@ public class PersistenciaParranderos
         }
 	}
 	
+	public AsociacionCuenta adicionarAsociacionCuenta(String loginJefe, String loginEmpleado, long cuentaJefe,
+			long cuentaEmpleado, int salario, String frecuenciaPago) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            
+            long tuplasInsertadas = sqlAsociacionCuenta.adicionarAsociacionCuenta(pm, loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+            tx.commit();
+            
+            log.trace ("Inserción de Asociacion: jefe: " + loginJefe);
+            
+            return new AsociacionCuenta(loginJefe, loginEmpleado, cuentaJefe, cuentaEmpleado, salario, frecuenciaPago);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
 	
 	/**
 	 * Método que consulta todas las tuplas en la tabla TipoBebida
@@ -648,6 +643,25 @@ public class PersistenciaParranderos
 	public List<Cuenta> darCuentas ()
 	{
 		return sqlCuenta.darCuentas(pmf.getPersistenceManager());
+	}
+	
+	
+	public List<AsociacionCuenta> darAsociaciones(String loginJefe) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+			
+			return sqlAsociacionCuenta.darAsociacionesJefe(pm, loginJefe);
+
+			
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
 	}
 	
 
@@ -1033,7 +1047,7 @@ public class PersistenciaParranderos
         }
 	}
 	
-	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) {
+	public void transferirCliente(long idPA, String loginCliente, long numeroOrigen, long numeroDestino, int monto, Timestamp fecha) throws Exception {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1060,6 +1074,7 @@ public class PersistenciaParranderos
         {
 //        	e.printStackTrace();
         	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	throw new Exception("No tiene saldo");
 //        	return null;
         }
         finally
@@ -2360,6 +2375,10 @@ public class PersistenciaParranderos
         }
 		
 	}
+
+	
+
+	
 
 	
 

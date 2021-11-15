@@ -160,14 +160,14 @@ class SQLCuenta
 
 	public long actualizarSaldo(PersistenceManager pm, long numero, int monto) {
 		// TODO Auto-generated method stub
-		 Query q = pm.newQuery(SQL, "UPDATE A_CUENTA SET SALDO = SALDO + ? " +"WHERE NUMEROUNICO = ? " + "SAVEPOINT sp;");
+		 Query q = pm.newQuery(SQL, "UPDATE A_CUENTA SET SALDO = SALDO + ? " +"WHERE NUMEROUNICO = ?" );
 	        q.setParameters(monto, numero);
 	        return (long) q.executeUnique();
 	}
 
 	public long reducirSaldo(PersistenceManager pm, long numero, int monto) {
 		// TODO Auto-generated method stub
-		Query q = pm.newQuery(SQL, "UPDATE A_CUENTA SET SALDO = SALDO - ? " +"WHERE NUMEROUNICO = ? "+ "SAVEPOINT sp;");
+		Query q = pm.newQuery(SQL, "UPDATE A_CUENTA SET SALDO = SALDO - ? " +"WHERE NUMEROUNICO = ?");
         q.setParameters(monto, numero);
         return (long) q.executeUnique();
 	}
