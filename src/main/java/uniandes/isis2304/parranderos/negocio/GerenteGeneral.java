@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class GerenteGeneral extends Usuario implements VOGerenteGeneral {
+public class GerenteGeneral implements VOGerenteGeneral {
 
 	public String login;
 	
@@ -11,20 +11,27 @@ public class GerenteGeneral extends Usuario implements VOGerenteGeneral {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GerenteGeneral(String login, String numeroDocumento, String tipoDocumento, String palabraClave,
-			String nombre, String direccion, String email, String telefono, String ciudad,
-			String departamento, String codigoPostal) {
-		super( login,  numeroDocumento,  tipoDocumento,  palabraClave,  nombre,
-				 direccion,  email,  telefono,  ciudad,  departamento,  codigoPostal);
+	public GerenteGeneral(String login) {
+		this.login=login;
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getLogin()
-	{
-		return login;
-		
-	}
 	
+	
+	/**
+	 * @return the login
+	 */
+	public String getLogin() {
+		return login;
+	}
+
+	/**
+	 * @param login the login to set
+	 */
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	public void setId(String id) {
 		this.login=id;
 	}

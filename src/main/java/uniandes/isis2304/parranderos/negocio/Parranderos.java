@@ -1065,6 +1065,12 @@ public class Parranderos
         log.info ("Limpiando la BD de Parranderos: Listo!");
         return borrrados;
 	}
+	
+	
+	public boolean chequearLoginGerenteGeneral (String Login)
+	{
+        return pp.chequearGerenteGeneral(Login);
+	}
 
 	
 

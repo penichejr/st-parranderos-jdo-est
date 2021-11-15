@@ -93,6 +93,8 @@ public class PersistenciaParranderos
 	 */
 	private PersistenceManagerFactory pmf;
 	
+	private SQLChequeo sqlChequeo;
+	
 	
 	private List <String> tablas;
 	
@@ -303,6 +305,8 @@ public class PersistenciaParranderos
 		sqlAprobarPrestamo= new SQLAprobarPrestamo(this);
 		sqlAsociacionCuenta= new SQLAsociacionCuenta(this);
 		
+		sqlChequeo= new SQLChequeo(this);
+		
 
 	}
 
@@ -461,6 +465,7 @@ public class PersistenciaParranderos
 	 */
 	private String darDetalleException(Exception e) 
 	{
+		System.out.println(e.getMessage());
 		String resp = "";
 		if (e.getClass().getName().equals("javax.jdo.JDODataStoreException"))
 		{
@@ -859,7 +864,7 @@ public class PersistenciaParranderos
             
             log.trace ("Inserción de Gerente general: " + login + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new GerenteGeneral (login, numeroDocumento, tipoDocumento, clave, nombre, direccion, email, telefono, ciudad, departamento, codigoPostal);
+            return new GerenteGeneral (login);
         }
         catch (Exception e)
         {
@@ -2380,6 +2385,34 @@ public class PersistenciaParranderos
             pm.close();
         }
 		
+	}
+	
+	
+	public boolean chequearGerenteGeneral(String Login) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            List<GerenteGeneral> lista = sqlPrestamo.chequearGerenteGeneral(pm, Login); 
+            tx.commit(); 
+
+            return !lista.isEmpty();
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 
 	

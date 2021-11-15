@@ -1,37 +1,33 @@
-08:47:25,476 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-08:47:25,477 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-08:47:25,507 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-08:48:03,988 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Puntos de Atencion
-08:48:04,132 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Puntos de Atencion: 1 existentes
-08:48:50,540 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-08:48:50,541 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-08:48:50,570 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-08:49:44,819 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-08:49:44,820 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-08:49:44,851 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-08:51:06,180 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-08:51:06,180 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-08:51:06,211 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-08:51:11,364 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-08:51:11,568 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 1 existentes
-10:40:58,259 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-10:40:58,260 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-10:40:58,288 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-10:41:04,209 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:41:04,345 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 1 existentes
-10:49:29,680 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-10:49:29,680 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-10:49:29,749 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-10:49:39,993 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:49:40,154 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 1 existentes
-10:49:46,831 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:49:46,908 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 0 existentes
-10:49:52,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:49:52,123 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 1 existentes
-10:54:02,555 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-10:54:02,556 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-10:54:02,590 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-10:54:12,488 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:54:12,648 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 1 existentes
-10:54:26,409 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
-10:54:26,492 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 0 existentes
+14:21:34,851 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+
+14:23:47,895 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:23:47,897 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:23:47,930 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:24:23,102 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+
+14:27:17,872 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:27:17,873 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:27:17,929 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:29:26,886 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:29:26,887 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:29:26,919 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:29:34,195 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+
+14:30:13,601 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:30:13,603 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:30:13,631 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:32:34,084 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:32:34,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:32:34,116 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:34:08,293 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:34:08,294 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:34:08,325 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:34:56,318 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+14:34:56,404 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 0 existentes
+14:39:39,485 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:39:39,487 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:39:39,542 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:40:16,511 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+14:40:16,597 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 0 existentes
+14:40:37,357 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+14:40:37,440 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 0 existentes

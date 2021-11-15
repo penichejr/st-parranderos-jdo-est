@@ -60,6 +60,7 @@ import uniandes.isis2304.parranderos.negocio.VOPrestamo;
 import uniandes.isis2304.parranderos.negocio.VOPuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
 import uniandes.isis2304.parranderos.negocio.VOUsuario;
+import uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos;    
 
 /**
  * Clase principal de la interfaz
@@ -117,7 +118,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
      * Menú de la aplicación
      */
     private JMenuBar menuBar;
-
+    
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
@@ -902,6 +903,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
+    		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
+    		
+    		if(parranderos.chequearLoginGerenteGeneral(login))
+    			System.out.println("funciona");
     		String tipo = JOptionPane.showInputDialog (this, "tipoPrestamo?", "Tipo Prestamo (String) ", JOptionPane.QUESTION_MESSAGE);
     		String saldoMinimo = JOptionPane.showInputDialog (this, "saldoMinimo?", "Saldo minimi (Int) ", JOptionPane.QUESTION_MESSAGE);
 			List <VOPrestamo> lista = parranderos.darVOPrestamo(tipo, saldoMinimo);

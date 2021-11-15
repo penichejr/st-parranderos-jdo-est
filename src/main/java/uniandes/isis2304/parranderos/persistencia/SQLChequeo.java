@@ -30,7 +30,7 @@ import uniandes.isis2304.parranderos.negocio.Prestamo;
  * 
  * @author Germán Bravo
  */
-class SQLPrestamo 
+class SQLChequeo 
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -57,10 +57,25 @@ class SQLPrestamo
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLPrestamo (PersistenciaParranderos pp)
+	public SQLChequeo (PersistenciaParranderos pp)
 	{
 		this.pp = pp;
 	}
+	
+	
+	public List<GerenteGeneral> chequearGerenteGeneral (PersistenceManager pm, String loginGerenteGeneral) 
+	{
+		System.out.println("entra");
+        Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA WHERE LOGIN =?");
+        q.setResultClass(GerenteGeneral.class);
+        q.setParameters(loginGerenteGeneral);
+		return (List<GerenteGeneral>) q.executeList();
+	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de Parranderos
@@ -201,17 +216,6 @@ class SQLPrestamo
 		q.setResultClass(Prestamo.class);
 		q.setParameters(long1);
 		return (Prestamo) q.executeList();
-	}
-	
-	
-	public List<GerenteGeneral> chequearGerenteGeneral (PersistenceManager pm, String login) 
-	{
-		System.out.println("entra");
-        Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEGENERAL WHERE LOGIN =?");
-        q.setResultClass(GerenteGeneral.class);
-        q.setParameters(login);
-        System.out.println(login);
-		return (List<GerenteGeneral>) q.executeList();
 	}
 	
 }
