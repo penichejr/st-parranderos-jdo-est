@@ -33,6 +33,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.parranderos.persistencia.SQLConsignarCuenta;
 import uniandes.isis2304.parranderos.persistencia.SQLPagoCuota;
 import uniandes.isis2304.parranderos.persistencia.SQLTransferenciaCuenta;
@@ -202,6 +203,7 @@ public class PersistenciaParranderos
 		tablas.add("CLIENTE");
 		tablas.add("A_APROBARPRESTAMO");
 		tablas.add("A_ASOCIACIONCUENTA");
+		tablas.add("A_CERRARCUENTA");
 
 }
 
@@ -449,6 +451,9 @@ public class PersistenciaParranderos
 	public String darTablaAsociacionCuenta() {
 		return tablas.get(24);
 	}
+	public String darTablaCerrarCuenta() {
+		return tablas.get(25);
+	}
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -490,6 +495,9 @@ public class PersistenciaParranderos
             System.out.println("inicia transaccion");
             long resp = sqlPrestamo.eliminarPrestamoPorId(pm, idPrestamo); 
             System.out.println("inicia");
+            
+            
+            
             tx.commit();
             System.out.println("llega");
 
@@ -512,7 +520,7 @@ public class PersistenciaParranderos
         }
 	}
 	
-	public long eliminarCuentaPorNumeroUnico (long numeroUnico) 
+	public long eliminarCuentaPorNumeroUnico (String puntoDeAtencion, long numeroUnico, Timestamp fecha) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -520,6 +528,9 @@ public class PersistenciaParranderos
         {
             tx.begin();
             long resp = sqlCuenta.eliminarCuentaPorNumeroUnico(pm, numeroUnico); 
+            
+            sqlCuenta.agregarCuentaEliminada(pm, puntoDeAtencion, numeroUnico, fecha);
+            
             tx.commit(); 
 
             return resp;
@@ -2441,6 +2452,39 @@ public class PersistenciaParranderos
             tx.begin();
             System.out.println(tx.getIsolationLevel());
             List<GerenteGeneral> lista = sqlPrestamo.chequearGerenteGeneral(pm, Login); 
+            tx.commit(); 
+            
+
+            return !lista.isEmpty();
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	
+	
+	public boolean chequearGerenteOficina(String Login) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+        	
+        	
+            tx.begin();
+            System.out.println(tx.getIsolationLevel());
+            List<GerenteOficina> lista = sqlChequeo.chequearGerenteOficina(pm, Login); 
             tx.commit(); 
             
 

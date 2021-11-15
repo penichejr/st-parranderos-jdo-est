@@ -105,6 +105,13 @@ class SQLCuenta
         q.setParameters(numeroCuenta);
         return (long) q.executeUnique();               
 	}
+	
+	public long agregarCuentaEliminada (PersistenceManager pm, String idPuntoDeAtencion, long numeroCuenta, Timestamp fecha)
+	{
+        Query q = pm.newQuery(SQL, "INSERT INTO A_CERRARCUENTA values (?, ?, ?)");
+        q.setParameters(idPuntoDeAtencion, numeroCuenta, fecha);
+        return (long) q.executeUnique();               
+	}
      
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de UN BAR de la 

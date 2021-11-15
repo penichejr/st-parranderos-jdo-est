@@ -22,6 +22,7 @@ import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Bar;
 import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
+import uniandes.isis2304.parranderos.negocio.GerenteOficina;
 import uniandes.isis2304.parranderos.negocio.Prestamo;
 
 /**
@@ -70,6 +71,16 @@ class SQLChequeo
         q.setResultClass(GerenteGeneral.class);
         q.setParameters(loginGerenteGeneral);
 		return (List<GerenteGeneral>) q.executeList();
+	}
+	
+	public List<GerenteOficina> chequearGerenteOficina (PersistenceManager pm, String login) 
+	{
+		System.out.println("entra");
+        Query q = pm.newQuery(SQL, "SELECT * FROM A_GERENTEOFICINA WHERE LOGIN =?");
+        q.setResultClass(GerenteOficina.class);
+        q.setParameters(login);
+        System.out.println(login);
+		return (List<GerenteOficina>) q.executeList();
 	}
 	
 	

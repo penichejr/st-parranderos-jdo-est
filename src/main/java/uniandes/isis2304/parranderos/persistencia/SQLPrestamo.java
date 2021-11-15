@@ -87,6 +87,8 @@ class SQLPrestamo
         q.setParameters(idPrestamo);
         return (long) q.executeUnique();            
 	}
+	
+	
 	public long reducirSaldo(PersistenceManager pm, long idPrestamo, int monto) {
 		// TODO Auto-generated method stub
 		Query q = pm.newQuery(SQL, "UPDATE A_PRESTAMO SET SALDO = SALDO - ? " +"WHERE ID = ?");
