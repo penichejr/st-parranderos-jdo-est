@@ -2483,7 +2483,6 @@ public class PersistenciaParranderos
         	
         	
             tx.begin();
-            System.out.println(tx.getIsolationLevel());
             List<GerenteOficina> lista = sqlChequeo.chequearGerenteOficina(pm, Login); 
             tx.commit(); 
             
@@ -2517,7 +2516,6 @@ public class PersistenciaParranderos
         	
         	
             tx.begin();
-            System.out.println(tx.getIsolationLevel());
             List<AsociacionCuenta> lista = sqlChequeo.chequearAsociacionCuenta(pm, numeroJefe); 
             tx.commit(); 
             
@@ -2539,6 +2537,34 @@ public class PersistenciaParranderos
             pm.close();
         }
 	}
+	
+	
+	public void reemplazarCuentaJefe(String ccJefe, String ccJefeNuevo) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            sqlChequeo.actualizacionCuentaJefe(pm, ccJefe, ccJefeNuevo);
+            tx.commit(); 
+
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	
 	
 
 	

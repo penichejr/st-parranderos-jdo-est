@@ -437,9 +437,6 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String ccJefe = JOptionPane.showInputDialog (this, "cuentaJefe?", "cuentaJefe", JOptionPane.QUESTION_MESSAGE);
-    		if(parranderos.chequearLoginAsociacionCuenta(ccJefe))
-    			System.out.println("es de JEFE");
     		
     		String loginGerenteOficina= JOptionPane.showInputDialog (this, "loginGerenteOficina?", "loginGerenteOficina", JOptionPane.QUESTION_MESSAGE);
     		
@@ -449,13 +446,19 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         		String numeroUnico = JOptionPane.showInputDialog (this, "Numero de la cuenta?", "Borrar cuenta", JOptionPane.QUESTION_MESSAGE);
         		if (numeroUnico != null)
         		{
-        			long idTipo = Long.valueOf (numeroUnico);
-        			long tbEliminados = parranderos.eliminarCuentaPorNumeroUnico(idPuntoAtencion,idTipo);
+        			if(parranderos.chequearLoginAsociacionCuenta(numeroUnico)) {
+        				String ccJefeNuevo= JOptionPane.showInputDialog (this, "numeroCuentaReemplazo?", "numeroCuentaReemplazo", JOptionPane.QUESTION_MESSAGE);
+        				parranderos.reemplazarCuentaJefe(numeroUnico, ccJefeNuevo);
+        			}
+        			
+        			long numeroCuenta = Long.valueOf (numeroUnico);
+        			long tbEliminados = parranderos.eliminarCuentaPorNumeroUnico(idPuntoAtencion,numeroCuenta);
 
         			String resultado = "En eliminar Cuenta\n\n";
         			resultado += tbEliminados + " prestamo eliminado\n";
         			resultado += "\n Operación terminada";
         			panelDatos.actualizarInterfaz(resultado);
+        			
         		}
         		else
         		{

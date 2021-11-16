@@ -1118,6 +1118,11 @@ public class Parranderos
 	{
         return pp.chequearAsociacionCuenta(numeroJefe);
 	}
+	
+	public void reemplazarCuentaJefe (String ccJefe, String ccJefeNuevo)
+	{
+        pp.reemplazarCuentaJefe(ccJefe, ccJefeNuevo);
+	}
 
 	
 

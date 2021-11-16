@@ -91,7 +91,7 @@ class SQLChequeo
 	
 	public long actualizacionCuentaJefe (PersistenceManager pm, String cuentaVieja, String cuentaNueva)
 	{
-        Query q = pm.newQuery(SQL, "UPDATE A_ASOCIACIONCUENTA SET cantsedes = ? WHERE NUMEROCUENTAJEFE = ?");
+        Query q = pm.newQuery(SQL, "UPDATE A_ASOCIACIONCUENTA SET NUMEROCUENTAJEFE = ? WHERE NUMEROCUENTAJEFE = ?");
         q.setParameters(cuentaNueva, cuentaVieja);
         return (long) q.executeUnique();
 	}
