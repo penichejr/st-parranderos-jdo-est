@@ -151,62 +151,6 @@ public class PrestamoTest
 		}
 	}
 
-    /**
-     * Método de prueba de la restricción de unicidad sobre el nombre de Prestamo
-     */
-	@Test
-	public void unicidadPrestamoTest() 
-	{
-    	// Probar primero la conexión a la base de datos
-		try
-		{
-			log.info ("Probando la restricción de UNICIDAD del nombre del tipo de bebida");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_A));
-		}
-		catch (Exception e)
-		{
-//			e.printStackTrace();
-			log.info ("Prueba de UNICIDAD de Prestamo incompleta. No se pudo conectar a la base de datos !!. La excepción generada es: " + e.getClass ().getName ());
-			log.info ("La causa es: " + e.getCause ().toString ());
-
-			String msg = "Prueba de UNICIDAD de Prestamo incompleta. No se pudo conectar a la base de datos !!.\n";
-			msg += "Revise el log de parranderos y el de datanucleus para conocer el detalle de la excepción";
-			System.out.println (msg);
-			fail (msg);
-		}
-		
-		// Ahora si se pueden probar las operaciones
-		try
-		{
-			// Lectura de los tipos de bebida con la tabla vacía
-			List <VOPrestamo> lista = parranderos.darVOTodosPrestamos();
-			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
-
-			// Lectura de los tipos de bebida con un tipo de bebida adicionado
-			String nombrePrestamo1 = "Vino tinto";
-			VOPrestamo Prestamo1 = parranderos.adicionarPrestamo ("VIVIENDA", 0,0,0,0,0,0, "u4");
-			lista = parranderos.darVOTodosPrestamos();
-			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
-
-			VOPrestamo Prestamo2 = parranderos.adicionarPrestamo ("VIVIENDA", 0,0,0,0,0,0, "u4");
-			assertNull ("No puede adicionar dos tipos de bebida con el mismo nombre !!", Prestamo2);
-		}
-		catch (Exception e)
-		{
-//			e.printStackTrace();
-			String msg = "Error en la ejecución de las pruebas de UNICIDAD sobre la tabla Prestamo.\n";
-			msg += "Revise el log de parranderos y el de datanucleus para conocer el detalle de la excepción";
-			System.out.println (msg);
-
-    		fail ("Error en las pruebas de UNICIDAD sobre la tabla Prestamo");
-		}    				
-		finally
-		{
-			parranderos.limpiarParranderos ();
-    		parranderos.cerrarUnidadPersistencia ();    		
-		}
-	}
-
 	/* ****************************************************************
 	 * 			Métodos de configuración
 	 *****************************************************************/
