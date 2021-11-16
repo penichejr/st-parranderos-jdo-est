@@ -224,4 +224,12 @@ class SQLPrestamo
 		return (List<Prestamo>) q.executeList();
 	}
 	
+	
+	public List<Prestamo> darTodosPrestamos(PersistenceManager pm) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PRESTAMO");
+		q.setResultClass(Prestamo.class);
+		return (List<Prestamo>) q.executeList();
+	}
+	
 }

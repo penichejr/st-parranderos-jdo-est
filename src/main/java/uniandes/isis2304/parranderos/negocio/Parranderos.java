@@ -184,6 +184,17 @@ public class Parranderos
         return voPuntos;
 	}
 	
+	public List<VOPrestamo> darVOTodosPrestamos ()
+	{
+		log.info ("Generando los VO de los Prestamo");        
+        List<VOPrestamo> voPuntos = new LinkedList<VOPrestamo> ();
+        for (Prestamo tb : pp.darTodosPrestamos())
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los Prestamo: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
 	
 	public List<VOCuenta> darVOCuentas ()
 	{
@@ -208,19 +219,6 @@ public class Parranderos
         log.info ("Generando los VO de los Asociacion Cuenta: " + voAsociacionCuentas.size() + " existentes");
         return voAsociacionCuentas;
 	}
-	
-	/*
-	public List<VOPrestamo> darVOPrestamos (String loginGerenteGeneral)
-	{
-		log.info ("Generando los VO de los prestamos");        
-        List<VOPrestamo> voPrestamos = new LinkedList<VOPrestamo> ();
-        for (Prestamo tb : pp.darPrestamos(loginGerenteGeneral))
-        {
-        	voPrestamos.add (tb);
-        }
-        log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
-        return voPrestamos;
-	}*/
 	
 	public List<VOPrestamo> darVOPrestamosOficina(String loginGerenteOficina) {
 		// TODO Auto-generated method stub
@@ -257,19 +255,6 @@ public class Parranderos
         log.info ("Generando los VO de las Transferencias: " + voTransferencias.size() + " existentes");
         return voTransferencias;
 	}
-
-	/*
-	public List<VOPrestamo> darVOPrestamosCliente(String loginCliente) {
-		// TODO Auto-generated method stub
-		log.info ("Generando los VO de los prestamos");        
-        List<VOPrestamo> voPrestamos = new LinkedList<VOPrestamo> ();
-        for (Prestamo tb : pp.darPrestamosCliente(loginCliente))
-        {
-        	voPrestamos.add (tb);
-        }
-        log.info ("Generando los VO de los Prestamos: " + voPrestamos.size() + " existentes");
-        return voPrestamos;
-	}*/
 	
 	
 	public TipoBebida adicionarTipoBebida (String nombre)
