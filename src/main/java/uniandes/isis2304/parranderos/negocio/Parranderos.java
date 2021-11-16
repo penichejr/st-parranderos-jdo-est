@@ -232,11 +232,11 @@ public class Parranderos
         return voPrestamos;
 	}
 	
-	public List<VOConsignarCuenta> darVOConsignarCuenta() {
+	public List<VOConsignarCuenta> darVOConsignarCuenta(String login) {
 		// TODO Auto-generated method stub
 		log.info ("Generando los VO de las consignaciones");        
         List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
-        for (ConsignarCuenta tb : pp.darConsignaciones())
+        for (ConsignarCuenta tb : pp.darConsignaciones(login))
         {
         	voConsignar.add (tb);
         }
@@ -244,11 +244,59 @@ public class Parranderos
         return voConsignar;
 	}
 
-	public List<VOTransferenciaCuenta> darVOTransferenciaCuenta() {
+	public List<VOTransferenciaCuenta> darVOTransferenciaCuenta(String login) {
 		// TODO Auto-generated method stub
 		log.info ("Generando los VO de las transferencias");        
         List<VOTransferenciaCuenta> voTransferencias = new LinkedList<VOTransferenciaCuenta> ();
-        for (TransferenciaCuenta tb : pp.darTransferencias())
+        for (TransferenciaCuenta tb : pp.darTransferencias(login))
+        {
+        	voTransferencias.add (tb);
+        }
+        log.info ("Generando los VO de las Transferencias: " + voTransferencias.size() + " existentes");
+        return voTransferencias;
+	}
+	
+	public List<VOConsignarCuenta> darVOConsignarCuentaOficina(String login) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las consignaciones");        
+        List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignacionesOficina(login))
+        {
+        	voConsignar.add (tb);
+        }
+        log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
+        return voConsignar;
+	}
+
+	public List<VOConsignarCuenta> darVOConsignarCuentaCliente(String login) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las consignaciones");        
+        List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignacionesCliente(login))
+        {
+        	voConsignar.add (tb);
+        }
+        log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
+        return voConsignar;
+	}
+
+	public List<VOTransferenciaCuenta> darVOTransferenciaCuentaOficina(String login) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las transferencias");        
+        List<VOTransferenciaCuenta> voTransferencias = new LinkedList<VOTransferenciaCuenta> ();
+        for (TransferenciaCuenta tb : pp.darTransferenciasOficina(login))
+        {
+        	voTransferencias.add (tb);
+        }
+        log.info ("Generando los VO de las Transferencias: " + voTransferencias.size() + " existentes");
+        return voTransferencias;
+	}
+
+	public List<VOTransferenciaCuenta> darVOTransferenciaCuentaCliente(String login) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las transferencias");        
+        List<VOTransferenciaCuenta> voTransferencias = new LinkedList<VOTransferenciaCuenta> ();
+        for (TransferenciaCuenta tb : pp.darTransferenciasCliente(login))
         {
         	voTransferencias.add (tb);
         }
@@ -1108,6 +1156,8 @@ public class Parranderos
 	{
         pp.reemplazarCuentaJefe(ccJefe, ccJefeNuevo);
 	}
+
+	
 
 	
 

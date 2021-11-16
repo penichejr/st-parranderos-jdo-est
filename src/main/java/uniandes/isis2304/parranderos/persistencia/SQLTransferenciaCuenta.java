@@ -6,6 +6,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.ConsignarCuenta;
 import uniandes.isis2304.parranderos.negocio.TransferenciaCuenta;
 
 /**
@@ -62,6 +63,16 @@ class SQLTransferenciaCuenta
 		 Query q = pm.newQuery(SQL, "INSERT INTO A_TRANSFERENCIACUENTA (idpuntoatencion, logincliente, numerocuenta, numerocuentadestino, fecha, monto) values (?, ?, ?, ?, ?, ?)");
 	        q.setParameters(idPA, loginCliente, numeroOrigen, numeroDestino, fecha, monto);
 	        return (long) q.executeUnique();
+	}
+
+
+
+	public List<TransferenciaCuenta> darTransferenciasCliente(PersistenceManager pm, String login) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_TRANSFERENCIACUENTA WHERE LOGINCLIENTE =?");
+		q.setResultClass(ConsignarCuenta.class);
+		q.setParameters(login);
+		return (List<TransferenciaCuenta>) q.executeList();
 	}
 	
 }

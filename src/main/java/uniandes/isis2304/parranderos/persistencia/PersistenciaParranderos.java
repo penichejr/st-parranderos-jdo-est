@@ -755,12 +755,18 @@ public class PersistenciaParranderos
 		}
 	}
 	
-	public List<ConsignarCuenta> darConsignaciones() {
+	public List<ConsignarCuenta> darConsignaciones(String login) {
 		// TODO Auto-generated method stub
 		try {
 			PersistenceManager pm = pmf.getPersistenceManager();
-			
+			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
+			if(acepto) {
 				return sqlConsignarCuenta.darConsignaciones(pm);
+
+			}
+			else {
+				throw new Exception("No se pudo verificar su identidad");
+			}
 
 			
 
@@ -771,7 +777,66 @@ public class PersistenciaParranderos
 		}
 	}
 
-	public List<TransferenciaCuenta> darTransferencias() {
+	public List<TransferenciaCuenta> darTransferencias(String login) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
+			if(acepto) {
+				return sqlTransferenciaCuenta.darTransferencias(pm);
+
+			}
+			else {
+				throw new Exception("No se pudo verificar su identidad");
+			}
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	
+	}
+	
+
+	public List<TransferenciaCuenta> darTransferenciasCliente(String login) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+				return sqlTransferenciaCuenta.darTransferenciasCliente(pm, login);
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+
+	public List<ConsignarCuenta> darConsignacionesCliente(String login) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			
+				return sqlConsignarCuenta.darConsignacionesCliente(pm, login);
+
+			
+			
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
+
+	public List<TransferenciaCuenta> darTransferenciasOficina(String login) {
 		// TODO Auto-generated method stub
 		try {
 			PersistenceManager pm = pmf.getPersistenceManager();
@@ -785,7 +850,28 @@ public class PersistenciaParranderos
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return null;
 		}
-	
+	}
+
+	public List<ConsignarCuenta> darConsignacionesOficina(String login) {
+		// TODO Auto-generated method stub
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
+			if(acepto) {
+				return sqlConsignarCuenta.darConsignaciones(pm);
+
+			}
+			else {
+				throw new Exception("No se pudo verificar su identidad");
+			}
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
 	}
 
 	/*
@@ -2568,6 +2654,7 @@ public class PersistenciaParranderos
             pm.close();
         }
 	}
+
 	
 	
 	
