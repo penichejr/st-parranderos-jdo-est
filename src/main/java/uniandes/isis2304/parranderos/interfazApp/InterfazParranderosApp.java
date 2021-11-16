@@ -26,6 +26,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -733,6 +734,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 				String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 				String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 				parranderos.transferirCliente(Long.parseLong(idPA), loginCliente, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+				panelDatos.actualizarInterfaz("Se transfirió "+ monto + " de "+ loginCliente + " a cuenta número "+ numeroDestino);
 
 			}
 			else {
@@ -741,10 +743,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 				String numeroDestino = JOptionPane.showInputDialog (this, "numero Cuenta Destino?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 				String monto = JOptionPane.showInputDialog (this, "Monto?", "Continuar", JOptionPane.QUESTION_MESSAGE);
 				parranderos.transferirCajero(Long.parseLong(idPA), loginCliente, loginCajero, Long.parseLong(numeroOrigen), Long.parseLong(numeroDestino), Integer.parseInt(monto));
+				panelDatos.actualizarInterfaz("Se transfirió "+ monto + " de "+ loginCliente + " a cuenta número "+ numeroDestino);
 
 			}
 			
-
 
 
 			//    		panelDatos.actualizarInterfaz(cuentanueva.toString());
@@ -961,15 +963,47 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     public void consultarOperaciones() {
     	try 
     	{
-			List <VOConsignarCuenta> lista = parranderos.darVOConsignarCuenta();
-			List <VOTransferenciaCuenta> lista2= parranderos.darVOTransferenciaCuenta();
-			
+			String opcion = JOptionPane.showInputDialog (this, "1= Gerente General\n2= Gerente Oficina\n3= Cliente", "Continuar", JOptionPane.QUESTION_MESSAGE);
 
-			String resultado = "En consultar Operaciones";
-			resultado +=  "\n" + listarConsignarCuenta(lista);
-			resultado +=  "\n" + listarTransferenciaCuenta(lista2);
-			panelDatos.actualizarInterfaz(resultado);
-			resultado += "\n Operación terminada";
+			String login = JOptionPane.showInputDialog (this, "Ingrese el login", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+			List <VOConsignarCuenta> lista = new LinkedList<VOConsignarCuenta>();
+			List <VOTransferenciaCuenta> lista2= new LinkedList<VOTransferenciaCuenta>();
+			
+			if(opcion.equals("1")) {
+				lista= parranderos.darVOConsignarCuenta(login);
+				 lista2=parranderos.darVOTransferenciaCuenta(login);
+				
+
+				String resultado = "En consultar Operaciones";
+				resultado +=  "\n" + listarConsignarCuenta(lista);
+				resultado +=  "\n" + listarTransferenciaCuenta(lista2);
+				panelDatos.actualizarInterfaz(resultado);
+				resultado += "\n Operación terminada";
+			}
+			if(opcion.equals("2")) {
+				lista = parranderos.darVOConsignarCuentaOficina(login);
+				lista2= parranderos.darVOTransferenciaCuentaOficina(login);
+				
+
+				String resultado = "En consultar Operaciones";
+				resultado +=  "\n" + listarConsignarCuenta(lista);
+				resultado +=  "\n" + listarTransferenciaCuenta(lista2);
+				panelDatos.actualizarInterfaz(resultado);
+				resultado += "\n Operación terminada";
+			}
+			if(opcion.equals("3")) {
+				lista = parranderos.darVOConsignarCuentaCliente(login);
+				lista2= parranderos.darVOTransferenciaCuentaCliente(login);
+				
+
+				String resultado = "En consultar Operaciones";
+				resultado +=  "\n" + listarConsignarCuenta(lista);
+				resultado +=  "\n" + listarTransferenciaCuenta(lista2);
+				panelDatos.actualizarInterfaz(resultado);
+				resultado += "\n Operación terminada";
+			}
+			
 		} 
     	catch (Exception e) 
     	{

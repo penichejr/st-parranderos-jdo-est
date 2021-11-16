@@ -73,5 +73,15 @@ class SQLConsignarCuenta
 		q.setResultClass(ConsignarCuenta.class);
 		return (List<ConsignarCuenta>) q.executeList();
 	}
+
+
+
+	public List<ConsignarCuenta> darConsignacionesCliente(PersistenceManager pm, String login) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CONSIGNARCUENTA WHERE LOGINCLIENTE = ?");
+		q.setResultClass(ConsignarCuenta.class);
+		q.setParameters(login);
+		return (List<ConsignarCuenta>) q.executeList();
+	}
 	
 }
