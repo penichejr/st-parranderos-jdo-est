@@ -980,6 +980,38 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 				resultado +=  "\n" + listarTransferenciaCuenta(lista2);
 				panelDatos.actualizarInterfaz(resultado);
 				resultado += "\n Operación terminada";
+				
+				String tipo = JOptionPane.showInputDialog (this, "1=Consignacion\n2= transferencia", "Filtrar por tipo de operacion", JOptionPane.QUESTION_MESSAGE);
+				if(tipo.equals("1")) {
+					
+					panelDatos.actualizarInterfaz("\n"+listarConsignarCuenta(lista));
+					resultado="No existen consignaciones de al menos ese valor";
+
+					
+					int montoSi = Integer.parseInt(JOptionPane.showInputDialog (this, "Qué monto desea aplicar como mínimo", "Filtrar por monto", JOptionPane.QUESTION_MESSAGE));
+					for (int i =0; i<lista.size(); i++) {
+						if (lista.get(i).getMonto()>montoSi) {
+							resultado+= lista.get(i).toString();
+						}
+					}
+					panelDatos.actualizarInterfaz(resultado);
+				}
+				if(tipo.equals("2")) {
+					panelDatos.actualizarInterfaz("\n"+listarTransferenciaCuenta(lista2));
+
+					resultado="No existen consignaciones de al menos ese valor";
+
+					
+					int montoSi = Integer.parseInt(JOptionPane.showInputDialog (this, "Qué monto desea aplicar como mínimo", "Filtrar por monto", JOptionPane.QUESTION_MESSAGE));
+					for (int i =0; i<lista2.size(); i++) {
+						if (lista2.get(i).getMonto()>montoSi) {
+							resultado+= lista2.get(i).toString();
+						}
+					}
+					panelDatos.actualizarInterfaz(resultado);
+				}
+				
+				
 			}
 			if(opcion.equals("2")) {
 				lista = parranderos.darVOConsignarCuentaOficina(login);

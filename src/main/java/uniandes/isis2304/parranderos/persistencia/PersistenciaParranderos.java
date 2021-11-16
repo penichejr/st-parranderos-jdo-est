@@ -817,15 +817,11 @@ public class PersistenciaParranderos
 		// TODO Auto-generated method stub
 		try {
 			PersistenceManager pm = pmf.getPersistenceManager();
-			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
-			if(acepto) {
+			
 				return sqlConsignarCuenta.darConsignacionesCliente(pm, login);
 
-			}
-			else {
-				throw new Exception("No se pudo verificar su identidad");
-			}
-
+			
+			
 			
 
 		}
