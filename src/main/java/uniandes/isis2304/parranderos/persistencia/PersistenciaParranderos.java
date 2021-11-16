@@ -669,6 +669,11 @@ public class PersistenciaParranderos
 		return sqlPrestamo.darPrestamosPorLogin(pmf.getPersistenceManager(), loginCliente);
 	}
 	
+	public List<Prestamo> darTodosPrestamos()
+	{
+		return sqlPrestamo.darTodosPrestamos(pmf.getPersistenceManager());
+	}
+	
 	
 	
 	public List<Cuenta> darCuentas ()

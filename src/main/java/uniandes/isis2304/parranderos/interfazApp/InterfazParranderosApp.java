@@ -820,42 +820,6 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		return resp;
 	}
 
-	/*
-	public void consultarPrestamos() {
-		try 
-		{
-			String opcion = JOptionPane.showInputDialog(this, "1= Gerente General\n2=Gerente Oficina\n3= Cliente", "Continuar", JOptionPane.QUESTION_MESSAGE);
-			List <VOPrestamo> lista=null;
-			if(opcion.equals("1")) {
-				String loginGerenteGeneral = JOptionPane.showInputDialog (this, "login Gerente General?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-
-				lista = parranderos.darVOPrestamos(loginGerenteGeneral);
-			}
-			if(opcion.equals("2")) {
-				String loginGerenteOficina = JOptionPane.showInputDialog (this, "login Gerente Oficina?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-
-				lista = parranderos.darVOPrestamosOficina(loginGerenteOficina);
-			}
-			if(opcion.equals("3")) {
-				String loginCliente = JOptionPane.showInputDialog (this, "login Cliente?", "Continuar", JOptionPane.QUESTION_MESSAGE);
-
-				lista = parranderos.darVOPrestamosCliente(loginCliente);
-			}
-			 
-
-			String resultado = "En listar Prestamos";
-			resultado +=  "\n" + listarPrestamos (lista);
-			panelDatos.actualizarInterfaz(resultado);
-			resultado += "\n Operación terminada";
-		} 
-		catch (Exception e) 
-		{
-			//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	}*/
-
 	public void pagarCuota()
 	{
 		try {
