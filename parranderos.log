@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 14:46:26,862 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
 14:46:26,863 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
 14:46:26,902 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
@@ -11,3 +12,341 @@
 14:55:43,785 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
 14:55:54,117 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los ConsignarCuenta
 14:55:54,235 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los ConsignarCuenta: 2 existentes
+=======
+18:03:31,846 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+18:03:32,336 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO A_CERRARCUENTA values (?, ?, ?)".
+ORA-02291: restricción de integridad (ISIS2304A13202120.FK_IDPUNTODEATENCION) violada - clave principal no encontrada
+
+18:03:32,395 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: -1 tuplas eliminadas
+18:04:23,194 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:04:23,195 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:04:23,227 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:04:33,619 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+18:04:34,157 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+18:06:36,100 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+18:06:36,216 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+18:07:34,112 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 400
+18:07:34,237 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+18:13:03,928 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:13:03,929 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:13:03,963 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:13:40,755 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:13:40,755 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:13:40,788 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:14:13,082 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:14:13,083 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:14:13,118 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:14:37,654 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:14:37,654 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:14:37,701 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:14:54,623 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+18:14:54,740 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 0 tuplas eliminadas
+18:19:31,123 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:19:31,124 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:19:31,157 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:20:10,603 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:20:10,604 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:20:10,633 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:21:15,137 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:21:15,139 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:21:15,170 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:21:18,674 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:21:18,674 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:21:18,709 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:21:33,768 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : La clase de resultado no permite nombres de campos en mayusculos o menusculos; tiene que ser escrito corecto. Por ejemplo, el campo "login" esta mal escrito.
+
+18:25:36,425 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:25:36,425 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:25:36,471 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:25:52,431 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:25:52,432 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:25:52,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:28:11,856 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:28:11,857 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:28:11,893 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:29:03,276 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:29:03,277 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:29:03,318 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:29:30,515 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+18:29:30,657 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+18:45:25,196 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+18:45:25,196 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+18:45:25,227 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:14:14,190 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:14:14,190 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:14:14,223 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:16:41,326 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE A_ASOCIACIONCUENTA SET cantsedes = ? WHERE NUMEROCUENTAJEFE = ?".
+ORA-00904: "CANTSEDES": identificador no válido
+
+19:16:41,376 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+19:16:41,488 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+19:17:45,496 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:17:45,497 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:17:45,531 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:18:25,033 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE A_ASOCIACIONCUENTA SET cantsedes = ? WHERE NUMEROCUENTAJEFE = ?".
+ORA-00904: "CANTSEDES": identificador no válido
+
+19:19:08,849 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:19:08,851 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:19:08,883 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:20:02,124 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:20:02,125 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:20:02,156 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:20:48,490 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:20:48,491 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:20:48,528 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:21:37,324 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:21:37,325 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:21:37,364 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:22:43,066 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:22:43,068 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:22:43,109 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:23:13,873 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+19:23:13,992 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+19:25:31,461 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:25:31,462 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:25:31,492 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:25:57,249 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 500
+19:25:57,376 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+20:09:56,841 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:09:56,989 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido
+20:10:00,052 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de Tipos de bebida
+20:10:00,262 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:10:00,696 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:10:00,749 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:10:00,821 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando las operaciones CRD sobre TipoBebida
+20:10:00,821 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido
+20:10:01,441 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de Tipos de bebida
+20:10:01,564 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:10:01,954 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:10:02,005 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:10:43,763 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:10:43,838 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido
+20:10:46,129 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de Tipos de bebida
+20:10:46,318 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:10:46,734 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:10:46,800 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:10:46,860 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando las operaciones CRD sobre TipoBebida
+20:10:46,860 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido
+20:10:47,491 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de Tipos de bebida
+20:10:47,595 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:10:47,967 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:10:48,017 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:23:24,019 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:23:24,147 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:23:27,027 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:23:27,223 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:23:27,223 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:23:27,655 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:23:27,718 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:24:21,848 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:24:21,918 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:24:24,325 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:24:24,516 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:24:24,517 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:24:24,957 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:24:25,010 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:24:25,079 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:24:25,080 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:24:25,765 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:24:25,849 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:24:25,849 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:24:26,233 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:24:26,283 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:24:48,498 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:24:48,570 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:24:50,899 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:24:51,097 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:24:51,097 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:24:51,508 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:24:51,575 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:24:51,637 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:24:51,638 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:24:52,314 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:24:52,399 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:24:52,399 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:24:52,774 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:24:52,824 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:25:05,157 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:25:05,357 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:25:08,927 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:25:09,122 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:25:09,124 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:25:09,547 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:25:09,601 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:25:09,664 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:25:09,665 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:25:10,338 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:25:10,428 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:25:10,429 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:25:10,836 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:25:10,886 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:26:22,622 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:26:22,831 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:26:32,228 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:26:35,358 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:27:50,523 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:27:50,687 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:28:16,516 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:28:16,617 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:28:24,102 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:28:27,206 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:28:37,556 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: VIVIENDA
+20:28:50,430 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: Prestamo [id=21, tipo=VIVIENDA, monto=0, saldo=0, intereses=0, numeroCuotas=0, diaPagoCuota=0, valorCuotaMinima=0, loginCliente=u4]
+20:30:21,177 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:30:21,342 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:30:27,669 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:30:30,955 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:30:41,866 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:30:42,078 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:30:51,324 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:30:54,503 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:31:39,138 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:31:39,306 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:31:45,233 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:31:48,444 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:31:53,333 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: VIVIENDA
+20:32:06,472 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: Prestamo [id=22, tipo=VIVIENDA, monto=0, saldo=0, intereses=0, numeroCuotas=0, diaPagoCuota=0, valorCuotaMinima=0, loginCliente=u4]
+20:32:08,246 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:32:08,868 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:33:47,743 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:33:47,833 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:33:50,190 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:33:50,392 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:33:50,392 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:33:50,814 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:33:50,884 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:33:50,947 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:33:50,947 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:33:51,585 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:33:51,680 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:33:51,680 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:33:52,058 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:33:52,110 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:34:19,531 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando las operaciones CRD sobre Prestamo
+20:34:19,598 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:34:21,911 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:34:22,091 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 5 existentes
+20:34:22,092 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: VIVIENDA
+20:34:22,639 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando prestamo: Prestamo [id=23, tipo=VIVIENDA, monto=0, saldo=0, intereses=0, numeroCuotas=0, diaPagoCuota=0, valorCuotaMinima=0, loginCliente=u4]
+20:34:22,640 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:34:22,756 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:34:22,756 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:34:22,846 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:34:22,899 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+20:34:22,958 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
+20:34:22,958 (main) INFO  [uniandes.isis2304.parranderos.test.PrestamoTest] - Se encontró un archivo de configuración de tablas válido
+20:34:23,645 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo
+20:34:23,736 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los Prestamo: 6 existentes
+20:34:23,736 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+20:34:24,135 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_GUSTAN".
+ORA-00942: la tabla o vista no existe
+
+20:34:24,292 (main) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+21:11:03,240 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+21:11:03,241 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+21:11:03,281 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:21:12,133 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 300
+21:21:12,252 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+21:23:23,638 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 500
+21:23:23,752 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+21:40:11,396 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando asociacion cuenta: con jefe u3
+21:40:11,498 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando asociacion cuenta: con jefe u3
+21:46:33,813 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+21:46:33,814 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+21:46:33,852 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:47:12,808 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando cuenta por numeroUnico: 400
+21:47:12,935 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando Prestamo por numeroUnico: 1 tuplas eliminadas
+12:01:12,769 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:01:12,770 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:01:12,878 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:28:35,915 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:28:35,916 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:28:35,953 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:29:24,661 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+12:29:24,883 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?".
+ORA-01843: mes no válido
+
+12:34:48,141 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:34:48,142 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:34:48,199 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:35:14,318 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+12:35:14,512 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?".
+ORA-01843: mes no válido
+
+12:36:55,887 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:36:55,888 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:36:55,920 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:37:25,007 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+12:37:25,200 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA IS BETWEEN ? AND ?".
+ORA-00908: falta la palabra clave NULL
+
+12:38:30,029 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:38:30,030 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:38:30,063 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:38:48,540 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+12:38:48,736 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?".
+ORA-01843: mes no válido
+
+12:41:36,940 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:41:36,943 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:41:36,978 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:41:56,511 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+12:41:57,064 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?".
+Tipo de columna no válido
+14:06:45,332 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:06:45,334 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:06:45,371 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:07:31,487 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+14:07:31,699 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?".
+ORA-01843: mes no válido
+
+14:24:31,448 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:24:31,448 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:24:31,484 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:24:58,498 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+14:24:58,694 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de la consignaciones: 2 existentes
+14:26:42,710 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:26:42,711 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:26:42,740 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:27:06,507 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+14:27:06,721 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de la consignaciones: 2 existentes
+14:28:12,136 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:28:12,137 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:28:12,182 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:28:37,300 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+14:28:37,476 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de la consignaciones: 2 existentes
+14:32:30,924 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+14:32:30,930 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+14:32:30,969 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+14:32:57,049 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las consignaciones
+14:32:57,225 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de la consignaciones: 1 existentes
+>>>>>>> ce65e49b49a70015c609c87b535f311608d1b396

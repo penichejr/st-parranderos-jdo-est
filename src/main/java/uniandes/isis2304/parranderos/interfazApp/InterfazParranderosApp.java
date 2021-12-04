@@ -971,14 +971,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		List <VOConsignarCuenta> lista = new LinkedList<VOConsignarCuenta>();
 		List <VOTransferenciaCuenta> lista2= new LinkedList<VOTransferenciaCuenta>();
 		
-//		lista= parranderos.darVOConsignarCuenta(login);
-//		lista2=parranderos.darVOTransferenciaCuenta(login);
-//		
-//
-//		String resultado = "En consultar Operaciones";
-//		resultado +=  "\n" + listarConsignarCuenta(lista);
-//		resultado +=  "\n" + listarTransferenciaCuenta(lista2);
-//		panelDatos.actualizarInterfaz(resultado);
+
+		
+		
 		String resultado ="";
 		String fechaMin = JOptionPane.showInputDialog (this, "Ingrese la fecha mínima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
 		String fechaMax = JOptionPane.showInputDialog (this, "Ingrese la fecha máxima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
@@ -986,11 +981,22 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		int cantidad = Integer.parseInt(JOptionPane.showInputDialog (this, "Cuantas operaciones desea visualizar", "Cantidad", JOptionPane.QUESTION_MESSAGE));
 		int montoSi = Integer.parseInt(JOptionPane.showInputDialog (this, "Qué monto desea aplicar como mínimo", "Filtrar por monto", JOptionPane.QUESTION_MESSAGE));
 		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = dateFormat.parse(fechaMin);
+		long time = date.getTime();
+		Timestamp fechaMin2= new Timestamp(time);
+		date=dateFormat.parse(fechaMax);
+		time=date.getTime();
+		Timestamp fechaMax2= new Timestamp(time);
 		
 		if(tipo.equals("1")){
-			lista = parranderos.consultarConsignacionesEntreFechas(login, fechaMin,fechaMax);
+			lista = parranderos.consultarConsignacionesEntreFechas(login, fechaMin2,fechaMax2, montoSi);
 			resultado+=listarConsignarCuentaCantidad(lista, cantidad);
+			panelDatos.actualizarInterfaz(resultado);
+			
 		}
+		
+		
 		//		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //		Date date = dateFormat.parse(fechaMin);
 //		long time = date.getTime();
@@ -1140,10 +1146,21 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		String resp = "Las Consignaciones existentes son:\n";
 		int j=1;
-		for (int i =0; i<cantidad ; i++)
+		if(cantidad<lista.size())
 		{
-			resp += j++ + ". " + lista.get(i).toString() + "\n";
+			for (int i =0; i<cantidad ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
 		}
+		else
+		{
+			for (int i =0; i<lista.size() ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		
 		return resp;
 	}
 

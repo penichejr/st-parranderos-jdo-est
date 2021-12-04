@@ -783,13 +783,13 @@ public class PersistenciaParranderos
 		}
 	}
 	
-	public List<ConsignarCuenta> darConsignacionesEntreFechas(String login, String fechaMin, String fechaMax)
+	public List<ConsignarCuenta> darConsignacionesEntreFechas(String login, Timestamp fechaMin2, Timestamp fechaMax2, int montoSi)
 	{
 		try {
 			PersistenceManager pm = pmf.getPersistenceManager();
 			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
 			if(acepto) {
-				return sqlConsignarCuenta.darConsignacionesEntreFechas(pm, fechaMin, fechaMax);
+				return sqlConsignarCuenta.darConsignacionesEntreFechas(pm, fechaMin2, fechaMax2, montoSi);
 
 			}
 			else {
