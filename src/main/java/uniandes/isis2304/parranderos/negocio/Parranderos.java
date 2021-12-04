@@ -184,6 +184,19 @@ public class Parranderos
         return voPuntos;
 	}
 	
+	
+	public List<VOConsignarCuenta> darVOConsignarCuentaConMontoMinimo (String monto)
+	{
+		log.info ("Generando los VO de los ConsignarCuenta");        
+        List<VOConsignarCuenta> voPuntos = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignarCuentaConMontoMinimo(monto))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los ConsignarCuenta: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
 	public List<VOPrestamo> darVOTodosPrestamos ()
 	{
 		log.info ("Generando los VO de los Prestamo");        

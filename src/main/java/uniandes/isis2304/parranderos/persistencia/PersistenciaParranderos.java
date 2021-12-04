@@ -675,6 +675,12 @@ public class PersistenciaParranderos
 	}
 	
 	
+	public List<ConsignarCuenta> darConsignarCuentaConMontoMinimo(String monto)
+	{
+		return sqlConsignarCuenta.darConsignacionesConMontoMinimo(pmf.getPersistenceManager(), monto);
+	}
+	
+	
 	
 	public List<Cuenta> darCuentas ()
 	{
