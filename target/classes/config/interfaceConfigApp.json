@@ -170,8 +170,8 @@
 					"event": "consultarOperacionesV3"
 				},
 				{
-					"label": "Consultar Consignaciones",
-					"event": "consultarConsignaciones"
+					"label": "Consultar Consignaciones Con Monto Minimo",
+					"event": "listarConsignacionesConMontoMinimo"
 				},
 				{
 					"label": "Consultar Puntos de Atención",

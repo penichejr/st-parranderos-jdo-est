@@ -73,6 +73,15 @@ class SQLConsignarCuenta
 		q.setResultClass(ConsignarCuenta.class);
 		return (List<ConsignarCuenta>) q.executeList();
 	}
+	
+	public List<ConsignarCuenta> darConsignacionesConMontoMinimo(PersistenceManager pm, String monto) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CONSIGNARCUENTA WHERE MONTO > ?");
+		q.setResultClass(ConsignarCuenta.class);
+		q.setParameters(monto);
+		return (List<ConsignarCuenta>) q.executeList();
+	}
+
 
 
 

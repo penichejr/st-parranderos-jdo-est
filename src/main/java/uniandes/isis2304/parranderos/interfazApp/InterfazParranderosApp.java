@@ -891,6 +891,41 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
+    
+    public void listarConsignacionesConMontoMinimo( )
+    {
+    	try 
+    	{
+    		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
+    		
+    		//Es GERENTEGENERAL
+    		if(parranderos.chequearLoginGerenteGeneral(login)) {
+    			
+    			String monto = JOptionPane.showInputDialog (this, "montoMinimo?", "montoMinimo (String) ", JOptionPane.QUESTION_MESSAGE);
+        		
+    			List <VOConsignarCuenta> lista = parranderos.darVOConsignarCuentaConMontoMinimo(monto);
+
+    			String resultado = "En listarConsignaciones";
+    			resultado +=  "\n" + listarConsignarCuenta(lista);
+    			panelDatos.actualizarInterfaz(resultado);
+    			resultado += "\n Operación terminada";
+
+    		}
+    		else {
+    			JOptionPane.showMessageDialog(this, login+" No es Gerente General");
+    		}
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
     public void listarPrestamo( )
     {
     	try 
@@ -1441,6 +1476,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	String resp = "Los prestamo son:\n";
     	int i = 1;
         for (VOPrestamo pa : lista)
+        {
+        	resp += i++ + ". " + pa.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarConsignacionesConMontoMinimo(List<VOConsignarCuenta> lista) 
+    {
+    	String resp = "Los ConsignarCuenta son:\n";
+    	int i = 1;
+        for (VOConsignarCuenta pa : lista)
         {
         	resp += i++ + ". " + pa.toString() + "\n";
         }
