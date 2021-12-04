@@ -798,6 +798,28 @@ public class PersistenciaParranderos
         	return null;
 		}
 	}
+	
+	public List<TransferenciaCuenta> darTransferenciasEntreFechas(String login, Timestamp fechaMin2, Timestamp fechaMax2, int montoSi)
+	{
+		try {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			boolean acepto = sqlGerenteGeneral.verificarGerente(pm, login);
+			if(acepto) {
+				return sqlTransferenciaCuenta.darTransferenciasEntreFechas(pm, fechaMin2, fechaMax2, montoSi);
+
+			}
+			else {
+				throw new Exception("No se pudo verificar su identidad");
+			}
+
+			
+
+		}
+		catch(Exception e) {
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+	}
 
 	public List<TransferenciaCuenta> darTransferencias(String login) {
 		// TODO Auto-generated method stub

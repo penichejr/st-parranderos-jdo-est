@@ -960,6 +960,12 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 			
 		}
+		if(tipo.equals("2")){
+			lista2 = parranderos.consultarTransferenciasEntreFechas(login, fechaMin2,fechaMax2, montoSi);
+			resultado+=listarTransferenciasCantidad(lista2, cantidad);
+			panelDatos.actualizarInterfaz(resultado);
+			
+		}
 		
 		
 		//		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -1110,6 +1116,28 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	private String listarConsignarCuentaCantidad(List<VOConsignarCuenta> lista, int cantidad) {
 		// TODO Auto-generated method stub
 		String resp = "Las Consignaciones existentes son:\n";
+		int j=1;
+		if(cantidad<lista.size())
+		{
+			for (int i =0; i<cantidad ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		else
+		{
+			for (int i =0; i<lista.size() ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		
+		return resp;
+	}
+	
+	private String listarTransferenciasCantidad(List<VOTransferenciaCuenta> lista, int cantidad) {
+		// TODO Auto-generated method stub
+		String resp = "Las Transferencias existentes son:\n";
 		int j=1;
 		if(cantidad<lista.size())
 		{
