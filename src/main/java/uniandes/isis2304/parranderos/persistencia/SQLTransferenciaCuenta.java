@@ -85,5 +85,16 @@ class SQLTransferenciaCuenta
 		q.setParameters(montoSi, fechaMin2, fechaMax2);
 		return (List<TransferenciaCuenta>) q.executeList();
 	}
+
+
+
+	public List<TransferenciaCuenta> darTransferenciasEntreFechasv3(PersistenceManager pm, Timestamp fechaMin2,
+			Timestamp fechaMax2, int montoSi) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_TRANSFERENCIACUENTA WHERE MONTO< ? AND FECHA BETWEEN ? AND ?");
+		q.setResultClass(TransferenciaCuenta.class);
+		q.setParameters(montoSi, fechaMin2, fechaMax2);
+		return (List<TransferenciaCuenta>) q.executeList();
+	}
 	
 }

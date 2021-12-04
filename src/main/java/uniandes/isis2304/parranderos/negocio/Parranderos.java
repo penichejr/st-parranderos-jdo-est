@@ -292,6 +292,30 @@ public class Parranderos
         return voTransferencias;
 	}
 	
+	public List<VOConsignarCuenta> consultarConsignacionesEntreFechasv3(String login, Timestamp fechaMin2, Timestamp fechaMax2, int montoSi) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las consignaciones");        
+        List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignacionesEntreFechasv3(login, fechaMin2, fechaMax2, montoSi))
+        {
+        	voConsignar.add (tb);
+        }
+        log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
+        return voConsignar;
+	}
+	
+	public List<VOTransferenciaCuenta> consultarTransferenciasEntreFechasv3(String login, Timestamp fechaMin2, Timestamp fechaMax2, int montoSi) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las transferencias");        
+        List<VOTransferenciaCuenta> voTransferencia = new LinkedList<VOTransferenciaCuenta> ();
+        for (TransferenciaCuenta tb : pp.darTransferenciasEntreFechasv3(login, fechaMin2, fechaMax2, montoSi))
+        {
+        	voTransferencia.add (tb);
+        }
+        log.info ("Generando los VO de la transferencias: " + voTransferencia.size() + " existentes");
+        return voTransferencia;
+	}
+	
 	public List<VOConsignarCuenta> darVOConsignarCuentaOficina(String login) {
 		// TODO Auto-generated method stub
 		log.info ("Generando los VO de las consignaciones");        
