@@ -81,6 +81,14 @@ class SQLConsignarCuenta
 		q.setParameters(monto);
 		return (List<ConsignarCuenta>) q.executeList();
 	}
+	
+	public List<ConsignarCuenta> darConsignacionesConPuntoDeAtencion(PersistenceManager pm, String IDPUNTOATENCION) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CONSIGNARCUENTA WHERE IDPUNTOATENCION = ?");
+		q.setResultClass(ConsignarCuenta.class);
+		q.setParameters(IDPUNTOATENCION);
+		return (List<ConsignarCuenta>) q.executeList();
+	}
 
 
 

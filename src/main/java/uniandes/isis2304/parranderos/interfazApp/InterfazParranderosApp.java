@@ -56,6 +56,7 @@ import uniandes.isis2304.parranderos.negocio.Cuenta;
 import uniandes.isis2304.parranderos.negocio.Oficina;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOAdministrador;
+import uniandes.isis2304.parranderos.negocio.VOAprobarPrestamo;
 import uniandes.isis2304.parranderos.negocio.VOAsociacionCuenta;
 import uniandes.isis2304.parranderos.negocio.VOCajero;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
@@ -926,6 +927,57 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     }
     
     
+    public void ConsultarPuntosDeAtención( )
+    {
+    	try 
+    	{
+    		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		//Es GERENTEGENERAL
+    		if(parranderos.chequearLoginGerenteGeneral(login)) {
+    			
+    			String punto = JOptionPane.showInputDialog (this, "puntoDeAtencion?", "puntoDeAtencion (String) ", JOptionPane.QUESTION_MESSAGE);
+        		
+    			List <VOConsignarCuenta> lista = parranderos.darVOConsignarCuentaConPuntoDeAtencion(punto);
+    			
+    			List <VOAprobarPrestamo> lista2 = parranderos.darVOAprobarPrestamoConPuntoDeAtencion(punto); 
+    			
+    			List<VOTransferenciaCuenta> lista3 = parranderos.darVOTransferenciaCuentaConPuntoDeAtencion(punto); 
+    			
+
+    			String resultado = "En listarOperaciones con punto de atencion "+punto;
+    			resultado +=  "\n" + listarConsignarCuenta(lista);
+    			
+    			if(!lista2.isEmpty()) {
+    				resultado +=  "\n" + listarAprobarPrestamoConPunto(lista2);
+    			}
+    			
+    			if(!lista3.isEmpty()) {
+    				resultado +=  "\n" + listarTransferenciaCuentaConPunto(lista3);
+    			}
+    			
+    			panelDatos.actualizarInterfaz(resultado);
+    			resultado += "\n Operación terminada";
+    			
+
+    		}
+    		else {
+    			JOptionPane.showMessageDialog(this, login+" No es Gerente General");
+    		}
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    
     public void listarPrestamo( )
     {
     	try 
@@ -1454,11 +1506,22 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         return resp;
 	}
     
-    private String listarConsignacionesConMontoMinimo(List<VOConsignarCuenta> lista) 
+    private String listarAprobarPrestamoConPunto(List<VOAprobarPrestamo> lista) 
     {
-    	String resp = "Los ConsignarCuenta son:\n";
+    	String resp = "Los AprobarPrestamo son:\n";
     	int i = 1;
-        for (VOConsignarCuenta pa : lista)
+        for (VOAprobarPrestamo pa : lista)
+        {
+        	resp += i++ + ". " + pa.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarTransferenciaCuentaConPunto(List<VOTransferenciaCuenta> lista) 
+    {
+    	String resp = "Los TransferenciaCuenta son:\n";
+    	int i = 1;
+        for (VOTransferenciaCuenta pa : lista)
         {
         	resp += i++ + ". " + pa.toString() + "\n";
         }

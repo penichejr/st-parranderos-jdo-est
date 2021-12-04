@@ -6,6 +6,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.AprobarPrestamo;
 import uniandes.isis2304.parranderos.negocio.ConsignarCuenta;
 import uniandes.isis2304.parranderos.negocio.TransferenciaCuenta;
 
@@ -45,6 +46,15 @@ class SQLTransferenciaCuenta
 	public SQLTransferenciaCuenta(PersistenciaParranderos pp)
 	{
 		this.pp = pp;
+	}
+	
+	
+	public List<TransferenciaCuenta> darTransferenciaCuentaConPuntoDeAtencion(PersistenceManager pm, String IDPUNTOATENCION) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_TRANSFERENCIACUENTA WHERE IDPUNTOATENCION = ?");
+		q.setResultClass(TransferenciaCuenta.class);
+		q.setParameters(IDPUNTOATENCION);
+		return (List<TransferenciaCuenta>) q.executeList();
 	}
 	
 	

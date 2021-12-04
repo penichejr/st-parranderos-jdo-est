@@ -6,6 +6,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.ConsignarCuenta;
 import uniandes.isis2304.parranderos.negocio.PagoCuota;
 import uniandes.isis2304.parranderos.negocio.Prestamo;
 
@@ -45,6 +46,15 @@ class SQLPagoCuota
 	public SQLPagoCuota (PersistenciaParranderos pp)
 	{
 		this.pp = pp;
+	}
+	
+	
+	public List<PagoCuota> darPagoCuotaConPuntoDeAtencion(PersistenceManager pm, String IDPUNTOATENCION) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_PagoCuota WHERE A_PAGOCUOTA = ?");
+		q.setResultClass(PagoCuota.class);
+		q.setParameters(IDPUNTOATENCION);
+		return (List<PagoCuota>) q.executeList();
 	}
 	
 	

@@ -175,7 +175,7 @@
 				},
 				{
 					"label": "Consultar Puntos de Atención",
-					"event": "consultarPuntosDeAtencion"
+					"event": "ConsultarPuntosDeAtención"
 				}
 			]
 		},	

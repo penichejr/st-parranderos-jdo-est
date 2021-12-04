@@ -197,6 +197,57 @@ public class Parranderos
         return voPuntos;
 	}
 	
+	public List<VOConsignarCuenta> darVOConsignarCuentaConPuntoDeAtencion (String punto)
+	{
+		log.info ("Generando los VO de los ConsignarCuenta");        
+        List<VOConsignarCuenta> voPuntos = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignarCuentaConPuntoDeAtencion(punto))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los ConsignarCuenta: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
+	public List<VOAprobarPrestamo> darVOAprobarPrestamoConPuntoDeAtencion (String punto)
+	{
+		log.info ("Generando los VO de los AprobarPrestamo");        
+        List<VOAprobarPrestamo> voPuntos = new LinkedList<VOAprobarPrestamo> ();
+        for (AprobarPrestamo tb : pp.darAprobarPrestamoConPuntoDeAtencion(punto))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los AprobarPrestamo: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
+	public List<VOTransferenciaCuenta> darVOTransferenciaCuentaConPuntoDeAtencion (String punto)
+	{
+		log.info ("Generando los VO de los TransferenciaCuenta");        
+        List<VOTransferenciaCuenta> voPuntos = new LinkedList<VOTransferenciaCuenta> ();
+        for (TransferenciaCuenta tb : pp.darTransferenciaCuentaConPuntoDeAtencion(punto))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los TransferenciaCuenta: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}
+	
+	/**
+	public List<VOPagoCuota> darVOPagoCuotaConPuntoDeAtencion (String punto)
+	{
+		log.info ("Generando los VO de los PagoCuota");        
+        List<VOPagoCuota> voPuntos = new LinkedList<VOPagoCuota> ();
+        for (PagoCuota tb : pp.darPagoCuotaConPuntoDeAtencion(punto))
+        {
+        	voPuntos.add (tb);
+        }
+        log.info ("Generando los VO de los PagoCuota: " + voPuntos.size() + " existentes");
+        return voPuntos;
+	}*/
+	
+	
+	
 	public List<VOPrestamo> darVOTodosPrestamos ()
 	{
 		log.info ("Generando los VO de los Prestamo");        

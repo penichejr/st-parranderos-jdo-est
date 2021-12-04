@@ -51,6 +51,7 @@ import uniandes.isis2304.parranderos.negocio.GerenteGeneral;
 import uniandes.isis2304.parranderos.negocio.GerenteOficina;
 import uniandes.isis2304.parranderos.negocio.Gustan;
 import uniandes.isis2304.parranderos.negocio.Oficina;
+import uniandes.isis2304.parranderos.negocio.PagoCuota;
 import uniandes.isis2304.parranderos.negocio.Prestamo;
 import uniandes.isis2304.parranderos.negocio.PuntoDeAtencion;
 import uniandes.isis2304.parranderos.negocio.Sirven;
@@ -678,6 +679,27 @@ public class PersistenciaParranderos
 	public List<ConsignarCuenta> darConsignarCuentaConMontoMinimo(String monto)
 	{
 		return sqlConsignarCuenta.darConsignacionesConMontoMinimo(pmf.getPersistenceManager(), monto);
+	}
+	
+	public List<ConsignarCuenta> darConsignarCuentaConPuntoDeAtencion(String punto)
+	{
+		return sqlConsignarCuenta.darConsignacionesConPuntoDeAtencion(pmf.getPersistenceManager(), punto);
+	}
+	
+	public List<AprobarPrestamo> darAprobarPrestamoConPuntoDeAtencion(String punto)
+	{
+		return sqlAprobarPrestamo.darAprobarPrestamoConPuntoDeAtencion(pmf.getPersistenceManager(), punto);
+	}
+	
+	
+	public List<PagoCuota> darPagoCuotaConPuntoDeAtencion(String punto)
+	{
+		return sqlPagoCuota.darPagoCuotaConPuntoDeAtencion(pmf.getPersistenceManager(), punto);
+	}
+	
+	public List<TransferenciaCuenta> darTransferenciaCuentaConPuntoDeAtencion(String punto)
+	{
+		return sqlTransferenciaCuenta.darTransferenciaCuentaConPuntoDeAtencion(pmf.getPersistenceManager(), punto);
 	}
 	
 	

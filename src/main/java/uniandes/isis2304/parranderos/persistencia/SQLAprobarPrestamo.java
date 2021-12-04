@@ -62,6 +62,16 @@ class SQLAprobarPrestamo
         q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
         return (long) q.executeUnique();
 	}
+	
+	
+	public List<AprobarPrestamo> darAprobarPrestamoConPuntoDeAtencion(PersistenceManager pm, String IDPUNTOATENCION) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_AprobarPrestamo WHERE IDPUNTOATENCION = ?");
+		q.setResultClass(AprobarPrestamo.class);
+		q.setParameters(IDPUNTOATENCION);
+		return (List<AprobarPrestamo>) q.executeList();
+	}
+	
 
 	/**
 	 * Crea y ejecuta la sentencia SQL para eliminar BARES de la base de datos de Parranderos, por su nombre

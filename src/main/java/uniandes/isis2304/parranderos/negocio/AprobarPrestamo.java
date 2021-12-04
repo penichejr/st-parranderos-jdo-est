@@ -3,7 +3,8 @@ package uniandes.isis2304.parranderos.negocio;
 import java.sql.Timestamp;
 
 public class AprobarPrestamo implements VOAprobarPrestamo {
-private long idPuntoAtencion;
+
+	private long idPuntoAtencion;
 	
 	/**
 	 * El nombre del bar
