@@ -243,6 +243,17 @@ public class Parranderos
         log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
         return voConsignar;
 	}
+	public List<VOConsignarCuenta> consultarConsignacionesEntreFechas(String login, String fechaMin, String fechaMax) {
+		// TODO Auto-generated method stub
+		log.info ("Generando los VO de las consignaciones");        
+        List<VOConsignarCuenta> voConsignar = new LinkedList<VOConsignarCuenta> ();
+        for (ConsignarCuenta tb : pp.darConsignacionesEntreFechas(login, fechaMin, fechaMax))
+        {
+        	voConsignar.add (tb);
+        }
+        log.info ("Generando los VO de la consignaciones: " + voConsignar.size() + " existentes");
+        return voConsignar;
+	}
 
 	public List<VOTransferenciaCuenta> darVOTransferenciaCuenta(String login) {
 		// TODO Auto-generated method stub

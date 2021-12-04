@@ -83,5 +83,14 @@ class SQLConsignarCuenta
 		q.setParameters(login);
 		return (List<ConsignarCuenta>) q.executeList();
 	}
+
+
+
+	public List<ConsignarCuenta> darConsignacionesEntreFechas(PersistenceManager pm, String fechaMin, String fechaMax) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL, "SELECT * FROM A_CONSIGNARCUENTA WHERE FECHA BETWEEN ? AND ?");
+		q.setResultClass(ConsignarCuenta.class);
+		q.setParameters(fechaMin, fechaMax);
+		return (List<ConsignarCuenta>) q.executeList();	}
 	
 }

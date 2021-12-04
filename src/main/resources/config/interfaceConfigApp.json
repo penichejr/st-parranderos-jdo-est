@@ -157,7 +157,28 @@
 					"event": "mostrarJavadoc"
 				}
 			]
-		},		
+		},	
+		{ "menuTitle": "Iteración 4",
+		  "options":
+			[
+				{
+					"label": "Consultar Operaciones v2",
+					"event": "consultarOperacionesV2"
+				},
+				{
+					"label": "Consultar Operaciones v3",
+					"event": "consultarOperacionesV3"
+				},
+				{
+					"label": "Consultar Consignaciones",
+					"event": "consultarConsignaciones"
+				},
+				{
+					"label": "Consultar Puntos de Atención",
+					"event": "consultarPuntosDeAtencion"
+				}
+			]
+		},	
 		{ "menuTitle": "Acerca de ...",
 		  "options":
 			[
