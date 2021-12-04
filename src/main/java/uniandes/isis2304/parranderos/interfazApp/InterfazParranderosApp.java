@@ -33,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
@@ -1047,33 +1048,50 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 			
 		}
-		
-		
-		//		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//		Date date = dateFormat.parse(fechaMin);
-//		long time = date.getTime();
-//		Timestamp fechaMin2= new Timestamp(time);
-//		
-//		Date date2 = dateFormat.parse(fechaMax);
-//		long time2 = date.getTime();
-//		Timestamp fechaMax2= new Timestamp(time2);
-//		
-//		resultado="";
-//		if(tipo.equals("1"))
-//		{
-//			for(int i =0; i<lista.size();i++)
-//			{
-//				if(lista.get(i).getFecha().after(fechaMin2) && lista.get(i).getFecha().before(fechaMax2))
-//				{
-//					resultado+="\n";
-//				}
-//			}
-//		}
+		if(tipo.equals("2")){
+			lista2 = parranderos.consultarTransferenciasEntreFechas(login, fechaMin2,fechaMax2, montoSi);
+			resultado+=listarTransferenciasCantidad(lista2, cantidad);
+			panelDatos.actualizarInterfaz(resultado);
+			
+		}
 		
     }
-    public void consultarOperacionesV3() {
-		String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+    public void consultarOperacionesV3() throws ParseException {
+    	String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		
+		List <VOConsignarCuenta> lista = new LinkedList<VOConsignarCuenta>();
+		List <VOTransferenciaCuenta> lista2= new LinkedList<VOTransferenciaCuenta>();
+		
 
+		
+		
+		String resultado ="";
+		String fechaMin = JOptionPane.showInputDialog (this, "Ingrese la fecha mínima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		String fechaMax = JOptionPane.showInputDialog (this, "Ingrese la fecha máxima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		String tipo = JOptionPane.showInputDialog (this, "1=Consignacion\n2= transferencia", "Filtrar por tipo de operacion", JOptionPane.QUESTION_MESSAGE);
+		int cantidad = Integer.parseInt(JOptionPane.showInputDialog (this, "Cuantas operaciones desea visualizar", "Cantidad", JOptionPane.QUESTION_MESSAGE));
+		int montoSi = Integer.parseInt(JOptionPane.showInputDialog (this, "Qué monto desea aplicar como mínimo", "Filtrar por monto", JOptionPane.QUESTION_MESSAGE));
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = dateFormat.parse(fechaMin);
+		long time = date.getTime();
+		Timestamp fechaMin2= new Timestamp(time);
+		date=dateFormat.parse(fechaMax);
+		time=date.getTime();
+		Timestamp fechaMax2= new Timestamp(time);
+		
+		if(tipo.equals("1")){
+			lista = parranderos.consultarConsignacionesEntreFechasv3(login, fechaMin2,fechaMax2, montoSi);
+			resultado+=listarConsignarCuentaCantidadv3(lista, cantidad);
+			panelDatos.actualizarInterfaz(resultado);
+			
+		}
+		if(tipo.equals("2")){
+			lista2 = parranderos.consultarTransferenciasEntreFechasv3(login, fechaMin2,fechaMax2, montoSi);
+			resultado+=listarTransferenciasCantidadv3(lista2, cantidad);
+			panelDatos.actualizarInterfaz(resultado);
+			
+		}
     	
     }
     public void consultarConsignaciones() {
@@ -1215,7 +1233,76 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		
 		return resp;
 	}
+	
+	private String listarTransferenciasCantidad(List<VOTransferenciaCuenta> lista, int cantidad) {
+		// TODO Auto-generated method stub
+		String resp = "Las Transferencias existentes son:\n";
+		int j=1;
+		if(cantidad<lista.size())
+		{
+			for (int i =0; i<cantidad ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		else
+		{
+			for (int i =0; i<lista.size() ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		
+		return resp;
+	}
 
+	
+	
+	private String listarConsignarCuentaCantidadv3(List<VOConsignarCuenta> lista, int cantidad) {
+		// TODO Auto-generated method stub
+		String resp = "Las Consignaciones existentes son:\n";
+		int j=1;
+		int numero =(int) Math.floor(Math.random()*lista.size()+1);
+		if(numero<lista.size())
+		{
+			for (int i =0; i<numero ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		else
+		{
+			for (int i =0; i<lista.size() ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		
+		return resp;
+	}
+	
+	private String listarTransferenciasCantidadv3(List<VOTransferenciaCuenta> lista, int cantidad) {
+		// TODO Auto-generated method stub
+		String resp = "Las Transferencias existentes son:\n";
+		int j=1;
+		int numero =(int) Math.floor(Math.random()*lista.size()+1);
+		if(numero<lista.size())
+		{
+			for (int i =0; i<numero ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		else
+		{
+			for (int i =0; i<lista.size() ; i++)
+			{
+				resp += j++ + ". " + lista.get(i).toString() + "\n";
+			}
+		}
+		
+		return resp;
+	}
 	public void listarOperaciones() {
     	
     }
