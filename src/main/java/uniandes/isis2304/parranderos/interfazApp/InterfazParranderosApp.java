@@ -26,6 +26,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -924,6 +929,71 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
+    //ITERACION 4
+    public void consultarOperacionesV2() throws ParseException {
+		String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		
+		List <VOConsignarCuenta> lista = new LinkedList<VOConsignarCuenta>();
+		List <VOTransferenciaCuenta> lista2= new LinkedList<VOTransferenciaCuenta>();
+		
+//		lista= parranderos.darVOConsignarCuenta(login);
+//		lista2=parranderos.darVOTransferenciaCuenta(login);
+//		
+//
+//		String resultado = "En consultar Operaciones";
+//		resultado +=  "\n" + listarConsignarCuenta(lista);
+//		resultado +=  "\n" + listarTransferenciaCuenta(lista2);
+//		panelDatos.actualizarInterfaz(resultado);
+		String resultado ="";
+		String fechaMin = JOptionPane.showInputDialog (this, "Ingrese la fecha mínima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		String fechaMax = JOptionPane.showInputDialog (this, "Ingrese la fecha máxima 'dd/mm/aaaa'", "Continuar", JOptionPane.QUESTION_MESSAGE);
+		String tipo = JOptionPane.showInputDialog (this, "1=Consignacion\n2= transferencia", "Filtrar por tipo de operacion", JOptionPane.QUESTION_MESSAGE);
+		int cantidad = Integer.parseInt(JOptionPane.showInputDialog (this, "Cuantas operaciones desea visualizar", "Cantidad", JOptionPane.QUESTION_MESSAGE));
+		int montoSi = Integer.parseInt(JOptionPane.showInputDialog (this, "Qué monto desea aplicar como mínimo", "Filtrar por monto", JOptionPane.QUESTION_MESSAGE));
+		
+		
+		if(tipo.equals("1")){
+			lista = parranderos.consultarConsignacionesEntreFechas(login, fechaMin,fechaMax);
+			resultado+=listarConsignarCuentaCantidad(lista, cantidad);
+		}
+		//		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//		Date date = dateFormat.parse(fechaMin);
+//		long time = date.getTime();
+//		Timestamp fechaMin2= new Timestamp(time);
+//		
+//		Date date2 = dateFormat.parse(fechaMax);
+//		long time2 = date.getTime();
+//		Timestamp fechaMax2= new Timestamp(time2);
+//		
+//		resultado="";
+//		if(tipo.equals("1"))
+//		{
+//			for(int i =0; i<lista.size();i++)
+//			{
+//				if(lista.get(i).getFecha().after(fechaMin2) && lista.get(i).getFecha().before(fechaMax2))
+//				{
+//					resultado+="\n";
+//				}
+//			}
+//		}
+		
+    }
+    public void consultarOperacionesV3() {
+		String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+    	
+    }
+    public void consultarConsignaciones() {
+		String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+    	
+    }
+    public void consultarPuntosDeAtencion() {
+		String login = JOptionPane.showInputDialog (this, "Ingrese el login de Gerente General", "Continuar", JOptionPane.QUESTION_MESSAGE);
+
+    	
+    }
+    
     public void consultarOperaciones() {
     	try 
     	{
@@ -1027,6 +1097,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		for (VOConsignarCuenta tb : lista)
 		{
 			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	
+	private String listarConsignarCuentaCantidad(List<VOConsignarCuenta> lista, int cantidad) {
+		// TODO Auto-generated method stub
+		String resp = "Las Consignaciones existentes son:\n";
+		int j=1;
+		for (int i =0; i<cantidad ; i++)
+		{
+			resp += j++ + ". " + lista.get(i).toString() + "\n";
 		}
 		return resp;
 	}
