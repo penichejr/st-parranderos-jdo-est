@@ -898,7 +898,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
+    		String login = JOptionPane.showInputDialog (this, "loginGerenteGeneral?", "loginGerenteGeneral (String) ", JOptionPane.QUESTION_MESSAGE);
     		
     		//Es GERENTEGENERAL
     		if(parranderos.chequearLoginGerenteGeneral(login)) {
@@ -932,7 +932,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String login = JOptionPane.showInputDialog (this, "login?", "Login (String) ", JOptionPane.QUESTION_MESSAGE);
+    		String login = JOptionPane.showInputDialog (this, "loginGerenteGeneral?", "loginGerenteGeneral (String) ", JOptionPane.QUESTION_MESSAGE);
     		
     		
     		//Es GERENTEGENERAL
